@@ -1,6 +1,4 @@
-
-![Logo](logo.png)
-
+<img src="logo.png" alt="Logo" style="max-width: 200px;">
 
 # GPT-Fn
 
