@@ -1,0 +1,41 @@
+# serializer version: 1
+# name: test_function_signature[add]
+  '''
+  You are now the following python function:
+  ```
+  # Add two numbers.
+  def add(a: int, b: int):
+  ```
+  Only respond with your `return` value.
+  The output should be formatted as a JSON instance that conforms to the JSON schema below.
+  
+  As an example, for the schema {"properties": {"foo": {"title": "Foo", "description": "a list of strings", "type": "array", "items": {"type": "string"}}}, "required": ["foo"]}}
+  the object {"foo": ["bar", "baz"]} is a well-formatted instance of the schema. The object {"properties": {"foo": ["bar", "baz"]}} is not well-formatted.
+  
+  Here is the output schema:
+  ```
+  {"properties": {"ret": {"title": "Ret", "type": "integer"}}, "required": ["ret"]}
+  ```
+  
+  '''
+# ---
+# name: test_function_signature[fake_person]
+  '''
+  You are now the following python function:
+  ```
+  # generate fake person.
+  def fake_person(count: int):
+  ```
+  Only respond with your `return` value.
+  The output should be formatted as a JSON instance that conforms to the JSON schema below.
+  
+  As an example, for the schema {"properties": {"foo": {"title": "Foo", "description": "a list of strings", "type": "array", "items": {"type": "string"}}}, "required": ["foo"]}}
+  the object {"foo": ["bar", "baz"]} is a well-formatted instance of the schema. The object {"properties": {"foo": ["bar", "baz"]}} is not well-formatted.
+  
+  Here is the output schema:
+  ```
+  {"properties": {"ret": {"$ref": "#/definitions/Person"}}, "required": ["ret"], "definitions": {"Person": {"title": "Person", "description": "Person model.", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "age": {"title": "Age", "type": "integer"}}, "required": ["name", "age"]}}}
+  ```
+  
+  '''
+# ---
