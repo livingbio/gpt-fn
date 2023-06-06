@@ -62,3 +62,4 @@ repos:
           ]
         additional_dependencies:
           - "pydantic"
+          - "syrupy"
