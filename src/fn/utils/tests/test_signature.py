@@ -11,6 +11,10 @@ def add(a: int, b: int) -> int:  # type: ignore[empty-body]
     """Add two numbers."""
 
 
+def concat(a: str, b: str) -> str:  # type: ignore[empty-body]
+    """Concat two strings"""
+
+
 class Person(BaseModel):
     """Person model."""
 
@@ -26,10 +30,19 @@ def no_return_annoation(a: int, b: int):  # type: ignore[no-untyped-def]
     """Add two numbers."""
 
 
-@pytest.mark.parametrize("func", [add, fake_person])
-def test_function_signature(func: Callable[[Any], Any], snapshot: SnapshotAssertion) -> None:
+@pytest.mark.parametrize(
+    "func, args",
+    [
+        (add, (1, 2)),
+        (fake_person, (5,)),
+        (concat, ("pen", "apple")),
+        (concat, ("a'b", "cd")),
+    ],
+)
+def test_function_signature(func: Callable[[Any], Any], args: tuple[Any], snapshot: SnapshotAssertion) -> None:
     sig = FunctionSignature(func)
     assert snapshot == sig.instruction()
+    assert snapshot == sig.call_line(*args)
 
 
 def test_function_signature_without_return_annoations() -> None:

@@ -49,10 +49,9 @@ class FunctionSignature:
         # Build input binds
         input_binds: list[str] = []
         for k, v in bound_args.arguments.items():
-            input_binds.append(f"{k} = {v}")
+            input_binds.append(f"{k}={repr(v)}")
 
-        final_args = ", ".join(input_binds)
-        return f"{self.fn.__name__}({final_args})"
+        return f"{self.fn.__name__}({', '.join(input_binds)})"
 
     def parse(self, text: str) -> Any:
         return self.parser.parse(text).ret
