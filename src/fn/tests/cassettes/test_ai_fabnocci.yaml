@@ -33,7 +33,7 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-7OdlJs6TYA0VzXxgWfXNNXWeOavO1","object":"chat.completion","created":1686107073,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":201,"completion_tokens":10,"total_tokens":211},"choices":[{"message":{"role":"assistant","content":"```json\n{\"ret\":
+      string: '{"id":"chatcmpl-7OgLSB6GbpyaKGrhwaPs7hgaKWNsV","object":"chat.completion","created":1686117002,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":201,"completion_tokens":10,"total_tokens":211},"choices":[{"message":{"role":"assistant","content":"```json\n{\"ret\":
         55}\n```"},"finish_reason":"stop","index":0}]}
 
         '
@@ -41,7 +41,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d35ab174a0e4a3a-TPE
+      - 7d369d7ce99f56e9-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -51,7 +51,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 07 Jun 2023 03:04:34 GMT
+      - Wed, 07 Jun 2023 05:50:03 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -65,7 +65,7 @@ interactions:
       openai-organization:
       - gliacloud
       openai-processing-ms:
-      - '1053'
+      - '1247'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -83,7 +83,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 127ms
       x-request-id:
-      - 818c35f4f114e4a5707c4f5e661fffe2
+      - bd55421ecf25d30aed477fe5fa4ea095
     status:
       code: 200
       message: OK
