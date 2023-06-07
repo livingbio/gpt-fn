@@ -10,7 +10,7 @@ interactions:
       instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
       is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
       {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```\n"},
-      {"role": "user", "content": "fabnocci(n=10)"}], "temperature": 0.0}'
+      {"role": "user", "content": "fabnocci(10)"}], "temperature": 0.0}'
     headers:
       Accept:
       - '*/*'
@@ -19,7 +19,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '888'
+      - '886'
       Content-Type:
       - application/json
       User-Agent:
@@ -33,15 +33,15 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-7OgLSB6GbpyaKGrhwaPs7hgaKWNsV","object":"chat.completion","created":1686117002,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":201,"completion_tokens":10,"total_tokens":211},"choices":[{"message":{"role":"assistant","content":"```json\n{\"ret\":
-        55}\n```"},"finish_reason":"stop","index":0}]}
+      string: '{"id":"chatcmpl-7OlqTMvrWGqFeAqH06sgSJekrmtq9","object":"chat.completion","created":1686138145,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":200,"completion_tokens":6,"total_tokens":206},"choices":[{"message":{"role":"assistant","content":"{\"ret\":
+        55}"},"finish_reason":"stop","index":0}]}
 
         '
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d369d7ce99f56e9-TPE
+      - 7d38a1afce03a355-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -51,7 +51,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 07 Jun 2023 05:50:03 GMT
+      - Wed, 07 Jun 2023 11:42:26 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -65,7 +65,7 @@ interactions:
       openai-organization:
       - gliacloud
       openai-processing-ms:
-      - '1247'
+      - '916'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -81,9 +81,9 @@ interactions:
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
-      - 127ms
+      - 126ms
       x-request-id:
-      - bd55421ecf25d30aed477fe5fa4ea095
+      - f742315feb13d2988a1de11ea142c665
     status:
       code: 200
       message: OK

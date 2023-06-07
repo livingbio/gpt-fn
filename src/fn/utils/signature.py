@@ -15,6 +15,19 @@ def clean_docstring(docstring: str) -> str:
     return "\n".join(output)
 
 
+def format_call_line(func: Callable[..., Any], *args: Any, **kwargs: Any) -> str:
+    args_list = [repr(arg) for arg in args]  # Convert arguments to their string representations
+    kwargs_list = [f"{key}={repr(value)}" for key, value in kwargs.items()]  # Convert keyword arguments to string representations
+
+    # Combine args and kwargs into a single list
+    all_args = args_list + kwargs_list
+
+    # Generate the formatted function call line
+    call_line = f"{func.__name__}({', '.join(all_args)})"
+
+    return call_line
+
+
 class FunctionSignature:
     """A helper class to parse function signature and generate instruction for prompt."""
 
@@ -32,7 +45,7 @@ class FunctionSignature:
 
     def function_line(self) -> str:
         # NOTE: return type is instrcutive by parser
-        f = str(self.sig).split("->")[0].strip()
+        f = str(self.sig.replace(return_annotation=inspect.Signature.empty))
 
         return f"def {self.fn.__name__}{f}:"
 
@@ -42,16 +55,7 @@ class FunctionSignature:
         return desc
 
     def call_line(self, *args: Any, **kwargs: Any) -> str:
-        # Bind the provided arguments to the function signature
-        bound_args = self.sig.bind(*args, **kwargs)
-        bound_args.apply_defaults()
-
-        # Build input binds
-        input_binds: list[str] = []
-        for k, v in bound_args.arguments.items():
-            input_binds.append(f"{k}={repr(v)}")
-
-        return f"{self.fn.__name__}({', '.join(input_binds)})"
+        return format_call_line(self.fn, *args, **kwargs)
 
     def parse(self, text: str) -> Any:
         return self.parser.parse(text).ret

@@ -13,7 +13,7 @@ interactions:
       \"required\": [\"ret\"], \"definitions\": {\"Hero\": {\"title\": \"Hero\", \"description\":
       \"Hero model.\", \"type\": \"object\", \"properties\": {\"name\": {\"title\":
       \"Name\", \"type\": \"string\"}, \"age\": {\"title\": \"Age\", \"type\": \"integer\"}},
-      \"required\": [\"name\", \"age\"]}}}\n```\n"}, {"role": "user", "content": "fake_hero(n=5)"}],
+      \"required\": [\"name\", \"age\"]}}}\n```\n"}, {"role": "user", "content": "fake_hero(5)"}],
       "temperature": 0.0}'
     headers:
       Accept:
@@ -23,7 +23,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1201'
+      - '1199'
       Content-Type:
       - application/json
       User-Agent:
@@ -37,7 +37,7 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-7OdlVkTMCH36wAUvQ7zLBu2FDoiMk","object":"chat.completion","created":1686107085,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":280,"completion_tokens":107,"total_tokens":387},"choices":[{"message":{"role":"assistant","content":"```json\n{\n    \"ret\":
+      string: '{"id":"chatcmpl-7OlqUL2gTh0j0Xnsj8unjIyeQSvRU","object":"chat.completion","created":1686138146,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":279,"completion_tokens":107,"total_tokens":386},"choices":[{"message":{"role":"assistant","content":"```json\n{\n    \"ret\":
         [\n        {\n            \"name\": \"Superman\",\n            \"age\": 35\n        },\n        {\n            \"name\":
         \"Batman\",\n            \"age\": 40\n        },\n        {\n            \"name\":
         \"Spiderman\",\n            \"age\": 25\n        },\n        {\n            \"name\":
@@ -49,7 +49,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d35ab63cfaa4a12-TPE
+      - 7d38a1b87b894a33-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -59,7 +59,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 07 Jun 2023 03:04:54 GMT
+      - Wed, 07 Jun 2023 11:42:37 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -73,7 +73,7 @@ interactions:
       openai-organization:
       - gliacloud
       openai-processing-ms:
-      - '9128'
+      - '11154'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -91,7 +91,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 170ms
       x-request-id:
-      - ef6b5f8e2f6e1cca64a4b75d380f8ca2
+      - 41c7b7ab5e50446cfd44a71072771f1a
     status:
       code: 200
       message: OK
