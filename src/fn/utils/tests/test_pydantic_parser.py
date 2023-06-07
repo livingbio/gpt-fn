@@ -12,7 +12,9 @@ class Receipt(BaseModel):
     customer: str
 
 
-def test_pydantic_parser_get_format_instructions(snapshot: SnapshotAssertion) -> None:
+def test_pydantic_parser_get_format_instructions(
+    snapshot: SnapshotAssertion,
+) -> None:
     assert snapshot == PydanticParser[Receipt](pydantic_model=Receipt).get_format_instructions()
 
 
