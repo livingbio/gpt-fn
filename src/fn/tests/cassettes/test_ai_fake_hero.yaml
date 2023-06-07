@@ -37,7 +37,7 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-7OlqUL2gTh0j0Xnsj8unjIyeQSvRU","object":"chat.completion","created":1686138146,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":279,"completion_tokens":107,"total_tokens":386},"choices":[{"message":{"role":"assistant","content":"```json\n{\n    \"ret\":
+      string: '{"id":"chatcmpl-7OmPoZOMSgndBaoo5czGM9vJofGy8","object":"chat.completion","created":1686140336,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":279,"completion_tokens":107,"total_tokens":386},"choices":[{"message":{"role":"assistant","content":"```json\n{\n    \"ret\":
         [\n        {\n            \"name\": \"Superman\",\n            \"age\": 35\n        },\n        {\n            \"name\":
         \"Batman\",\n            \"age\": 40\n        },\n        {\n            \"name\":
         \"Spiderman\",\n            \"age\": 25\n        },\n        {\n            \"name\":
@@ -49,7 +49,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d38a1b87b894a33-TPE
+      - 7d38d72adfeb4a6a-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -59,7 +59,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 07 Jun 2023 11:42:37 GMT
+      - Wed, 07 Jun 2023 12:19:04 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -70,10 +70,8 @@ interactions:
       - h3=":443"; ma=86400
       openai-model:
       - gpt-3.5-turbo-0301
-      openai-organization:
-      - gliacloud
       openai-processing-ms:
-      - '11154'
+      - '8368'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -85,13 +83,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '3499'
       x-ratelimit-remaining-tokens:
-      - '89743'
+      - '89744'
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
       - 170ms
       x-request-id:
-      - 41c7b7ab5e50446cfd44a71072771f1a
+      - d2d4d5d57580ee44084c40aab7007629
     status:
       code: 200
       message: OK
