@@ -28,7 +28,8 @@ def test_ai_fabnocci(snapshot: SnapshotAssertion) -> None:
 
 
 @pytest.mark.vcr(filter_headers=["authorization"])
-def test_ai_fake_hero() -> None:
+def test_ai_fake_hero(snapshot: SnapshotAssertion) -> None:
     heros = fake_hero(5)
     assert len(heros) == 5
     assert all(isinstance(k, Hero) for k in heros)
+    assert snapshot == heros
