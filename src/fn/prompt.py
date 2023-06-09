@@ -14,6 +14,10 @@ class Message(BaseModel):
             "content": jinja2.Template(self.content).render(**kwargs),
         }
 
+    class Config:
+        # remove whitespace
+        anystr_strip_whitespace = True
+
 
 class ChatTemplate(BaseModel):
     messages: list[Message]

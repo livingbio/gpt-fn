@@ -50,7 +50,7 @@ class FunctionSignature:
         return f"def {self.fn.__name__}{f}:"
 
     def description(self) -> str:
-        desc = inspect.cleandoc(self.fn.__doc__ or "")
+        desc = clean_docstring(self.fn.__doc__ or "")
 
         return desc
 
