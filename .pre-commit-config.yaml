@@ -64,3 +64,4 @@ repos:
           - "pydantic"
           - "syrupy"
           - "openai"
+          - "jinja2"
