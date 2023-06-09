@@ -9,7 +9,7 @@ interactions:
       \"required\": [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
       instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
       is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
-      {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```\n"},
+      {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
       {"role": "user", "content": "fabnocci(10)"}], "temperature": 0.0}'
     headers:
       Accept:
@@ -19,7 +19,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '886'
+      - '884'
       Content-Type:
       - application/json
       User-Agent:
@@ -33,15 +33,18 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: '{"id":"chatcmpl-7OmPcggWnB2DrvAwDdSSkXHUb4CwR","object":"chat.completion","created":1686140324,"model":"gpt-3.5-turbo-0301","usage":{"prompt_tokens":200,"completion_tokens":6,"total_tokens":206},"choices":[{"message":{"role":"assistant","content":"{\"ret\":
-        55}"},"finish_reason":"stop","index":0}]}
-
-        '
+      string: "{\n  \"id\": \"chatcmpl-7POvK29Ub10UemzsvNYhSCImY1xJh\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686288362,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+        \ \"usage\": {\n    \"prompt_tokens\": 199,\n    \"completion_tokens\": 6,\n
+        \   \"total_tokens\": 205\n  },\n  \"choices\": [\n    {\n      \"message\":
+        {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"ret\\\":
+        55}\"\n      },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n
+        \   }\n  ]\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d38d6e18fad4a51-TPE
+      - 7d46f515de330728-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -51,7 +54,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 07 Jun 2023 12:18:45 GMT
+      - Fri, 09 Jun 2023 05:26:02 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -63,7 +66,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0301
       openai-processing-ms:
-      - '833'
+      - '817'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -81,7 +84,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 126ms
       x-request-id:
-      - eb2d55a66a60041db2d644ff01a69853
+      - d1dc3dde477e92ba22a78a13f041b366
     status:
       code: 200
       message: OK

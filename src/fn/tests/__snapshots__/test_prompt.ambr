@@ -1,0 +1,17 @@
+# serializer version: 1
+# name: test_chat_template
+  list([
+    dict({
+      'content': "hello, what's your name?",
+      'role': 'system',
+    }),
+    dict({
+      'content': 'My name is John}',
+      'role': 'user',
+    }),
+    dict({
+      'content': 'hello, John nice to meet you!',
+      'role': 'system',
+    }),
+  ])
+# ---

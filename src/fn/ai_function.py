@@ -3,6 +3,7 @@ from typing import Any, Callable, ParamSpec, TypeVar
 
 import openai
 
+from .prompt import ChatTemplate, Message
 from .utils.signature import FunctionSignature
 
 T = TypeVar("T")
@@ -16,17 +17,16 @@ def ai_fn(
 
     @wraps(fn)
     def inner(*args: Any, **kwargs: Any) -> T:
-        messages = [
-            {
-                "role": "system",
-                "content": sig.instruction(),
-            },
-            {"role": "user", "content": sig.call_line(*args, **kwargs)},
-        ]
+        template = ChatTemplate(
+            messages=[
+                Message(role="system", content=sig.instruction()),
+                Message(role="user", content=sig.call_line(*args, **kwargs)),
+            ]
+        )
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=messages,
+            messages=template.render(),
             temperature=0.0,
         )
 
