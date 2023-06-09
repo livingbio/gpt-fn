@@ -4,7 +4,7 @@ version = "0.0.0"
 description = ""
 authors = ["lucemia <lucemia@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "gpt_fn" }]
+packages = [{ include = "fn", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
