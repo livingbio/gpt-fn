@@ -4,7 +4,7 @@ import jinja2
 from pydantic import BaseModel
 
 
-class Message(BaseModel):
+class MessageTemplate(BaseModel):
     role: Literal["system", "user", "assistant"]
     content: str
 
@@ -20,7 +20,7 @@ class Message(BaseModel):
 
 
 class ChatTemplate(BaseModel):
-    messages: list[Message]
+    messages: list[MessageTemplate]
 
     def render(self, **kwargs: str) -> list[dict[str, Any]]:
         return [m.render(**kwargs) for m in self.messages]
