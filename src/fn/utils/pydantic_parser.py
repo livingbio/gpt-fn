@@ -8,7 +8,7 @@ from pydantic.generics import GenericModel
 T = TypeVar("T", bound=BaseModel)
 
 
-class ParserException(Exception):
+class ParserError(Exception):
     pass
 
 
@@ -38,7 +38,7 @@ class PydanticParser(GenericModel, Generic[T]):
         except (json.JSONDecodeError, ValidationError) as e:
             name = self.pydantic_model.__name__
             msg = f"Failed to parse {name} from completion {text}. Got: {e}"
-            raise ParserException(msg)
+            raise ParserError(msg)
 
     def get_format_instructions(self) -> str:
         schema = self.pydantic_model.schema()

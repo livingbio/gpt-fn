@@ -1,0 +1,102 @@
+interactions:
+- request:
+    body: '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You
+      are now the following python function:\n```\n# generate fake hero.\ndef fake_hero(n:
+      int):\n```\nOnly respond with your `return` value.\nThe output should be formatted
+      as a JSON instance that conforms to the JSON schema below.\n\nAs an example,
+      for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\":
+      \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}},
+      \"required\": [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+      instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
+      is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
+      {\"ret\": {\"title\": \"Ret\", \"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/Hero\"}}},
+      \"required\": [\"ret\"], \"definitions\": {\"Hero\": {\"title\": \"Hero\", \"description\":
+      \"Hero model.\", \"type\": \"object\", \"properties\": {\"name\": {\"title\":
+      \"Name\", \"type\": \"string\"}, \"age\": {\"title\": \"Age\", \"type\": \"integer\"}},
+      \"required\": [\"name\", \"age\"]}}}\n```"}, {"role": "user", "content": "fake_hero(5)"}],
+      "temperature": 0.0}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1197'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.7
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.7", "httplib": "requests", "lang": "python", "lang_version":
+        "3.11.3", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"id\": \"chatcmpl-7POvLzz9bmjkVW62iee8coYLZUEsD\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686288363,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+        \ \"usage\": {\n    \"prompt_tokens\": 278,\n    \"completion_tokens\": 107,\n
+        \   \"total_tokens\": 385\n  },\n  \"choices\": [\n    {\n      \"message\":
+        {\n        \"role\": \"assistant\",\n        \"content\": \"```json\\n{\\n
+        \   \\\"ret\\\": [\\n        {\\n            \\\"name\\\": \\\"Superman\\\",\\n
+        \           \\\"age\\\": 35\\n        },\\n        {\\n            \\\"name\\\":
+        \\\"Batman\\\",\\n            \\\"age\\\": 40\\n        },\\n        {\\n
+        \           \\\"name\\\": \\\"Spiderman\\\",\\n            \\\"age\\\": 25\\n
+        \       },\\n        {\\n            \\\"name\\\": \\\"Wonder Woman\\\",\\n
+        \           \\\"age\\\": 30\\n        },\\n        {\\n            \\\"name\\\":
+        \\\"Iron Man\\\",\\n            \\\"age\\\": 45\\n        }\\n    ]\\n}\\n```\"\n
+        \     },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n    }\n
+        \ ]\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d46f51cfa96a343-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 09 Jun 2023 05:26:08 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0301
+      openai-processing-ms:
+      - '5540'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89743'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 170ms
+      x-request-id:
+      - 87cb42ea1e3cc020be707c2c3121c079
+    status:
+      code: 200
+      message: OK
+version: 1

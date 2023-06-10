@@ -1,0 +1,13 @@
+# serializer version: 1
+# name: test_ai_fabnocci
+  55
+# ---
+# name: test_ai_fake_hero
+  list([
+    Hero(name='Superman', age=35),
+    Hero(name='Batman', age=40),
+    Hero(name='Spiderman', age=25),
+    Hero(name='Wonder Woman', age=30),
+    Hero(name='Iron Man', age=45),
+  ])
+# ---
