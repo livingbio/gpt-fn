@@ -17,7 +17,7 @@ def test_chat_completion(snapshot: SnapshotAssertion):
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
-def test_chat_completion_incomplete():
+def test_chat_completion_incomplete(snapshot: SnapshotAssertion):
     with pytest.raises(CompletionIncompleteError) as excinfo:
         chat_completion(
             [
@@ -26,3 +26,6 @@ def test_chat_completion_incomplete():
             ],
             max_tokens=1,
         )
+
+    assert snapshot == excinfo.exconly()
+    assert snapshot == vars(excinfo.value)
