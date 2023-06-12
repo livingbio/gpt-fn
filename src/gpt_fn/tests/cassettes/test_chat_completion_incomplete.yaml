@@ -3,7 +3,7 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "Hello, who are you?"}], "model": "gpt-3.5-turbo",
       "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
-      0.0, "user": "", "max_tokens": 1}'
+      0.0, "user": "", "stop": null, "max_tokens": 1}'
     headers:
       Accept:
       - '*/*'
@@ -12,7 +12,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '269'
+      - '283'
       Content-Type:
       - application/json
       User-Agent:
@@ -26,8 +26,8 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7QXIvmqk7VdUM5ltElAIN9lNzgNxT\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1686558905,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+      string: "{\n  \"id\": \"chatcmpl-7QXcyFNjAlIIPRuU5YEC6vUlqwu6R\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686560148,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
         \ \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 1,\n
         \   \"total_tokens\": 26\n  },\n  \"choices\": [\n    {\n      \"message\":
         {\n        \"role\": \"assistant\",\n        \"content\": \"Hello\"\n      },\n
@@ -36,7 +36,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d60c2263e81a9b5-TPE
+      - 7d60e0820c3ba9cb-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -46,7 +46,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 12 Jun 2023 08:35:05 GMT
+      - Mon, 12 Jun 2023 08:55:49 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -58,7 +58,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0301
       openai-processing-ms:
-      - '198'
+      - '195'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -76,7 +76,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 10ms
       x-request-id:
-      - 48adee54efc18c7e7e8e5484bb28ed08
+      - 9b24c553c430a32d49942fc89bddcd00
     status:
       code: 200
       message: OK

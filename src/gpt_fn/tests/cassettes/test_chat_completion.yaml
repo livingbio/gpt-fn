@@ -3,7 +3,7 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "Hello, who are you?"}], "model": "gpt-3.5-turbo",
       "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
-      0.0, "user": ""}'
+      0.0, "user": "", "stop": null}'
     headers:
       Accept:
       - '*/*'
@@ -12,7 +12,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '252'
+      - '266'
       Content-Type:
       - application/json
       User-Agent:
@@ -26,20 +26,19 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7QXJHbdTCNzquj2j8M1GxR2745ol3\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1686558927,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
-        \ \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 52,\n
-        \   \"total_tokens\": 77\n  },\n  \"choices\": [\n    {\n      \"message\":
-        {\n        \"role\": \"assistant\",\n        \"content\": \"Hello! I am an
-        AI language model created by OpenAI. My purpose is to assist you in any way
-        I can, whether you need information on a topic, help with a task, or just
-        someone to chat with. How may I assist you today?\"\n      },\n      \"finish_reason\":
+      string: "{\n  \"id\": \"chatcmpl-7QXcwk4gV0eJB61lUnKrwmR3qVE1R\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686560146,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+        \ \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 31,\n
+        \   \"total_tokens\": 56\n  },\n  \"choices\": [\n    {\n      \"message\":
+        {\n        \"role\": \"assistant\",\n        \"content\": \"Hello! I am a
+        language model AI created by OpenAI, designed to assist and communicate with
+        users in natural language. How may I assist you today?\"\n      },\n      \"finish_reason\":
         \"stop\",\n      \"index\": 0\n    }\n  ]\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d60c2b1ee0e4a58-TPE
+      - 7d60e075f9684aa2-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -49,7 +48,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 12 Jun 2023 08:35:30 GMT
+      - Mon, 12 Jun 2023 08:55:48 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -61,7 +60,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0301
       openai-processing-ms:
-      - '2205'
+      - '1580'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -79,7 +78,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 20ms
       x-request-id:
-      - b23a95727b8215d92e5d070aae7c2df8
+      - cfe04522ace27d03b1d2175b2155e38f
     status:
       code: 200
       message: OK

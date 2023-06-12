@@ -1,6 +1,6 @@
 # serializer version: 1
 # name: test_chat_completion
-  'Hello! I am an AI language model created by OpenAI. My purpose is to assist you in any way I can, whether you need information on a topic, help with a task, or just someone to chat with. How may I assist you today?'
+  'Hello! I am a language model AI created by OpenAI, designed to assist and communicate with users in natural language. How may I assist you today?'
 # ---
 # name: test_chat_completion_incomplete
   'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 1, Finish reason: length'
@@ -22,6 +22,7 @@
       ]),
       'model': 'gpt-3.5-turbo',
       'presence_penalty': 0.0,
+      'stop': None,
       'temperature': 1.0,
       'top_p': 1.0,
       'user': '',
@@ -37,8 +38,8 @@
           }),
         }),
       ]),
-      'created': 1686558905,
-      'id': 'chatcmpl-7QXIvmqk7VdUM5ltElAIN9lNzgNxT',
+      'created': 1686560148,
+      'id': 'chatcmpl-7QXcyFNjAlIIPRuU5YEC6vUlqwu6R',
       'model': 'gpt-3.5-turbo-0301',
       'object': 'chat.completion',
       'usage': OpenAIObject({
