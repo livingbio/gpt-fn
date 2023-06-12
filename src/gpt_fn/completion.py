@@ -18,6 +18,7 @@ def chat_completion(
     top_p: float = 1.0,
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
+    stop: list[str] = [],
     user: str = "",
 ) -> str:
     kwargs = dict(
@@ -28,6 +29,7 @@ def chat_completion(
         frequency_penalty=frequency_penalty,
         presence_penalty=presence_penalty,
         user=user,
+        stop=stop or None,
     )
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
