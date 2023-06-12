@@ -1,0 +1,85 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Hello, who are you?"}], "model": "gpt-3.5-turbo",
+      "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
+      0.0, "user": "", "stop": null}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '266'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.7
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.7", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.8", "platform": "Linux-5.15.0-72-generic-x86_64-with-glibc2.35", "publisher":
+        "openai", "uname": "Linux 5.15.0-72-generic #79-Ubuntu SMP Wed Apr 19 08:22:18
+        UTC 2023 x86_64"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"id\": \"chatcmpl-7QXcwk4gV0eJB61lUnKrwmR3qVE1R\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686560146,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+        \ \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 31,\n
+        \   \"total_tokens\": 56\n  },\n  \"choices\": [\n    {\n      \"message\":
+        {\n        \"role\": \"assistant\",\n        \"content\": \"Hello! I am a
+        language model AI created by OpenAI, designed to assist and communicate with
+        users in natural language. How may I assist you today?\"\n      },\n      \"finish_reason\":
+        \"stop\",\n      \"index\": 0\n    }\n  ]\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d60e075f9684aa2-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 12 Jun 2023 08:55:48 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0301
+      openai-processing-ms:
+      - '1580'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89970'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 20ms
+      x-request-id:
+      - cfe04522ace27d03b1d2175b2155e38f
+    status:
+      code: 200
+      message: OK
+version: 1

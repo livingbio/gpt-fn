@@ -1,8 +1,7 @@
 from functools import wraps
 from typing import Any, Callable, ParamSpec, TypeVar
 
-import openai
-
+from .completion import chat_completion
 from .prompt import ChatTemplate, MessageTemplate
 from .utils.signature import FunctionSignature
 
@@ -24,13 +23,7 @@ def ai_fn(
             ]
         )
 
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=template.render(),
-            temperature=0.0,
-        )
-
-        resp = response.choices[0].message["content"]
+        resp = chat_completion(template.render(), temperature=0.0)
         return sig.parse(resp)
 
     return inner

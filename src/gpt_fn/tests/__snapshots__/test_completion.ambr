@@ -1,0 +1,52 @@
+# serializer version: 1
+# name: test_chat_completion
+  'Hello! I am a language model AI created by OpenAI, designed to assist and communicate with users in natural language. How may I assist you today?'
+# ---
+# name: test_chat_completion_incomplete
+  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 1, Finish reason: length'
+# ---
+# name: test_chat_completion_incomplete.1
+  dict({
+    'request': dict({
+      'frequency_penalty': 0.0,
+      'max_tokens': 1,
+      'messages': list([
+        dict({
+          'content': 'You are a helpful assistant.',
+          'role': 'system',
+        }),
+        dict({
+          'content': 'Hello, who are you?',
+          'role': 'user',
+        }),
+      ]),
+      'model': 'gpt-3.5-turbo',
+      'presence_penalty': 0.0,
+      'stop': None,
+      'temperature': 1.0,
+      'top_p': 1.0,
+      'user': '',
+    }),
+    'response': OpenAIObject({
+      'choices': list([
+        OpenAIObject({
+          'finish_reason': 'length',
+          'index': 0,
+          'message': OpenAIObject({
+            'content': 'Hello',
+            'role': 'assistant',
+          }),
+        }),
+      ]),
+      'created': 1686560148,
+      'id': 'chatcmpl-7QXcyFNjAlIIPRuU5YEC6vUlqwu6R',
+      'model': 'gpt-3.5-turbo-0301',
+      'object': 'chat.completion',
+      'usage': OpenAIObject({
+        'completion_tokens': 1,
+        'prompt_tokens': 25,
+        'total_tokens': 26,
+      }),
+    }),
+  })
+# ---

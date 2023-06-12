@@ -1,16 +1,18 @@
 interactions:
 - request:
-    body: '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You
-      are now the following python function:\n```\n# return fabnocci number\ndef fabnocci(n:
-      int):\n```\nOnly respond with your `return` value.\nThe output should be formatted
-      as a JSON instance that conforms to the JSON schema below.\n\nAs an example,
-      for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\":
-      \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}},
-      \"required\": [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
-      instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
-      is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
-      {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
-      {"role": "user", "content": "fabnocci(10)"}], "temperature": 0.0}'
+    body: '{"messages": [{"role": "system", "content": "You are now the following
+      python function:\n```\n# return fabnocci number\ndef fabnocci(n: int):\n```\nOnly
+      respond with your `return` value.\nThe output should be formatted as a JSON
+      instance that conforms to the JSON schema below.\n\nAs an example, for the schema
+      {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of
+      strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\":
+      [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance
+      of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is
+      not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\": {\"ret\":
+      {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
+      {"role": "user", "content": "fabnocci(10)"}], "model": "gpt-3.5-turbo", "temperature":
+      0.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "user":
+      "", "stop": null}'
     headers:
       Accept:
       - '*/*'
@@ -19,22 +21,22 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '884'
+      - '975'
       Content-Type:
       - application/json
       User-Agent:
       - OpenAI/v1 PythonBindings/0.27.7
       X-OpenAI-Client-User-Agent:
       - '{"bindings_version": "0.27.7", "httplib": "requests", "lang": "python", "lang_version":
-        "3.11.3", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
-        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
-        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+        "3.10.8", "platform": "Linux-5.15.0-72-generic-x86_64-with-glibc2.35", "publisher":
+        "openai", "uname": "Linux 5.15.0-72-generic #79-Ubuntu SMP Wed Apr 19 08:22:18
+        UTC 2023 x86_64"}'
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7POvK29Ub10UemzsvNYhSCImY1xJh\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1686288362,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
+      string: "{\n  \"id\": \"chatcmpl-7QZLqAOMdygD2B0nE7xwIlZbI5dYJ\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686566774,\n  \"model\": \"gpt-3.5-turbo-0301\",\n
         \ \"usage\": {\n    \"prompt_tokens\": 199,\n    \"completion_tokens\": 6,\n
         \   \"total_tokens\": 205\n  },\n  \"choices\": [\n    {\n      \"message\":
         {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"ret\\\":
@@ -44,7 +46,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7d46f515de330728-TPE
+      - 7d618241afc24a1e-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -54,7 +56,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 09 Jun 2023 05:26:02 GMT
+      - Mon, 12 Jun 2023 10:46:14 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -66,7 +68,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0301
       openai-processing-ms:
-      - '817'
+      - '394'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -84,7 +86,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 126ms
       x-request-id:
-      - d1dc3dde477e92ba22a78a13f041b366
+      - 493e1bf4e826813b9d18a2843a8f3b9b
     status:
       code: 200
       message: OK
