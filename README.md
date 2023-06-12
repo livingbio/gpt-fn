@@ -1,4 +1,7 @@
+<img src="logo.png" alt="Logo" style="max-width: 200px;">
+
 # GPT-Fn
+
 
 GPT-Fn is a lightweight utility library designed to seamlessly integrate AI capabilities into your software applications. Our focus is on providing essential utilities that make it easy to incorporate artificial intelligence into your codebase without unnecessary complexities.
 
