@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_chat_completion
+  'Hello! I am an AI language model created by OpenAI. My purpose is to assist you in any way I can, whether you need information on a topic, help with a task, or just someone to chat with. How may I assist you today?'
+# ---
