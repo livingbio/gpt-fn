@@ -6,7 +6,7 @@ from ..exceptions import CompletionIncompleteError
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
-def test_chat_completion(snapshot: SnapshotAssertion):
+def test_chat_completion(snapshot: SnapshotAssertion) -> None:
     msg = chat_completion(
         [
             {"role": "system", "content": "You are a helpful assistant."},
@@ -17,7 +17,7 @@ def test_chat_completion(snapshot: SnapshotAssertion):
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
-def test_chat_completion_incomplete(snapshot: SnapshotAssertion):
+def test_chat_completion_incomplete(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(CompletionIncompleteError) as excinfo:
         chat_completion(
             [
