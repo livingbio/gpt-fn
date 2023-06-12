@@ -32,15 +32,16 @@ def chat_completion(
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    completion = openai.ChatCompletion.create(**kwargs)
+    response = openai.ChatCompletion.create(**kwargs)
 
-    output = completion.choices[0]
+    output = response.choices[0]
     output_message = output.message.content.strip()
 
     if output.finish_reason != "stop":
         raise CompletionIncompleteError(
-            f"Incomplete completion. Finish reason: {output.finish_reason}",
-            completion=completion,
+            f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {output.finish_reason}",
+            response=response,
+            request=kwargs,
         )
 
     return output_message
