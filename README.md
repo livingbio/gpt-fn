@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/livingbio/gpt-fn/workflows/python-unittest/badge.svg?branch=main)](https://github.com/livingbio/gpt-fn/actions?query=workflow%3Apython-unittest++branch%3Amain++)
 [![pypi](https://img.shields.io/pypi/v/gpt-fn.svg)](https://pypi.python.org/pypi/gpt-fn)
+[![downloads](https://pepy.tech/badge/gpt-fn/month)](https://pepy.tech/project/gpt-fn)
 [![versions](https://img.shields.io/pypi/pyversions/gpt-fn.svg)](https://github.com/livingbio/gpt-fn)
 [![license](https://img.shields.io/github/license/livingbio/gpt-fn.svg)](https://github.com/livingbio/gpt-fn/blob/main/LICENSE)
 
