@@ -6,6 +6,10 @@
 [![downloads](https://pepy.tech/badge/gpt-fn/month)](https://pepy.tech/project/gpt-fn)
 [![versions](https://img.shields.io/pypi/pyversions/gpt-fn.svg)](https://github.com/livingbio/gpt-fn)
 [![license](https://img.shields.io/github/license/livingbio/gpt-fn.svg)](https://github.com/livingbio/gpt-fn/blob/main/LICENSE)
+[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
 
 GPT-Fn is a lightweight utility library designed to seamlessly integrate AI capabilities into your software applications. Our focus is on providing essential utilities that make it easy to incorporate artificial intelligence into your codebase without unnecessary complexities.
 
