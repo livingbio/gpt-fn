@@ -1,5 +1,8 @@
 # GPT-Fn
 
+[![CI](https://github.com/livingbio/gpt-fn/workflows/python-unittest/badge.svg?branch=main)](https://github.com/livingbio/gpt-fn/actions?query=workflow%3Apython-unittest++branch%3Amain++)
+
+
 GPT-Fn is a lightweight utility library designed to seamlessly integrate AI capabilities into your software applications. Our focus is on providing essential utilities that make it easy to incorporate artificial intelligence into your codebase without unnecessary complexities.
 
 ## Features
