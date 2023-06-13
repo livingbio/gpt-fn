@@ -35,8 +35,5 @@ jobs:
           poetry run pytest ./src --cov=./src
         env: # Or as an environment variable
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      - name: Upload Coverage
-        run: |
-          coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
