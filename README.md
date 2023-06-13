@@ -1,6 +1,7 @@
 # GPT-Fn
 
 [![CI](https://github.com/livingbio/gpt-fn/workflows/python-unittest/badge.svg?branch=main)](https://github.com/livingbio/gpt-fn/actions?query=workflow%3Apython-unittest++branch%3Amain++)
+[![Coverage Status](https://coveralls.io/repos/github/livingbio/gpt-fn/badge.svg?branch=main)](https://coveralls.io/github/livingbio/gpt-fn?branch=main)
 [![pypi](https://img.shields.io/pypi/v/gpt-fn.svg)](https://pypi.python.org/pypi/gpt-fn)
 [![downloads](https://pepy.tech/badge/gpt-fn/month)](https://pepy.tech/project/gpt-fn)
 [![versions](https://img.shields.io/pypi/pyversions/gpt-fn.svg)](https://github.com/livingbio/gpt-fn)
