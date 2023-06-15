@@ -1,0 +1,90 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a restaurant in London."}], "model":
+      "gpt-3.5-turbo-0613", "temperature": 1.0, "top_p": 1.0, "frequency_penalty":
+      0.0, "presence_penalty": 0.0, "user": "", "stop": null, "functions": [{"name":
+      "book_a_flight", "description": "", "parameters": {"type": "object", "required":
+      ["date", "destination"], "properties": {"date": {"title": "Date", "type": "string"},
+      "destination": {"title": "Destination", "type": "string"}, "origin": {"title":
+      "Origin", "default": "London", "type": "string"}}, "definitions": {}}}], "function_call":
+      "auto"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '656'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.11", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"id\": \"chatcmpl-7RcqnDDJFsuH6uxGHQnThegIztTIu\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686818553,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+        \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+        \"assistant\",\n        \"content\": \"I'm sorry, but I am currently unable
+        to book a restaurant for you. However, I can help you find some popular restaurants
+        in London.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\":
+        {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 30,\n    \"total_tokens\":
+        97\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d7985333a61a9a7-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - br
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 08:42:34 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '1199'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3000'
+      x-ratelimit-limit-tokens:
+      - '250000'
+      x-ratelimit-remaining-requests:
+      - '2999'
+      x-ratelimit-remaining-tokens:
+      - '249965'
+      x-ratelimit-reset-requests:
+      - 20ms
+      x-ratelimit-reset-tokens:
+      - 8ms
+      x-request-id:
+      - 03348d5940aa708d149dff8ce7452a28
+    status:
+      code: 200
+      message: OK
+version: 1
