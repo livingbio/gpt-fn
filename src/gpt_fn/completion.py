@@ -1,9 +1,12 @@
-from typing import Any, Callable, TypedDict
+from typing import Any, Callable, Type, TypedDict, TypeVar
 
 import openai
+import pydantic
 
 from .exceptions import CompletionIncompleteError
 from .utils import signature
+
+T = TypeVar("T")
 
 
 class Message(TypedDict):
@@ -51,6 +54,54 @@ def function_completion(
 
     if "function_call" in message:
         return message["function_call"]
+
+    raise CompletionIncompleteError(
+        f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {output.finish_reason} Message:{message.content}",
+        response=response,
+        request=kwargs,
+    )
+
+
+def structural_completion(
+    messages: list[Message],
+    structure: Type[T],
+    max_tokens: int | None = None,
+    model: str = "gpt-3.5-turbo-0613",
+    temperature: float = 1.0,
+    top_p: float = 1.0,
+    frequency_penalty: float = 0.0,
+    presence_penalty: float = 0.0,
+    user: str = "",
+) -> T:
+    function_call = {"name": "structural_response"}
+    kwargs = dict(
+        messages=messages,
+        model=model,
+        temperature=temperature,
+        top_p=top_p,
+        frequency_penalty=frequency_penalty,
+        presence_penalty=presence_penalty,
+        user=user,
+        functions=[
+            function_call
+            | {
+                "description": "Response to user in a structural way.",
+                "parameters": pydantic.schema_of(structure),
+            }
+        ],
+        function_call=function_call,
+    )
+    if max_tokens is not None:
+        kwargs.update(max_tokens=max_tokens)
+
+    response = openai.ChatCompletion.create(**kwargs)
+
+    output = response.choices[0]
+    message = output.message
+
+    if "function_call" in message:
+        args = message.function_call.arguments
+        return pydantic.parse_raw_as(structure, args)
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {output.finish_reason} Message:{message.content}",
