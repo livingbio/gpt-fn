@@ -139,3 +139,6 @@
     }),
   })
 # ---
+# name: test_structural_completion
+  Email(subject='Thank you for your inquiry', body='Dear [Name],\n\nThank you for your interest in our company. We received your inquiry and would like to provide you with some information regarding our products and services.\n\n[Insert relevant details here]\n\nIf you have any further questions, please feel free to contact us. We are always happy to assist you.\n\nThank you once again for considering our company. We look forward to the possibility of working with you.\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]')
+# ---
