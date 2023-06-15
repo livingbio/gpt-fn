@@ -3,18 +3,23 @@ from typing import Literal
 import jinja2
 from pydantic import BaseModel
 
-from .completion import Message
+from .completion import FunctionMessage, Message
 
 
 class MessageTemplate(BaseModel):
-    role: Literal["system", "user", "assistant"]
+    role: Literal["system", "user", "assistant", "function"]
     content: str
+    name: str = ""
 
     def render(self, **kwargs: str) -> Message:
-        return {
-            "role": self.role,
-            "content": jinja2.Template(self.content).render(**kwargs),
-        }
+        content = jinja2.Template(self.content).render(**kwargs)
+        if self.role == "function":
+            return FunctionMessage(
+                role=self.role,
+                content=content,
+                name=self.name,
+            )
+        return Message(role=self.role, content=content)
 
     class Config:
         # remove whitespace

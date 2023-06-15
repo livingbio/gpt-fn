@@ -10,6 +10,10 @@ class Message(TypedDict):
     content: str
 
 
+class FunctionMessage(Message):
+    name: str
+
+
 def chat_completion(
     messages: list[Message],
     max_tokens: int | None = None,

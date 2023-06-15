@@ -90,4 +90,175 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are now the following
+      python function:\n```\n# return fabnocci number\ndef fabnocci(n: int):\n```\nOnly
+      respond with your `return` value.\nThe output should be formatted as a JSON
+      instance that conforms to the JSON schema below.\n\nAs an example, for the schema
+      {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of
+      strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\":
+      [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance
+      of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is
+      not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\": {\"ret\":
+      {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```",
+      "name": null}, {"role": "user", "content": "fabnocci(10)", "name": null}], "model":
+      "gpt-3.5-turbo", "temperature": 0.0, "top_p": 1.0, "frequency_penalty": 0.0,
+      "presence_penalty": 0.0, "user": "", "stop": null}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1003'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.11", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"error\": {\n    \"message\": \"None is not of type 'string'
+        - 'messages.0.name'\",\n    \"type\": \"invalid_request_error\",\n    \"param\":
+        null,\n    \"code\": null\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d793cfc7cdea39f-TPE
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '161'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 07:53:15 GMT
+      Server:
+      - cloudflare
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-processing-ms:
+      - '160'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89809'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 126ms
+      x-request-id:
+      - 4e91bf51eaa0875c056620b268658a0d
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are now the following
+      python function:\n```\n# return fabnocci number\ndef fabnocci(n: int):\n```\nOnly
+      respond with your `return` value.\nThe output should be formatted as a JSON
+      instance that conforms to the JSON schema below.\n\nAs an example, for the schema
+      {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of
+      strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\":
+      [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance
+      of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is
+      not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\": {\"ret\":
+      {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
+      {"role": "user", "content": "fabnocci(10)"}], "model": "gpt-3.5-turbo", "temperature":
+      0.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "user":
+      "", "stop": null}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '975'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.11", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        IWQGACCW6qp3U42mDuG2p6vpEX1AtuLNP1vuwKFfUQfUkkCjlw5PPfxlYcC5sT23BxTGMau/vwbg
+        9p0Cvm1e9O3oD3G7fOuayct0rtdl7sdZcXMov74v3+375aZlZAC6151900okIwZt606UfHJ5ZN8p
+        yJuu6fK67Qrw5eje7YECrr3GZVLHOg6vLs7KLK92Y3hZWwq83QL0gzt6fVK3t6dAQd73EUqyxKhN
+        0CcBEDQXWW2Af3ebjdu+2UDBHd+0OsDZjiKfgHhwB0sBX0LYBn05qVFLwmV4ZwF/7zlYvaegrv/Z
+        Fv98cOObPN2udaGAQZ1vJ3za/6Ag8+P+DfBg/o0BAw==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d7941900af44a69-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - br
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 07:56:23 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0301
+      openai-processing-ms:
+      - '690'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89809'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 126ms
+      x-request-id:
+      - b91691dfeffcbd33853fea11f00149f5
+    status:
+      code: 200
+      message: OK
 version: 1
