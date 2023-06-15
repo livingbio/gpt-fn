@@ -12,6 +12,7 @@ python = "^3.10"
 openai = "^0.27"
 pydantic = "^1.0"
 jinja2 = "^3.0"
+docstring-parser = "^0.15"
 
 [tool.poetry.group.test.dependencies]
 syrupy = "^4.0.2"
