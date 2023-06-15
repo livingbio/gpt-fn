@@ -9,9 +9,10 @@ include = ["fn/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-openai = "^0.27"
+openai = "^0.27.8"
 pydantic = "^1.0"
 jinja2 = "^3.0"
+docstring-parser = "^0.15"
 
 [tool.poetry.group.test.dependencies]
 syrupy = "^4.0.2"
@@ -22,7 +23,7 @@ coveralls = "^3.3.1"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.2"
 mkdocs-material = "^9.1.15"
-mkdocstrings = {extras = ["python"], version = "^0.22.0"}
+mkdocstrings = { extras = ["python"], version = "^0.22.0" }
 
 [tool.poetry-dynamic-versioning]
 enable = true

@@ -1,7 +1,7 @@
-from typing import Any, Callable
+from typing import Annotated, Any, Callable, Literal
 
 import pytest
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validate_arguments
 from syrupy.assertion import SnapshotAssertion
 
 from ..signature import FunctionSignature
@@ -12,7 +12,10 @@ def add(a: int, b: int = 10) -> int:  # type: ignore[empty-body]
 
 
 def concat(a: str, b: str) -> str:  # type: ignore[empty-body]
-    """Concat two strings"""
+    """Concat two strings
+    :param a: first string
+    :param b: second string
+    """
 
 
 class Person(BaseModel):
@@ -38,6 +41,28 @@ def complex(a: str, b: str, *args: str, c: str, d: str, **kwargs: str) -> str:  
     """Complex function"""
 
 
+def get_current_weather(*locations: str, unit: Literal["celsius", "fahrenheit"]) -> list[dict[str, Any]]:
+    """ "Get the current weather in a given location"""
+    return [
+        {
+            "location": location,
+            "temperature": "72",
+            "forecast": ["sunny", "windy"],
+        }
+        for location in locations
+    ]
+
+
+def is_male(person: Person) -> bool:  # type: ignore[empty-body]
+    """return the person is male"""
+
+
+@validate_arguments
+def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -> int:
+    """return the given number"""
+    return num
+
+
 @pytest.mark.parametrize(
     "func, args, kwargs",
     [
@@ -51,6 +76,9 @@ def complex(a: str, b: str, *args: str, c: str, d: str, **kwargs: str) -> str:  
             ("a-v", "b-v", "arg-v1", "arg-v2"),
             {"c": "c-v", "d": "d-v", "kwarg1": "kwarg1-v", "kwarg2": "kwarg2-v"},
         ),
+        (get_current_weather, ("New York", "London"), {"unit": "celsius"}),
+        (is_male, (Person(name="John", age=20),), {}),
+        (how_many, (20,), {}),
     ],
 )
 def test_function_signature(
@@ -62,6 +90,7 @@ def test_function_signature(
     sig = FunctionSignature(func)
     assert snapshot == sig.instruction()
     assert snapshot == sig.call_line(*args, **kwargs)
+    assert snapshot == sig.schema()
 
 
 def test_function_signature_without_return_annoations() -> None:
