@@ -1,0 +1,97 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Give me a sample email."}], "model": "gpt-3.5-turbo-0613",
+      "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
+      0.0, "user": "", "functions": [{"name": "structural_response", "description":
+      "Response to user in a structural way.", "parameters": {"title": "Email", "type":
+      "object", "properties": {"subject": {"title": "Subject", "description": "the
+      subject of email", "type": "string"}, "body": {"title": "Body", "description":
+      "the body of email", "type": "string"}}, "required": ["subject", "body"]}}],
+      "function_call": {"name": "structural_response"}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '687'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.8", "platform": "Linux-5.15.0-72-generic-x86_64-with-glibc2.35", "publisher":
+        "openai", "uname": "Linux 5.15.0-72-generic #79-Ubuntu SMP Wed Apr 19 08:22:18
+        UTC 2023 x86_64"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"id\": \"chatcmpl-7RfgdgctaObTDCPkzMfY0Qe0jKzsM\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1686829455,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+        \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+        \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
+        \         \"name\": \"structural_response\",\n          \"arguments\": \"{\\n
+        \ \\\"subject\\\": \\\"Thank you for your inquiry\\\",\\n  \\\"body\\\": \\\"Dear
+        [Name],\\\\n\\\\nThank you for your interest in our company. We received your
+        inquiry and would like to provide you with some information regarding our
+        products and services.\\\\n\\\\n[Insert relevant details here]\\\\n\\\\nIf
+        you have any further questions, please feel free to contact us. We are always
+        happy to assist you.\\\\n\\\\nThank you once again for considering our company.
+        We look forward to the possibility of working with you.\\\\n\\\\nBest regards,\\\\n[Your
+        Name]\\\\n[Your Position]\\\\n[Company Name]\\\"\\n}\"\n        }\n      },\n
+        \     \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\":
+        82,\n    \"completion_tokens\": 127,\n    \"total_tokens\": 209\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d7a8f5f78dd0748-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 11:44:19 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '3592'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3000'
+      x-ratelimit-limit-tokens:
+      - '250000'
+      x-ratelimit-remaining-requests:
+      - '2999'
+      x-ratelimit-remaining-tokens:
+      - '249969'
+      x-ratelimit-reset-requests:
+      - 20ms
+      x-ratelimit-reset-tokens:
+      - 7ms
+      x-request-id:
+      - b4b887d0a84fea128ca82159a4c305c6
+    status:
+      code: 200
+      message: OK
+version: 1

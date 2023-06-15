@@ -1,7 +1,8 @@
+import pydantic
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..completion import chat_completion, function_completion
+from ..completion import chat_completion, function_completion, structural_completion
 from ..exceptions import CompletionIncompleteError
 
 
@@ -35,6 +36,23 @@ def test_function_completion_without_neccess_function(
         )
     assert snapshot == excinfo.exconly()
     assert snapshot == vars(excinfo.value)
+
+
+@pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
+def test_structural_completion(snapshot: SnapshotAssertion) -> None:
+    class Email(pydantic.BaseModel):
+        subject: str = pydantic.Field(description="the subject of email")
+        body: str = pydantic.Field(description="the body of email")
+
+    email = structural_completion(
+        Email,
+        [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Give me a sample email."},
+        ],
+    )
+
+    assert snapshot == email
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])

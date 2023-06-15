@@ -6,7 +6,7 @@ import pydantic
 from .exceptions import CompletionIncompleteError
 from .utils import signature
 
-T = TypeVar("T")
+T = TypeVar("T", bound=pydantic.BaseModel)
 
 
 class Message(TypedDict):
@@ -63,8 +63,8 @@ def function_completion(
 
 
 def structural_completion(
-    messages: list[Message],
     structure: Type[T],
+    messages: list[Message],
     max_tokens: int | None = None,
     model: str = "gpt-3.5-turbo-0613",
     temperature: float = 1.0,
@@ -86,7 +86,7 @@ def structural_completion(
             function_call
             | {
                 "description": "Response to user in a structural way.",
-                "parameters": pydantic.schema_of(structure),
+                "parameters": structure.schema(),
             }
         ],
         function_call=function_call,
