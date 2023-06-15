@@ -22,6 +22,48 @@
 # name: test_function_signature[add-args0-kwargs0].1
   'add(1, 2)'
 # ---
+# name: test_function_signature[add-args0-kwargs0].2
+  dict({
+    'description': 'Add two numbers.',
+    'name': 'add',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'title': 'A',
+          'type': 'integer',
+        }),
+        'args': dict({
+          'items': dict({
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'b': dict({
+          'default': 10,
+          'title': 'B',
+          'type': 'integer',
+        }),
+        'kwargs': dict({
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+        'v__duplicate_kwargs': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'V  Duplicate Kwargs',
+          'type': 'array',
+        }),
+      }),
+      'required': list([
+        'a',
+      ]),
+      'title': 'Add',
+      'type': 'object',
+    }),
+  })
+# ---
 # name: test_function_signature[complex-args5-kwargs5]
   '''
   You are now the following python function:
@@ -44,6 +86,62 @@
 # ---
 # name: test_function_signature[complex-args5-kwargs5].1
   "complex('a-v', 'b-v', 'arg-v1', 'arg-v2', c='c-v', d='d-v', kwarg1='kwarg1-v', kwarg2='kwarg2-v')"
+# ---
+# name: test_function_signature[complex-args5-kwargs5].2
+  dict({
+    'description': 'Complex function',
+    'name': 'complex',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'title': 'A',
+          'type': 'string',
+        }),
+        'args': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'b': dict({
+          'title': 'B',
+          'type': 'string',
+        }),
+        'c': dict({
+          'title': 'C',
+          'type': 'string',
+        }),
+        'd': dict({
+          'title': 'D',
+          'type': 'string',
+        }),
+        'kwargs': dict({
+          'additionalProperties': dict({
+            'type': 'string',
+          }),
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+        'v__duplicate_kwargs': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'V  Duplicate Kwargs',
+          'type': 'array',
+        }),
+      }),
+      'required': list([
+        'a',
+        'b',
+        'c',
+        'd',
+      ]),
+      'title': 'Complex',
+      'type': 'object',
+    }),
+  })
 # ---
 # name: test_function_signature[concat-args2-kwargs2]
   '''
@@ -68,6 +166,48 @@
 # name: test_function_signature[concat-args2-kwargs2].1
   "concat('pen', 'apple')"
 # ---
+# name: test_function_signature[concat-args2-kwargs2].2
+  dict({
+    'description': 'Concat two strings',
+    'name': 'concat',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'title': 'A',
+          'type': 'string',
+        }),
+        'args': dict({
+          'items': dict({
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'b': dict({
+          'title': 'B',
+          'type': 'string',
+        }),
+        'kwargs': dict({
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+        'v__duplicate_kwargs': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'V  Duplicate Kwargs',
+          'type': 'array',
+        }),
+      }),
+      'required': list([
+        'a',
+        'b',
+      ]),
+      'title': 'Concat',
+      'type': 'object',
+    }),
+  })
+# ---
 # name: test_function_signature[concat-args3-kwargs3]
   '''
   You are now the following python function:
@@ -90,6 +230,48 @@
 # ---
 # name: test_function_signature[concat-args3-kwargs3].1
   'concat("a\'b", \'cd\')'
+# ---
+# name: test_function_signature[concat-args3-kwargs3].2
+  dict({
+    'description': 'Concat two strings',
+    'name': 'concat',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'a': dict({
+          'title': 'A',
+          'type': 'string',
+        }),
+        'args': dict({
+          'items': dict({
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'b': dict({
+          'title': 'B',
+          'type': 'string',
+        }),
+        'kwargs': dict({
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+        'v__duplicate_kwargs': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'V  Duplicate Kwargs',
+          'type': 'array',
+        }),
+      }),
+      'required': list([
+        'a',
+        'b',
+      ]),
+      'title': 'Concat',
+      'type': 'object',
+    }),
+  })
 # ---
 # name: test_function_signature[concats-args4-kwargs4]
   '''
@@ -114,6 +296,30 @@
 # name: test_function_signature[concats-args4-kwargs4].1
   "concats('a', 'b', 'c', 'd')"
 # ---
+# name: test_function_signature[concats-args4-kwargs4].2
+  dict({
+    'description': 'Concat the given strings',
+    'name': 'concats',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'args': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'kwargs': dict({
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+      }),
+      'title': 'Concats',
+      'type': 'object',
+    }),
+  })
+# ---
 # name: test_function_signature[fake_person-args1-kwargs1]
   '''
   You are now the following python function:
@@ -136,4 +342,41 @@
 # ---
 # name: test_function_signature[fake_person-args1-kwargs1].1
   'fake_person(5)'
+# ---
+# name: test_function_signature[fake_person-args1-kwargs1].2
+  dict({
+    'description': 'generate fake person.',
+    'name': 'fake_person',
+    'parameters': dict({
+      'additionalProperties': False,
+      'properties': dict({
+        'args': dict({
+          'items': dict({
+          }),
+          'title': 'Args',
+          'type': 'array',
+        }),
+        'count': dict({
+          'title': 'Count',
+          'type': 'integer',
+        }),
+        'kwargs': dict({
+          'title': 'Kwargs',
+          'type': 'object',
+        }),
+        'v__duplicate_kwargs': dict({
+          'items': dict({
+            'type': 'string',
+          }),
+          'title': 'V  Duplicate Kwargs',
+          'type': 'array',
+        }),
+      }),
+      'required': list([
+        'count',
+      ]),
+      'title': 'FakePerson',
+      'type': 'object',
+    }),
+  })
 # ---

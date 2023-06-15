@@ -2,6 +2,7 @@ import inspect
 from typing import Any, Callable
 
 import pydantic
+from pydantic.decorator import ValidatedFunction
 
 from .pydantic_parser import PydanticParser
 
@@ -71,3 +72,12 @@ class FunctionSignature:
                     {self.parser.get_format_instructions()}
                     """
         )
+
+    def schema(self) -> dict[str, Any]:
+        vd = ValidatedFunction(self.fn, None)
+
+        return {
+            "name": self.fn.__name__,
+            "description": self.description(),
+            "parameters": vd.model.schema(),
+        }

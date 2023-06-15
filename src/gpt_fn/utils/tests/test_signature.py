@@ -62,6 +62,7 @@ def test_function_signature(
     sig = FunctionSignature(func)
     assert snapshot == sig.instruction()
     assert snapshot == sig.call_line(*args, **kwargs)
+    assert snapshot == sig.schema()
 
 
 def test_function_signature_without_return_annoations() -> None:
