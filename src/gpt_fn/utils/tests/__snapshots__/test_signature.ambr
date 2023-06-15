@@ -110,6 +110,9 @@
   You are now the following python function:
   ```
   # Concat two strings
+  :param a: first string
+  :param b: second string
+  
   def concat(a: str, b: str):
   ```
   Only respond with your `return` value.
@@ -130,17 +133,24 @@
 # ---
 # name: test_function_signature[concat-args2-kwargs2].2
   dict({
-    'description': 'Concat two strings',
+    'description': '''
+      Concat two strings
+      :param a: first string
+      :param b: second string
+  
+    ''',
     'name': 'concat',
     'parameters': dict({
       'definitions': dict({
       }),
       'properties': dict({
         'a': dict({
+          'description': 'first string',
           'title': 'A',
           'type': 'string',
         }),
         'b': dict({
+          'description': 'second string',
           'title': 'B',
           'type': 'string',
         }),
@@ -158,6 +168,9 @@
   You are now the following python function:
   ```
   # Concat two strings
+  :param a: first string
+  :param b: second string
+  
   def concat(a: str, b: str):
   ```
   Only respond with your `return` value.
@@ -178,17 +191,24 @@
 # ---
 # name: test_function_signature[concat-args3-kwargs3].2
   dict({
-    'description': 'Concat two strings',
+    'description': '''
+      Concat two strings
+      :param a: first string
+      :param b: second string
+  
+    ''',
     'name': 'concat',
     'parameters': dict({
       'definitions': dict({
       }),
       'properties': dict({
         'a': dict({
+          'description': 'first string',
           'title': 'A',
           'type': 'string',
         }),
         'b': dict({
+          'description': 'second string',
           'title': 'B',
           'type': 'string',
         }),

@@ -65,3 +65,4 @@ repos:
           - "syrupy"
           - "openai"
           - "jinja2"
+          - "docstring_parser"

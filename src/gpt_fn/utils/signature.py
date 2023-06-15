@@ -2,6 +2,7 @@ import inspect
 from typing import Any, Callable
 
 import pydantic
+from docstring_parser import parse
 from pydantic.decorator import ValidatedFunction
 
 from .pydantic_parser import PydanticParser
@@ -51,9 +52,7 @@ class FunctionSignature:
         return f"def {self.fn.__name__}{f}:"
 
     def description(self) -> str:
-        desc = clean_docstring(self.fn.__doc__ or "")
-
-        return desc
+        return clean_docstring(self.fn.__doc__ or "")
 
     def call_line(self, *args: Any, **kwargs: Any) -> str:
         return format_call_line(self.fn, *args, **kwargs)
@@ -75,13 +74,27 @@ class FunctionSignature:
 
     def schema(self) -> dict[str, Any]:
         vd = ValidatedFunction(self.fn, None)
+        doc_string = parse(self.description())
+
+        param_desc = {k.arg_name: k.description for k in doc_string.params}
 
         def filter_parameter(parameter: dict[str, Any]) -> dict[str, Any]:
+            properties = {}
+
+            for k, v in parameter["properties"].items():
+                if k in {"args", "kwargs", "v__duplicate_kwargs"}:
+                    continue
+
+                if k in param_desc and "description" not in v:
+                    v["description"] = param_desc[k]
+
+                properties[k] = v
+
             # NOTE: remove unnecessary keys
             return {
                 "type": parameter["type"],
                 "required": parameter.get("required", []),
-                "properties": {k: v for k, v in parameter["properties"].items() if k not in {"v__duplicate_kwargs", "args", "kwargs"}},
+                "properties": properties,
                 "definitions": parameter.get("definitions", {}),
             }
 

@@ -12,7 +12,10 @@ def add(a: int, b: int = 10) -> int:  # type: ignore[empty-body]
 
 
 def concat(a: str, b: str) -> str:  # type: ignore[empty-body]
-    """Concat two strings"""
+    """Concat two strings
+    :param a: first string
+    :param b: second string
+    """
 
 
 class Person(BaseModel):
