@@ -1,7 +1,7 @@
-from typing import Any, Callable, Literal
+from typing import Annotated, Any, Callable, Literal
 
 import pytest
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validate_arguments
 from syrupy.assertion import SnapshotAssertion
 
 from ..signature import FunctionSignature
@@ -50,6 +50,16 @@ def get_current_weather(*locations: str, unit: Literal["celsius", "fahrenheit"])
     ]
 
 
+def is_male(person: Person) -> bool:  # type: ignore[empty-body]
+    """return the person is male"""
+
+
+@validate_arguments
+def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -> int:
+    """return the given number"""
+    return num
+
+
 @pytest.mark.parametrize(
     "func, args, kwargs",
     [
@@ -64,6 +74,8 @@ def get_current_weather(*locations: str, unit: Literal["celsius", "fahrenheit"])
             {"c": "c-v", "d": "d-v", "kwarg1": "kwarg1-v", "kwarg2": "kwarg2-v"},
         ),
         (get_current_weather, ("New York", "London"), {"unit": "celsius"}),
+        (is_male, (Person(name="John", age=20),), {}),
+        (how_many, (20,), {}),
     ],
 )
 def test_function_signature(

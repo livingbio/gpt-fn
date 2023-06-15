@@ -76,8 +76,17 @@ class FunctionSignature:
     def schema(self) -> dict[str, Any]:
         vd = ValidatedFunction(self.fn, None)
 
+        def filter_parameter(parameter: dict[str, Any]) -> dict[str, Any]:
+            # NOTE: remove unnecessary keys
+            return {
+                "type": parameter["type"],
+                "required": parameter.get("required", []),
+                "properties": {k: v for k, v in parameter["properties"].items() if k not in {"v__duplicate_kwargs", "args", "kwargs"}},
+                "definitions": parameter.get("definitions", {}),
+            }
+
         return {
             "name": self.fn.__name__,
             "description": self.description(),
-            "parameters": vd.model.schema(),
+            "parameters": filter_parameter(vd.model.schema()),
         }
