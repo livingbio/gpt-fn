@@ -82,8 +82,8 @@ class FunctionSignature:
             properties = {}
 
             for k, v in parameter["properties"].items():
-                if k in {"args", "kwargs", "v__duplicate_kwargs"}:
-                    continue
+                # if k in {"args", "kwargs", "v__duplicate_kwargs"}:
+                #     continue
 
                 if k in param_desc and "description" not in v:
                     v["description"] = param_desc[k]
