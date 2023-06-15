@@ -246,4 +246,86 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Hello, who are you?"}], "model": "gpt-3.5-turbo",
+      "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
+      0.0, "user": "", "stop": null}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '266'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.11", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        IewHACBW6rJXU+1c/YQKAFSAIpv/FEtOeN0BBUr/CtoO1JK2pLAFSccDlnEYtizg9NTjXbIU6tiJ
+        8fdXAJRbkiCTqWhqX3Xnt2Yn8uzga3Jkr65P7y/Ox4fLyfvO7c/dVUYdARDrwpmoSb0UA5fzSkRX
+        Lt85SxLD2WK2GE6X0yn4UrN1FUlQ6mN33Jt2Y9to7g7Gg6F20waVOpLgdgSQb7j28TVy6VaBJEam
+        BoC8cgE1YUsCYFgxWQrgn9wi49y4QBKP4ujKA5TaYbwDsG+4ciRBKoQ8RLWKPPEQ1Auvl6ATqBrq
+        zVtEGrFzguyXbBEZhvgkirqdGyD1N7cNGlepPQVwg9uU82r8w1sYtcIJMld5fHOLyFZ9bxFz+qdE
+        1FNOvP7ftSMJCpE9Y0HLAwgkMQi5+RfAs/gXAw==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d7945c779ab5701-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - br
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 07:59:17 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0301
+      openai-processing-ms:
+      - '1615'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89970'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 20ms
+      x-request-id:
+      - 3711cb7edf9fb45b9db1ff54c05cf148
+    status:
+      code: 200
+      message: OK
 version: 1

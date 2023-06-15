@@ -261,4 +261,94 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are now the following
+      python function:\n```\n# return fabnocci number\ndef fabnocci(n: int):\n```\nOnly
+      respond with your `return` value.\nThe output should be formatted as a JSON
+      instance that conforms to the JSON schema below.\n\nAs an example, for the schema
+      {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of
+      strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\":
+      [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance
+      of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is
+      not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\": {\"ret\":
+      {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
+      {"role": "user", "content": "fabnocci(10)"}], "model": "gpt-3.5-turbo", "temperature":
+      0.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "user":
+      "", "stop": null}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '975'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.10.11", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: !!binary |
+        IWQGACCGuv3vLNPlZky7fZfNMS2hZXrBbAcO2xX1QF0SaDTpcYCZh7soDTg3ttfugMA4ZvX3ZADs
+        Kwqw7HJdzutkJe/l2RKrLr++0ed3z35+s3/OYSljv3dXmgZAWQx1qSthtxjUXi6UdHJ5VFcU8OI0
+        Tr0oCzPwZZZVPVGA7aqtwI4svW+FtNzA9arNrvK2pkC2O4DrJudV/2k51ouigJdpLQBtiVHiRZ8E
+        QNDou5EBHOk2nezLWlHgi69eDWBvR7YXIN7kVFOAuVK90vmig+rmOAzvLMDTN7daf1Mgig7K4uCD
+        E9/c3+1aJwpQabnKOT7tv1PAzWMOA/gxDsMAAw==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d79459ffd02075c-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - br
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 15 Jun 2023 07:59:09 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0301
+      openai-processing-ms:
+      - '748'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89809'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 126ms
+      x-request-id:
+      - 84c0975b1d8f1b49f1d1e2fcddf3e349
+    status:
+      code: 200
+      message: OK
 version: 1
