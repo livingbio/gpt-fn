@@ -1,4 +1,4 @@
-from typing import Any, Callable
+from typing import Any, Callable, Literal
 
 import pytest
 from pydantic import BaseModel
@@ -38,6 +38,18 @@ def complex(a: str, b: str, *args: str, c: str, d: str, **kwargs: str) -> str:  
     """Complex function"""
 
 
+def get_current_weather(*locations: str, unit: Literal["celsius", "fahrenheit"]) -> list[dict[str, Any]]:
+    """ "Get the current weather in a given location"""
+    return [
+        {
+            "location": location,
+            "temperature": "72",
+            "forecast": ["sunny", "windy"],
+        }
+        for location in locations
+    ]
+
+
 @pytest.mark.parametrize(
     "func, args, kwargs",
     [
@@ -51,6 +63,7 @@ def complex(a: str, b: str, *args: str, c: str, d: str, **kwargs: str) -> str:  
             ("a-v", "b-v", "arg-v1", "arg-v2"),
             {"c": "c-v", "d": "d-v", "kwarg1": "kwarg1-v", "kwarg2": "kwarg2-v"},
         ),
+        (get_current_weather, ("New York", "London"), {"unit": "celsius"}),
     ],
 )
 def test_function_signature(
