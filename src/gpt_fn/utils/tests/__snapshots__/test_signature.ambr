@@ -34,27 +34,10 @@
           'title': 'A',
           'type': 'integer',
         }),
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
         'b': dict({
           'default': 10,
           'title': 'B',
           'type': 'integer',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -99,13 +82,6 @@
           'title': 'A',
           'type': 'string',
         }),
-        'args': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
         'b': dict({
           'title': 'B',
           'type': 'string',
@@ -117,20 +93,6 @@
         'd': dict({
           'title': 'D',
           'type': 'string',
-        }),
-        'kwargs': dict({
-          'additionalProperties': dict({
-            'type': 'string',
-          }),
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -187,27 +149,10 @@
           'title': 'A',
           'type': 'string',
         }),
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
         'b': dict({
           'description': 'second string',
           'title': 'B',
           'type': 'string',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -262,27 +207,10 @@
           'title': 'A',
           'type': 'string',
         }),
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
         'b': dict({
           'description': 'second string',
           'title': 'B',
           'type': 'string',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -324,17 +252,6 @@
       'definitions': dict({
       }),
       'properties': dict({
-        'args': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
       }),
       'required': list([
       ]),
@@ -373,26 +290,9 @@
       'definitions': dict({
       }),
       'properties': dict({
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
         'count': dict({
           'title': 'Count',
           'type': 'integer',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -433,10 +333,6 @@
       'definitions': dict({
       }),
       'properties': dict({
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
         'locations': dict({
           'items': dict({
             'type': 'string',
@@ -491,28 +387,11 @@
       'definitions': dict({
       }),
       'properties': dict({
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
         'num': dict({
           'description': 'greater than 10',
           'exclusiveMinimum': 10,
           'title': 'Num',
           'type': 'integer',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
@@ -572,25 +451,8 @@
         }),
       }),
       'properties': dict({
-        'args': dict({
-          'items': dict({
-          }),
-          'title': 'Args',
-          'type': 'array',
-        }),
-        'kwargs': dict({
-          'title': 'Kwargs',
-          'type': 'object',
-        }),
         'person': dict({
           '$ref': '#/definitions/Person',
-        }),
-        'v__duplicate_kwargs': dict({
-          'items': dict({
-            'type': 'string',
-          }),
-          'title': 'V  Duplicate Kwargs',
-          'type': 'array',
         }),
       }),
       'required': list([
