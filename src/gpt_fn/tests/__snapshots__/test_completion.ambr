@@ -61,6 +61,85 @@
     'name': 'book_a_flight',
   })
 # ---
+# name: test_function_completion_without_enough_tokens
+  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:Sure, I can help you with that.'
+# ---
+# name: test_function_completion_without_enough_tokens.1
+  dict({
+    'request': dict({
+      'frequency_penalty': 0.0,
+      'function_call': 'auto',
+      'functions': list([
+        dict({
+          'description': '',
+          'name': 'book_a_flight',
+          'parameters': dict({
+            'definitions': dict({
+            }),
+            'properties': dict({
+              'date': dict({
+                'title': 'Date',
+                'type': 'string',
+              }),
+              'destination': dict({
+                'title': 'Destination',
+                'type': 'string',
+              }),
+              'origin': dict({
+                'default': 'London',
+                'title': 'Origin',
+                'type': 'string',
+              }),
+            }),
+            'required': list([
+              'date',
+              'destination',
+            ]),
+            'type': 'object',
+          }),
+        }),
+      ]),
+      'max_tokens': 10,
+      'messages': list([
+        dict({
+          'content': 'You are a helpful assistant.',
+          'role': 'system',
+        }),
+        dict({
+          'content': 'I want to book a restaurant in London.',
+          'role': 'user',
+        }),
+      ]),
+      'model': 'gpt-3.5-turbo-0613',
+      'presence_penalty': 0.0,
+      'stop': None,
+      'temperature': 1.0,
+      'top_p': 1.0,
+      'user': '',
+    }),
+    'response': OpenAIObject({
+      'choices': list([
+        OpenAIObject({
+          'finish_reason': 'length',
+          'index': 0,
+          'message': OpenAIObject({
+            'content': 'Sure, I can help you with that.',
+            'role': 'assistant',
+          }),
+        }),
+      ]),
+      'created': 1687795603,
+      'id': 'chatcmpl-7Vj1f3ooUNnNia71ycQeNKu3ak80v',
+      'model': 'gpt-3.5-turbo-0613',
+      'object': 'chat.completion',
+      'usage': OpenAIObject({
+        'completion_tokens': 10,
+        'prompt_tokens': 67,
+        'total_tokens': 77,
+      }),
+    }),
+  })
+# ---
 # name: test_function_completion_without_neccess_function
   "gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: None, Finish reason: stop Message:I'm sorry, but I am currently unable to book a restaurant for you. However, I can help you find some popular restaurants in London."
 # ---
@@ -141,4 +220,88 @@
 # ---
 # name: test_structural_completion
   Email(subject='Thank you for your inquiry', body='Dear [Name],\n\nThank you for your interest in our company. We received your inquiry and would like to provide you with some information regarding our products and services.\n\n[Insert relevant details here]\n\nIf you have any further questions, please feel free to contact us. We are always happy to assist you.\n\nThank you once again for considering our company. We look forward to the possibility of working with you.\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]')
+# ---
+# name: test_structural_completion_without_enough_tokens
+  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:None'
+# ---
+# name: test_structural_completion_without_enough_tokens.1
+  dict({
+    'request': dict({
+      'frequency_penalty': 0.0,
+      'function_call': dict({
+        'name': 'structural_response',
+      }),
+      'functions': list([
+        dict({
+          'description': 'Response to user in a structural way.',
+          'name': 'structural_response',
+          'parameters': dict({
+            'properties': dict({
+              'body': dict({
+                'description': 'the body of email',
+                'title': 'Body',
+                'type': 'string',
+              }),
+              'subject': dict({
+                'description': 'the subject of email',
+                'title': 'Subject',
+                'type': 'string',
+              }),
+            }),
+            'required': list([
+              'subject',
+              'body',
+            ]),
+            'title': 'Email',
+            'type': 'object',
+          }),
+        }),
+      ]),
+      'max_tokens': 10,
+      'messages': list([
+        dict({
+          'content': 'You are a helpful assistant.',
+          'role': 'system',
+        }),
+        dict({
+          'content': 'Give me a sample email.',
+          'role': 'user',
+        }),
+      ]),
+      'model': 'gpt-3.5-turbo-0613',
+      'presence_penalty': 0.0,
+      'temperature': 1.0,
+      'top_p': 1.0,
+      'user': '',
+    }),
+    'response': OpenAIObject({
+      'choices': list([
+        OpenAIObject({
+          'finish_reason': 'length',
+          'index': 0,
+          'message': OpenAIObject({
+            'content': None,
+            'function_call': OpenAIObject({
+              'arguments': '''
+                {
+                  "subject": "Hello",
+                  "
+              ''',
+              'name': 'structural_response',
+            }),
+            'role': 'assistant',
+          }),
+        }),
+      ]),
+      'created': 1687795730,
+      'id': 'chatcmpl-7Vj3iDurmFtYnjSblxBX9zx40HlqW',
+      'model': 'gpt-3.5-turbo-0613',
+      'object': 'chat.completion',
+      'usage': OpenAIObject({
+        'completion_tokens': 10,
+        'prompt_tokens': 82,
+        'total_tokens': 92,
+      }),
+    }),
+  })
 # ---
