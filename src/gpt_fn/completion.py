@@ -53,7 +53,7 @@ def function_completion(
     message = output["message"]
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason == 'stop':
+    if "function_call" in message and finish_reason in ["stop", "function_call"]:
         return message["function_call"]
 
     raise CompletionIncompleteError(
