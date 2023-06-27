@@ -54,8 +54,8 @@ def test_function_completion_without_neccess_function(
 
 
 class Email(pydantic.BaseModel):
-        subject: str = pydantic.Field(description="the subject of email")
-        body: str = pydantic.Field(description="the body of email")
+    subject: str = pydantic.Field(description="the subject of email")
+    body: str = pydantic.Field(description="the body of email")
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
@@ -73,6 +73,7 @@ def test_structural_completion(snapshot: SnapshotAssertion) -> None:
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
 def test_structural_completion_without_enough_tokens(snapshot: SnapshotAssertion) -> None:
+    print("test")
     with pytest.raises(CompletionIncompleteError) as excinfo:
         email = structural_completion(
             Email,
