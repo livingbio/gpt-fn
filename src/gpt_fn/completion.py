@@ -51,12 +51,13 @@ def function_completion(
     response = openai.ChatCompletion.create(**kwargs)
     output = response.choices[0]
     message = output["message"]
+    finish_reason = output.finish_reason
 
-    if "function_call" in message:
+    if "function_call" in message and finish_reason in ["stop", "function_call"]:
         return message["function_call"]
 
     raise CompletionIncompleteError(
-        f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {output.finish_reason} Message:{message.content}",
+        f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
         response=response,
         request=kwargs,
     )
@@ -98,13 +99,14 @@ def structural_completion(
 
     output = response.choices[0]
     message = output.message
+    finish_reason = output.finish_reason
 
-    if "function_call" in message:
+    if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
         return pydantic.parse_raw_as(structure, args)
 
     raise CompletionIncompleteError(
-        f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {output.finish_reason} Message:{message.content}",
+        f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
         response=response,
         request=kwargs,
     )
