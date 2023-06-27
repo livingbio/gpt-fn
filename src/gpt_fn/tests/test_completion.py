@@ -54,8 +54,8 @@ def test_function_completion_without_neccess_function(
 
 
 class Email(pydantic.BaseModel):
-        subject: str = pydantic.Field(description="the subject of email")
-        body: str = pydantic.Field(description="the body of email")
+    subject: str = pydantic.Field(description="the subject of email")
+    body: str = pydantic.Field(description="the body of email")
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
