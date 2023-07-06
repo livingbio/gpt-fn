@@ -33,29 +33,24 @@ You can install GPT-Fn using pip, the Python package manager:
 pip install gpt-fn
 ```
 
-Alternatively, you can clone the repository and install it manually:
-
-```bash
-git clone https://github.com/your-username/gpt-fn.git
-cd gpt-fn
-pip install -r requirements.txt
-python setup.py install
-```
-
 ## Getting Started
 
-To start using GPT-Fn in your project, import the library and call the desired AI function:
+To start using GPT-Fn in your project, import the library and call the desired function:
 
 ```python
-from gpt_fn import text_generation
+from gpt_fn.completion import chat_completion
 
-input_text = "Once upon a time"
-generated_text = text_generation.generate_text(input_text, max_length=100)
+generated_text = chat_completion(
+    [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello, who are you?"},
+    ],
+)
 
 print(generated_text)
 ```
 
-In the example above, we use the `text_generation.generate_text` function to generate additional text based on an initial input. You can explore other available AI functions in the GPT-Fn documentation for a wide range of AI tasks.
+In the example above, we use the `chat_completion` function to generate response by AI. `chat_completion` also raises error on incomplete responses. The implementation of `chat_completion` makes the most common use case easy. You can explore other available functions in the GPT-Fn documentation/[tests](src/gpt_fn/tests/) for a wide range of AI tasks.
 
 ## Contributing
 
@@ -71,4 +66,4 @@ We would like to thank the open-source community for their valuable contribution
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, please don't hesitate to contact us at [email protected]
+If you have any questions, suggestions, or feedback, please don't hesitate to opena an issue.
