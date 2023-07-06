@@ -62,4 +62,4 @@ We would like to thank the open-source community for their valuable contribution
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, please don't hesitate to contact us at [email protected]
+If you have any questions, suggestions, or feedback, please don't hesitate to opena an issue.
