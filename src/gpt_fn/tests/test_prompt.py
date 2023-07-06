@@ -31,6 +31,8 @@ def test_complicated_chat_template(snapshot: SnapshotAssertion) -> None:
                     """
                     Summarize the following articles:
 
+                    keywords: {{ keywords | join(", ") }}
+
                     {% for article in articles %}
                     # {{ article.title }}
                     {{ article.content }}
@@ -46,5 +48,6 @@ def test_complicated_chat_template(snapshot: SnapshotAssertion) -> None:
             Article(title="Article 1", content="Content 1"),
             Article(title="Article 2", content="Content 2"),
             Article(title="Article 3", content="Content 3"),
-        ]
+        ],
+        keywords=["keyword1", "keyword2", "keyword3"],
     )
