@@ -1103,6 +1103,20 @@ pytest = ">=4.6"
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtualenv"]
 
 [[package]]
+name = "pytest-datadir"
+version = "1.4.1"
+description = "pytest plugin for test data directories and files"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pytest-datadir-1.4.1.tar.gz", hash = "sha256:9f7a3c4def6ac4cac3cc8181139ab53bd2667231052bd40cb07081748d4420f0"},
+    {file = "pytest_datadir-1.4.1-py3-none-any.whl", hash = "sha256:095f441782b1b907587eca7227fdbae94be43f1c96b4b2cbcc6801a4645be1af"},
+]
+
+[package.dependencies]
+pytest = ">=5.0"
+
+[[package]]
 name = "pytest-vcr"
 version = "1.0.2"
 description = "Plugin for managing VCR.py cassettes"
@@ -1663,4 +1677,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b3e2aa8bb2fa62926f76fabb9634dfcc2dbf6ac1d7b7aac76bfb9568dad636db"
+content-hash = "c6db3a0a46f088ed09d092c38ce328022b47bec73a33160f5427a0b0b44ec832"

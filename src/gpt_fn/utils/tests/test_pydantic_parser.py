@@ -4,7 +4,7 @@ import pytest
 from pydantic import BaseModel, Field
 from syrupy.assertion import SnapshotAssertion
 
-from ...completion import Message, chat_completion
+from ...completion import Message, structural_completion
 from ..pydantic_parser import ParserError, PydanticParser
 
 
@@ -26,10 +26,14 @@ class Email(BaseModel):
 def test_pydantic_parser_with_prompt(snapshot: SnapshotAssertion, test_filename: str, model: type[BaseModel], datadir: Path) -> None:
 
     content = (datadir / test_filename).read_text()
-    parser = PydanticParser[BaseModel](pydantic_model=model)
+    instruction = content
+    assert snapshot(name="instructoin") == instruction
 
-    result = chat_completion(messages=[Message(role="user", content=content + f"\n{parser.get_format_instructions()}")])
-    assert snapshot == result
+    result = structural_completion(
+        model, messages=[Message(role="system", content="You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2021-09\nCurrent date: [current date]"), Message(role="user", content=instruction)]
+    )
+
+    assert snapshot(name="gpt response") == result
 
 
 def test_pydantic_parser_get_format_instructions(
