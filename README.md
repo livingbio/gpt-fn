@@ -35,7 +35,7 @@ pip install gpt-fn
 
 ## Getting Started
 
-To start using GPT-Fn in your project, import the library and call the desired AI function:
+To start using GPT-Fn in your project, import the library and call the desired function:
 
 ```python
 from gpt_fn.completion import chat_completion
@@ -50,7 +50,7 @@ generated_text = chat_completion(
 print(generated_text)
 ```
 
-In the example above, we use the `chat_completion` function to generate response text based on an initial input. You can explore other available AI functions in the GPT-Fn documentation/[tests](src/gpt_fn/tests/) for a wide range of AI tasks.
+In the example above, we use the `chat_completion` function to generate response by AI. `chat_completion` also raises error on incomplete responses. The implementation of `chat_completion` makes the most common use case easy. You can explore other available functions in the GPT-Fn documentation/[tests](src/gpt_fn/tests/) for a wide range of AI tasks.
 
 ## Contributing
 
