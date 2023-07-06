@@ -7,7 +7,7 @@ def test_chat_template(snapshot: SnapshotAssertion) -> None:
     template = ChatTemplate(
         messages=[
             MessageTemplate(role="system", content="hello, what's your name?"),
-            MessageTemplate(role="user", content="My name is {{name}}}"),
+            MessageTemplate(role="user", content="My name is {{name}}."),
             MessageTemplate(role="system", content="hello, {{name}} nice to meet you!"),
         ]
     )
