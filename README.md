@@ -33,15 +33,6 @@ You can install GPT-Fn using pip, the Python package manager:
 pip install gpt-fn
 ```
 
-Alternatively, you can clone the repository and install it manually:
-
-```bash
-git clone https://github.com/your-username/gpt-fn.git
-cd gpt-fn
-pip install -r requirements.txt
-python setup.py install
-```
-
 ## Getting Started
 
 To start using GPT-Fn in your project, import the library and call the desired AI function:
