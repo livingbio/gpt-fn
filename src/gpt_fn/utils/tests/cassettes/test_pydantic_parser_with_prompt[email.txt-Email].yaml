@@ -1,40 +1,39 @@
 interactions:
 - request:
-    body: '{"messages": [{"role": "system", "content": "You are ChatGPT, a large language
-      model trained by OpenAI.\nKnowledge cutoff: 2021-09\nCurrent date: [current
-      date]"}, {"role": "user", "content": "Given the press release article of our
-      company: \"RIVERTON Industries - Revolutionizing the Aluminum Casting Industry
-      for E-Bikes\n\nRIVERTON Industries is a leading manufacturer and exporter of
-      aluminum casting products for E-Bikes. Established in 2022, the company has
-      quickly gained a reputation for its innovative approach to aluminum frame manufacturing.
-      We offer one-stop solutions for customized bike frames, which include designing,
-      manufacturing, and assembly services.\n\n### About RIVERTON Industries\nRIVERTON
-      Industries is an innovative international company specializing in aluminum casting
-      products for E-Bikes. The company is committed to providing innovative aluminum
-      frames built for bicycles and modular features for multiple modeling combinations.
-      We offer ready-to-use products and vehicle assembly services that meet customer
-      satisfaction and provide specialized services tailored to their requirements.\n\nRIVERTON
-      Industries is revolutionizing the aluminum casting industry for E-bikes. Our
-      main product, the Aluminum frame for E-bike, is available in three models -
-      001, 002, and 003 but more could be customized. The one-piece-formed bike frame
-      provides increased rigidity, improving the stability and safety of the ride.
-      The solid frame made of aluminum pipeline built-in supports complex designs
-      for electric bikes.\n\nOur one-stop solution for customized bike frames has
-      made us a popular choice among customers. We offer a range of products, including
-      the Electric bike frame, Aluminum motor frames for E-bikes, Motor frames for
-      E-bikes, and Customized Motor frames for E-bikes.\n\nRIVERTON Industries exports
-      its products to Europe and the USA. Our commitment to quality has earned us
-      a reputation for producing high-quality aluminum frames that meet international
-      standards.\n\nIn conclusion, RIVERTON Industries is a company that is revolutionizing
-      the aluminum casting industry for E-bikes. Our innovative approach to manufacturing
-      aluminum frames and one-stop solutions for customized bike frames has made us
-      a popular choice among customers. If you''re looking for high-quality aluminum
-      frames for your E-bikes, visit our website at https://riverton.example.com/.\"\n"}],
-      "model": "gpt-3.5-turbo-0613", "temperature": 1.0, "top_p": 1.0, "frequency_penalty":
-      0.0, "presence_penalty": 0.0, "user": "", "functions": [{"name": "structural_response",
-      "description": "Response to user in a structural way.", "parameters": {"title":
-      "Email", "type": "object", "properties": {"subject": {"title": "Subject", "description":
-      "the subject of email", "type": "string"}, "body": {"title": "Body", "description":
+    body: '{"messages": [{"role": "system", "content": ""}, {"role": "user", "content":
+      "Given the press release article of our company: \"RIVERTON Industries - Revolutionizing
+      the Aluminum Casting Industry for E-Bikes\n\nRIVERTON Industries is a leading
+      manufacturer and exporter of aluminum casting products for E-Bikes. Established
+      in 2022, the company has quickly gained a reputation for its innovative approach
+      to aluminum frame manufacturing. We offer one-stop solutions for customized
+      bike frames, which include designing, manufacturing, and assembly services.\n\n###
+      About RIVERTON Industries\nRIVERTON Industries is an innovative international
+      company specializing in aluminum casting products for E-Bikes. The company is
+      committed to providing innovative aluminum frames built for bicycles and modular
+      features for multiple modeling combinations. We offer ready-to-use products
+      and vehicle assembly services that meet customer satisfaction and provide specialized
+      services tailored to their requirements.\n\nRIVERTON Industries is revolutionizing
+      the aluminum casting industry for E-bikes. Our main product, the Aluminum frame
+      for E-bike, is available in three models - 001, 002, and 003 but more could
+      be customized. The one-piece-formed bike frame provides increased rigidity,
+      improving the stability and safety of the ride. The solid frame made of aluminum
+      pipeline built-in supports complex designs for electric bikes.\n\nOur one-stop
+      solution for customized bike frames has made us a popular choice among customers.
+      We offer a range of products, including the Electric bike frame, Aluminum motor
+      frames for E-bikes, Motor frames for E-bikes, and Customized Motor frames for
+      E-bikes.\n\nRIVERTON Industries exports its products to Europe and the USA.
+      Our commitment to quality has earned us a reputation for producing high-quality
+      aluminum frames that meet international standards.\n\nIn conclusion, RIVERTON
+      Industries is a company that is revolutionizing the aluminum casting industry
+      for E-bikes. Our innovative approach to manufacturing aluminum frames and one-stop
+      solutions for customized bike frames has made us a popular choice among customers.
+      If you''re looking for high-quality aluminum frames for your E-bikes, visit
+      our website at https://riverton.example.com/.\"\n"}], "model": "gpt-3.5-turbo-0613",
+      "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
+      0.0, "user": "", "functions": [{"name": "structural_response", "description":
+      "Response to user in a structural way.", "parameters": {"title": "Email", "type":
+      "object", "properties": {"subject": {"title": "Subject", "description": "the
+      subject of email", "type": "string"}, "body": {"title": "Body", "description":
       "the body of email", "type": "string"}}, "required": ["subject", "body"]}}],
       "function_call": {"name": "structural_response"}}'
     headers:
@@ -45,7 +44,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '2953'
+      - '2838'
       Content-Type:
       - application/json
       User-Agent:
@@ -59,51 +58,37 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7ZA617fVGKNrn7zqMT4q7YwNpgsVW\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1688614645,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      string: "{\n  \"id\": \"chatcmpl-7ZAABNNRByqRlso4KoWPcltukFWJW\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1688614903,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
         \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
         \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
         \         \"name\": \"structural_response\",\n          \"arguments\": \"{\\n
         \ \\\"subject\\\": \\\"Press Release: RIVERTON Industries - Revolutionizing
         the Aluminum Casting Industry for E-Bikes\\\",\\n  \\\"body\\\": \\\"Dear
-        [Media Outlet/Recipient],\\\\n\\\\nWe are pleased to announce the latest developments
-        at RIVERTON Industries, a leading manufacturer and exporter of aluminum casting
-        products for E-Bikes. Our commitment to innovation and customer satisfaction
-        has positioned us as a game-changer in the aluminum casting industry.\\\\n\\\\nAbout
-        RIVERTON Industries:\\\\nRIVERTON Industries is an innovative international
-        company that specializes in aluminum casting products for E-Bikes. With a
-        focus on providing customized bike frames, we offer a comprehensive range
-        of services, including designing, manufacturing, and assembly. Our dedication
-        to meeting customer requirements sets us apart in the market.\\\\n\\\\nRevolutionizing
-        the Aluminum Casting Industry:\\\\nAt RIVERTON Industries, we are revolutionizing
-        the aluminum casting industry for E-Bikes. Our flagship product, the Aluminum
-        frame for E-bike, is available in multiple models, including the popular 001,
-        002, and 003. The one-piece-formed bike frame provides enhanced rigidity,
-        ensuring stability and safety during rides. With a solid frame made of aluminum
-        pipeline built-in, we support complex designs for electric bikes.\\\\n\\\\nOne-Stop
-        Solution for Customized Bike Frames:\\\\nOur one-stop solution for customized
-        bike frames has garnered a strong customer following. We cater to a wide range
-        of needs, offering Electric bike frames, Aluminum motor frames for E-bikes,
-        Motor frames for E-bikes, and Customized Motor frames for E-bikes. Our commitment
-        to quality and adherence to international standards have earned us a reputation
-        for producing high-quality aluminum frames.\\\\n\\\\nGlobal Reach:\\\\nRIVERTON
-        Industries proudly exports its products to Europe and the USA, expanding our
-        global footprint. Our dedication to quality ensures that our aluminum frames
-        meet international standards and exceed customer expectations.\\\\n\\\\nVisit
-        Us:\\\\nIf you're in search of high-quality aluminum frames for your E-bikes,
-        we invite you to visit our website at https://riverton.example.com/. Explore
-        our range of products and discover why RIVERTON Industries is the preferred
-        choice for customers.\\\\n\\\\nFor more information, press inquiries, or interview
-        requests, please contact us at [Contact Information].\\\\n\\\\nThank you for
-        your attention and continued support.\\\\n\\\\nSincerely,\\\\n[Your Name]\\\\n[Your
-        Title/Position]\\\\nRIVERTON Industries\\\"\\n}\"\n        }\n      },\n      \"finish_reason\":
-        \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 511,\n    \"completion_tokens\":
-        505,\n    \"total_tokens\": 1016\n  }\n}\n"
+        Press,\\\\n\\\\nWe are excited to announce the launch of RIVERTON Industries,
+        a leading manufacturer and exporter of aluminum casting products for E-Bikes.
+        With our innovative approach to aluminum frame manufacturing and one-stop
+        solution for customized bike frames, we are revolutionizing the industry.\\\\n\\\\nEstablished
+        in 2022, RIVERTON Industries has quickly gained a reputation for providing
+        high-quality aluminum frames that meet international standards. Our main product,
+        the Aluminum frame for E-bike, offers increased rigidity, stability, and safety
+        for riders. The one-piece-formed bike frame, made of aluminum pipeline, supports
+        complex designs for electric bikes.\\\\n\\\\nIn addition to our ready-to-use
+        products, we also provide vehicle assembly services tailored to our customers'
+        requirements. Our commitment to customer satisfaction sets us apart and has
+        made us a popular choice among customers.\\\\n\\\\nWe export our products
+        to Europe and the USA, further expanding our reach and impact. If you're in
+        search of high-quality aluminum frames for your E-bikes, visit our website
+        at https://riverton.example.com/.\\\\n\\\\nFor more information, please contact
+        us at [email protected] or call us at +1-123-456-7890.\\\\n\\\\nSincerely,\\\\nRIVERTON
+        Industries\\\"\\n}\"\n        }\n      },\n      \"finish_reason\": \"stop\"\n
+        \   }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 480,\n    \"completion_tokens\":
+        291,\n    \"total_tokens\": 771\n  }\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7e24cf18cc870738-TPE
+      - 7e24d56948234a6c-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -113,7 +98,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 06 Jul 2023 03:37:37 GMT
+      - Thu, 06 Jul 2023 03:41:50 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -125,7 +110,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '12324'
+      - '6934'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -137,13 +122,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '3499'
       x-ratelimit-remaining-tokens:
-      - '89407'
+      - '89434'
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
-      - 395ms
+      - 376ms
       x-request-id:
-      - 73036266c13f32a26233d305f034f640
+      - 82b746f3ea9485ed7b0b59bac379a00e
     status:
       code: 200
       message: OK

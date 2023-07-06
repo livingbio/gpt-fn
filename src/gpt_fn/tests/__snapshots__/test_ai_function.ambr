@@ -4,10 +4,10 @@
 # ---
 # name: test_ai_fake_hero
   list([
-    Hero(name='Superman', age=35),
-    Hero(name='Batman', age=40),
-    Hero(name='Spiderman', age=25),
-    Hero(name='Wonder Woman', age=30),
-    Hero(name='Iron Man', age=45),
+    Hero(name='Hero 1', age=25),
+    Hero(name='Hero 2', age=30),
+    Hero(name='Hero 3', age=35),
+    Hero(name='Hero 4', age=40),
+    Hero(name='Hero 5', age=45),
   ])
 # ---

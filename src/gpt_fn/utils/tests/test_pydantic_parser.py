@@ -29,9 +29,7 @@ def test_pydantic_parser_with_prompt(snapshot: SnapshotAssertion, test_filename:
     instruction = content
     assert snapshot(name="instructoin") == instruction
 
-    result = structural_completion(
-        model, messages=[Message(role="system", content="You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2021-09\nCurrent date: [current date]"), Message(role="user", content=instruction)]
-    )
+    result = structural_completion(model, messages=[Message(role="system", content=""), Message(role="user", content=instruction)])
 
     assert snapshot(name="gpt response") == result
 
