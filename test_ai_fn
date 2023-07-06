@@ -1,0 +1,65 @@
+interactions:
+- request:
+    body: '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You
+      are now the following python function:\n```\n# return fabnocci number\ndef fabnocci(n:
+      int):\n```\nOnly respond with your `return` value.\nThe output should be formatted
+      as a JSON instance that conforms to the JSON schema below.\n\nAs an example,
+      for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\":
+      \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}},
+      \"required\": [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+      instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
+      is not well-formatted.\n\nHere is the output schema:\n```\n{\"properties\":
+      {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```\n"},
+      {"role": "user", "content": "fabnocci(n = 10)"}], "temperature": 0.0}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '890'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.2
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.2", "httplib": "requests", "lang": "python", "lang_version":
+        "3.11.3", "platform": "macOS-13.4-x86_64-i386-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44
+        PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103 x86_64 i386"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n    \"error\": {\n        \"message\": \"\",\n        \"type\":
+        \"invalid_request_error\",\n        \"param\": null,\n        \"code\": \"invalid_api_key\"\n
+        \   }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7d319de48f974a97-TPE
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '146'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 06 Jun 2023 15:16:29 GMT
+      Server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      vary:
+      - Origin
+      x-request-id:
+      - b841ca6bdde304a3178359b8db8e8300
+    status:
+      code: 401
+      message: Unauthorized
+version: 1
