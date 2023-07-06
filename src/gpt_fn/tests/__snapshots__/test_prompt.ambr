@@ -6,12 +6,33 @@
       'role': 'system',
     }),
     dict({
-      'content': 'My name is John}',
+      'content': 'My name is John.',
       'role': 'user',
     }),
     dict({
       'content': 'hello, John nice to meet you!',
       'role': 'system',
+    }),
+  ])
+# ---
+# name: test_complicated_chat_template
+  list([
+    dict({
+      'content': '''
+        Summarize the following articles:
+        
+        
+        # Article 1
+        Content 1
+        
+        # Article 2
+        Content 2
+        
+        # Article 3
+        Content 3
+  
+      ''',
+      'role': 'user',
     }),
   ])
 # ---
