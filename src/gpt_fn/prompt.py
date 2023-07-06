@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Any, Literal
 
 import jinja2
 from pydantic import BaseModel
@@ -11,7 +11,7 @@ class MessageTemplate(BaseModel):
     content: str
     name: str = ""
 
-    def render(self, **kwargs: str) -> Message:
+    def render(self, **kwargs: Any) -> Message:
         content = jinja2.Template(self.content).render(**kwargs)
         if self.role == "function":
             return FunctionMessage(
@@ -29,5 +29,5 @@ class MessageTemplate(BaseModel):
 class ChatTemplate(BaseModel):
     messages: list[MessageTemplate]
 
-    def render(self, **kwargs: str) -> list[Message]:
+    def render(self, **kwargs: Any) -> list[Message]:
         return [m.render(**kwargs) for m in self.messages]
