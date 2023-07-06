@@ -42,10 +42,13 @@ repos:
       - id: black
         args: [--line-length=240, --exclude=""]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.991
+  - repo: local
     hooks:
       - id: mypy
+        name: mypy
+        entry: mypy
+        language: system
+        types: [python]
         exclude: migrations/|commands/|scripts/
         args:
           [
@@ -60,9 +63,3 @@ repos:
             --no-implicit-reexport,
             --disallow-untyped-defs,
           ]
-        additional_dependencies:
-          - "pydantic"
-          - "syrupy"
-          - "openai"
-          - "jinja2"
-          - "docstring_parser"
