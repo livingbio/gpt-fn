@@ -25,6 +25,7 @@ pytest-datadir = "^1.4.1"
 pre-commit = "^3.3.2"
 mkdocs-material = "^9.1.15"
 mkdocstrings = { extras = ["python"], version = "^0.22.0" }
+mypy = "^1.4.1"
 
 [tool.poetry-dynamic-versioning]
 enable = true
