@@ -63,6 +63,15 @@ def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -
     return num
 
 
+def add_ext(filename: str, ext: str) -> str:
+    """add the given extension to the filename
+
+    :param filename: the filename
+    :param ext: the extension, e.g. `.txt`
+    """
+    return filename + ext
+
+
 @pytest.mark.parametrize(
     "func, args, kwargs",
     [
@@ -79,6 +88,7 @@ def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -
         (get_current_weather, ("New York", "London"), {"unit": "celsius"}),
         (is_male, (Person(name="John", age=20),), {}),
         (how_many, (20,), {}),
+        (add_ext, ("test", ".txt"), {}),
     ],
 )
 def test_function_signature(
