@@ -1,7 +1,7 @@
 from typing import Annotated, Any, Callable, Literal
 
 import pytest
-from pydantic import BaseModel, Field, validate_arguments
+from pydantic import BaseModel, Field
 from syrupy.assertion import SnapshotAssertion
 
 from ..signature import FunctionSignature
