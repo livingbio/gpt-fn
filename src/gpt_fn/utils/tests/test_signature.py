@@ -57,7 +57,6 @@ def is_male(person: Person) -> bool:  # type: ignore[empty-body]
     """return the person is male"""
 
 
-@validate_arguments
 def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -> int:
     """return the given number"""
     return num
