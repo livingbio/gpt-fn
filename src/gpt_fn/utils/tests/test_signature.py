@@ -63,7 +63,9 @@ def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -
 
 
 def add_ext(filename: str, ext: str) -> str:
-    """add the given extension to the filename
+    """Add the given extension to the filename
+
+    This is a multiline docstring.
 
     :param filename: the filename
     :param ext: the extension, e.g. `.txt`
