@@ -75,6 +75,8 @@ class FunctionSignature:
     def schema(self) -> dict[str, Any]:
         vd = ValidatedFunction(self.fn, None)
         doc_string = parse(self.description())
+        descriptions = (doc_string.short_description, doc_string.long_description)
+        description = "\n\n".join(filter(None, descriptions))
 
         param_desc = {k.arg_name: k.description for k in doc_string.params}
 
@@ -100,6 +102,6 @@ class FunctionSignature:
 
         return {
             "name": self.fn.__name__,
-            "description": self.description(),
+            "description": description,
             "parameters": filter_parameter(vd.model.schema()),
         }

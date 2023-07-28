@@ -51,7 +51,9 @@
   '''
   You are now the following python function:
   ```
-  # add the given extension to the filename
+  # Add the given extension to the filename
+  
+  This is a multiline docstring.
   
   :param filename: the filename
   :param ext: the extension, e.g. `.txt`
@@ -77,11 +79,9 @@
 # name: test_function_signature[add_ext-args9-kwargs9].2
   dict({
     'description': '''
-      add the given extension to the filename
+      Add the given extension to the filename
       
-      :param filename: the filename
-      :param ext: the extension, e.g. `.txt`
-  
+      This is a multiline docstring.
     ''',
     'name': 'add_ext',
     'parameters': dict({
@@ -193,12 +193,7 @@
 # ---
 # name: test_function_signature[concat-args2-kwargs2].2
   dict({
-    'description': '''
-      Concat two strings
-      :param a: first string
-      :param b: second string
-  
-    ''',
+    'description': 'Concat two strings',
     'name': 'concat',
     'parameters': dict({
       'definitions': dict({
@@ -251,12 +246,7 @@
 # ---
 # name: test_function_signature[concat-args3-kwargs3].2
   dict({
-    'description': '''
-      Concat two strings
-      :param a: first string
-      :param b: second string
-  
-    ''',
+    'description': 'Concat two strings',
     'name': 'concat',
     'parameters': dict({
       'definitions': dict({
