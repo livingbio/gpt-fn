@@ -1,7 +1,7 @@
 from typing import Annotated, Any, Callable, Literal
 
 import pytest
-from pydantic import BaseModel, Field, validate_arguments
+from pydantic import BaseModel, Field
 from syrupy.assertion import SnapshotAssertion
 
 from ..signature import FunctionSignature
@@ -57,10 +57,20 @@ def is_male(person: Person) -> bool:  # type: ignore[empty-body]
     """return the person is male"""
 
 
-@validate_arguments
 def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -> int:
     """return the given number"""
     return num
+
+
+def add_ext(filename: str, ext: str) -> str:
+    """Add the given extension to the filename
+
+    This is a multiline docstring.
+
+    :param filename: the filename
+    :param ext: the extension, e.g. `.txt`
+    """
+    return filename + ext
 
 
 @pytest.mark.parametrize(
@@ -79,6 +89,7 @@ def how_many(num: Annotated[int, Field(gt=10, description="greater than 10")]) -
         (get_current_weather, ("New York", "London"), {"unit": "celsius"}),
         (is_male, (Person(name="John", age=20),), {}),
         (how_many, (20,), {}),
+        (add_ext, ("test", ".txt"), {}),
     ],
 )
 def test_function_signature(
