@@ -1192,19 +1192,20 @@ files = [
 pytest = ">=5.0"
 
 [[package]]
-name = "pytest-vcr"
-version = "1.0.2"
-description = "Plugin for managing VCR.py cassettes"
+name = "pytest-recording"
+version = "0.12.2"
+description = "A pytest plugin that allows you recording of network interactions via VCR.py"
 optional = false
-python-versions = "*"
+python-versions = ">=3.5"
 files = [
-    {file = "pytest-vcr-1.0.2.tar.gz", hash = "sha256:23ee51b75abbcc43d926272773aae4f39f93aceb75ed56852d0bf618f92e1896"},
-    {file = "pytest_vcr-1.0.2-py2.py3-none-any.whl", hash = "sha256:2f316e0539399bea0296e8b8401145c62b6f85e9066af7e57b6151481b0d6d9c"},
+    {file = "pytest-recording-0.12.2.tar.gz", hash = "sha256:7c8949c24e5546a699f8fbbff0c5d6896cd09463378ac3d3f1ebb110d2186847"},
+    {file = "pytest_recording-0.12.2-py3-none-any.whl", hash = "sha256:f055f97eb98bbefd0453a7796aa3a6833502c173421928b9d878cf1420b36406"},
 ]
 
 [package.dependencies]
-pytest = ">=3.6.0"
-vcrpy = "*"
+attrs = "*"
+pytest = ">=3.5.0"
+vcrpy = ">=2.0.1"
 
 [[package]]
 name = "python-dateutil"
@@ -1752,4 +1753,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "bbee888d499c2e71f69851051dbbc90d5b4940953acce59df5e696e385e0515b"
+content-hash = "2b1e2bb01df0f2b1bf6c7878a339153e0f3ce48a4821b8fdba2823e6fa2bd6f6"

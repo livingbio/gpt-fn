@@ -1,0 +1,95 @@
+interactions:
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Give me a sample email."}], "model": "gpt-3.5-turbo-0613",
+      "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
+      0.0, "user": "", "functions": [{"name": "structural_response", "description":
+      "Response to user in a structural way.", "parameters": {"title": "Email", "type":
+      "object", "properties": {"subject": {"title": "Subject", "description": "the
+      subject of email", "type": "string"}, "body": {"title": "Body", "description":
+      "the body of email", "type": "string"}}, "required": ["subject", "body"]}}],
+      "function_call": {"name": "structural_response"}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '687'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenAI/v1 PythonBindings/0.27.8
+      X-OpenAI-Client-User-Agent:
+      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
+        "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
+        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
+        PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    body:
+      string: "{\n  \"id\": \"chatcmpl-7i3UA4c0IlGWXGgWYXanApTWPTtAF\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1690734186,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+        \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+        \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
+        \         \"name\": \"structural_response\",\n          \"arguments\": \"{\\n
+        \ \\\"subject\\\": \\\"Sample Email\\\",\\n  \\\"body\\\": \\\"Dear [Recipient's
+        Name],\\\\n\\\\nI hope this email finds you well. I wanted to reach out to
+        discuss [Subject of Discussion].\\\\n\\\\n[Additional details and information].\\\\n\\\\nPlease
+        let me know if you have any questions or need further clarification. I look
+        forward to hearing from you soon.\\\\n\\\\nBest regards,\\\\n[Your Name]\\\"\\n}\"\n
+        \       }\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\":
+        {\n    \"prompt_tokens\": 82,\n    \"completion_tokens\": 89,\n    \"total_tokens\":
+        171\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 7eeef1b7ee160758-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 30 Jul 2023 16:23:09 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '2944'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3500'
+      x-ratelimit-limit-tokens:
+      - '90000'
+      x-ratelimit-remaining-requests:
+      - '3499'
+      x-ratelimit-remaining-tokens:
+      - '89968'
+      x-ratelimit-reset-requests:
+      - 17ms
+      x-ratelimit-reset-tokens:
+      - 20ms
+      x-request-id:
+      - 7d7454611aa49ac57eb6097e0cb4870b
+    status:
+      code: 200
+      message: OK
+version: 1

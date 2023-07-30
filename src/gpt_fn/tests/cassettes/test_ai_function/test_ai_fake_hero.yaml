@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "You are now the following
-      python function:\n```\n# return fabnocci number\ndef fabnocci(n: int):\n```\nOnly
+      python function:\n```\n# generate fake hero.\ndef fake_hero(n: int):\n```\nOnly
       respond with your `return` value.\n- The output should be formatted as a JSON
       instance that conforms to the JSON schema below.\n\n- As an example, for the
       schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a
@@ -9,10 +9,13 @@ interactions:
       \"required\": [\"foo\"]}}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
       instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}}
       is not well-formatted.\n\n- Here is the output schema:\n```\n{\"properties\":
-      {\"ret\": {\"title\": \"Ret\", \"type\": \"integer\"}}, \"required\": [\"ret\"]}\n```"},
-      {"role": "user", "content": "fabnocci(10)"}], "model": "gpt-3.5-turbo", "temperature":
-      0.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty": 0.0, "user":
-      "", "stop": null}'
+      {\"ret\": {\"title\": \"Ret\", \"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/Hero\"}}},
+      \"required\": [\"ret\"], \"definitions\": {\"Hero\": {\"title\": \"Hero\", \"description\":
+      \"Hero model.\", \"type\": \"object\", \"properties\": {\"name\": {\"title\":
+      \"Name\", \"type\": \"string\"}, \"age\": {\"title\": \"Age\", \"type\": \"integer\"}},
+      \"required\": [\"name\", \"age\"]}}}\n```"}, {"role": "user", "content": "fake_hero(5)"}],
+      "model": "gpt-3.5-turbo", "temperature": 0.0, "top_p": 1.0, "frequency_penalty":
+      0.0, "presence_penalty": 0.0, "user": "", "stop": null}'
     headers:
       Accept:
       - '*/*'
@@ -21,31 +24,34 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '981'
+      - '1294'
       Content-Type:
       - application/json
       User-Agent:
       - OpenAI/v1 PythonBindings/0.27.8
       X-OpenAI-Client-User-Agent:
       - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
-        "3.11.3", "platform": "macOS-13.4.1-x86_64-i386-64bit", "publisher": "openai",
+        "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
         "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
-        PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 x86_64 i386"}'
+        PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7ZBZ0cgg7n3wzAIXM8IvVuiQYstjW\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1688620286,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      string: "{\n  \"id\": \"chatcmpl-7i3U0Eqol8srzDz6Jo2V4fTNyfZiv\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1690734176,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
         \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
-        \"assistant\",\n        \"content\": \"{\\\"ret\\\": 55}\"\n      },\n      \"finish_reason\":
-        \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 200,\n    \"completion_tokens\":
-        6,\n    \"total_tokens\": 206\n  }\n}\n"
+        \"assistant\",\n        \"content\": \"{\\\"ret\\\": [{\\\"name\\\": \\\"Hero
+        1\\\", \\\"age\\\": 25}, {\\\"name\\\": \\\"Hero 2\\\", \\\"age\\\": 30},
+        {\\\"name\\\": \\\"Hero 3\\\", \\\"age\\\": 35}, {\\\"name\\\": \\\"Hero 4\\\",
+        \\\"age\\\": 40}, {\\\"name\\\": \\\"Hero 5\\\", \\\"age\\\": 45}]}\"\n      },\n
+        \     \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\":
+        279,\n    \"completion_tokens\": 74,\n    \"total_tokens\": 353\n  }\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7e2558d5297c56e9-TPE
+      - 7eeef177cdc80730-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -55,7 +61,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 06 Jul 2023 05:11:26 GMT
+      - Sun, 30 Jul 2023 16:22:59 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -67,7 +73,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '225'
+      - '2887'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -79,13 +85,13 @@ interactions:
       x-ratelimit-remaining-requests:
       - '3499'
       x-ratelimit-remaining-tokens:
-      - '89809'
+      - '89743'
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
-      - 127ms
+      - 171ms
       x-request-id:
-      - 7933103f0717a888f4d13ee5558f77ed
+      - f030f2c6a292690fad94900f33d018bb
     status:
       code: 200
       message: OK

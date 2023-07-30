@@ -1,15 +1,23 @@
 interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
-      {"role": "user", "content": "I want to book a flight to London."}], "model":
+      {"role": "user", "content": "I want to book a restaurant in London."}], "model":
       "gpt-3.5-turbo-0613", "temperature": 1.0, "top_p": 1.0, "frequency_penalty":
       0.0, "presence_penalty": 0.0, "user": "", "stop": null, "functions": [{"name":
       "book_a_flight", "description": "", "parameters": {"type": "object", "required":
       ["date", "destination"], "properties": {"date": {"title": "Date", "type": "string"},
       "destination": {"title": "Destination", "type": "string"}, "origin": {"title":
       "Origin", "default": "London", "type": "string"}}, "definitions": {}}}], "function_call":
-      "auto"}'
+      "auto", "max_tokens": 10}'
     headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '674'
       Content-Type:
       - application/json
       User-Agent:
@@ -19,26 +27,22 @@ interactions:
         "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
         "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
         PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
-    method: post
+    method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7hiaesn7eKtm5LxdBz6DL0sICC8pT\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1690653864,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      string: "{\n  \"id\": \"chatcmpl-7i3U7yQ6aeK7gnqCLIlVqkIk2EzvT\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1690734183,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
         \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
-        \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
-        \         \"name\": \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\":
-        \\\"2022-05-15\\\",\\n  \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n
-        \     },\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
-        {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
-        95\n  }\n}\n"
+        \"assistant\",\n        \"content\": \"Sure! I can help you with that.\"\n
+        \     },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n
+        \   \"prompt_tokens\": 67,\n    \"completion_tokens\": 10,\n    \"total_tokens\":
+        77\n  }\n}\n"
     headers:
-      Access-Control-Allow-Origin:
-      - '*'
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7ee748b578b80760-TPE
+      - 7eeef1a409f46a84-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -48,17 +52,19 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 29 Jul 2023 18:04:25 GMT
+      - Sun, 30 Jul 2023 16:23:03 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
       - chunked
+      access-control-allow-origin:
+      - '*'
       alt-svc:
       - h3=":443"; ma=86400
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '711'
+      - '421'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -70,15 +76,14 @@ interactions:
       x-ratelimit-remaining-requests:
       - '3499'
       x-ratelimit-remaining-tokens:
-      - '89965'
+      - '89971'
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
-      - 22ms
+      - 19ms
       x-request-id:
-      - c93358f49f351481bc54cb658000d859
+      - c9421e0fd520fa5f516fbb53b00d66cd
     status:
       code: 200
       message: OK
-    url: https://api.openai.com/v1/chat/completions
 version: 1
