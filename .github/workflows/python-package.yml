@@ -32,7 +32,7 @@ jobs:
           poetry run pre-commit run --all-files
       - name: Test with pytest
         run: |
-          poetry run pytest ./src --cov=./src
+          poetry run pytest ./src --cov=./src --record-mode=once
         env: # Or as an environment variable
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: Coveralls
