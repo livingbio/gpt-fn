@@ -63,7 +63,7 @@ def function_completion(
     )
 
 
-async def function_acompletion(
+async def afunction_completion(
     messages: list[Message],
     max_tokens: int | None = None,
     model: str = "gpt-3.5-turbo-0613",
@@ -157,7 +157,7 @@ def structural_completion(
     )
 
 
-async def structural_acompletion(
+async def astructural_completion(
     structure: Type[T],
     messages: list[Message],
     max_tokens: int | None = None,
@@ -245,7 +245,7 @@ def chat_completion(
     return output_message
 
 
-async def chat_acompletion(
+async def achat_completion(
     messages: list[Message],
     max_tokens: int | None = None,
     model: str = "gpt-3.5-turbo",
