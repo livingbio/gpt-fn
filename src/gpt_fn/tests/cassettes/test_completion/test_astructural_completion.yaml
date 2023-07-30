@@ -23,26 +23,27 @@ interactions:
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7hiafztAFyRgXySFc8UIv5dufSS15\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1690653865,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      string: "{\n  \"id\": \"chatcmpl-7i3UEtSi8kUoTyV8w3AbL2b39CGdO\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1690734190,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
         \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
         \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
         \         \"name\": \"structural_response\",\n          \"arguments\": \"{\\n
-        \ \\\"subject\\\": \\\"Sample Email\\\",\\n  \\\"body\\\": \\\"Dear [Recipient's
-        Name],\\\\n\\\\nI hope this email finds you well. I am writing to [purpose
-        of the email]. [Provide necessary information or any additional details].\\\\n\\\\nIf
-        you have any questions or need further assistance, please do not hesitate
-        to contact me. Thank you for your attention and cooperation.\\\\n\\\\nBest
+        \ \\\"subject\\\": \\\"Hello!\\\",\\n  \\\"body\\\": \\\"Dear [Recipient's
+        Name],\\\\n\\\\nI hope this email finds you well. I just wanted to reach out
+        and say hello. It has been a while since we last caught up and I wanted to
+        see how you have been doing.\\\\n\\\\nIs there a good time for us to connect
+        and catch up? I would love to hear about all the exciting things happening
+        in your life.\\\\n\\\\nLooking forward to hearing from you!\\\\n\\\\nBest
         regards,\\\\n[Your Name]\\\"\\n}\"\n        }\n      },\n      \"finish_reason\":
         \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 82,\n    \"completion_tokens\":
-        90,\n    \"total_tokens\": 172\n  }\n}\n"
+        111,\n    \"total_tokens\": 193\n  }\n}\n"
     headers:
       Access-Control-Allow-Origin:
       - '*'
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7ee748c328c0a9b6-TPE
+      - 7eeef1ccde834a48-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -52,7 +53,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 29 Jul 2023 18:04:28 GMT
+      - Sun, 30 Jul 2023 16:23:13 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
@@ -62,7 +63,7 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '2298'
+      - '3791'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -80,7 +81,7 @@ interactions:
       x-ratelimit-reset-tokens:
       - 20ms
       x-request-id:
-      - 2b9a00f8c94682f865a87bde8eca7759
+      - c9cafa17b1fdbf94b33a470d1d3ec6fd
     status:
       code: 200
       message: OK

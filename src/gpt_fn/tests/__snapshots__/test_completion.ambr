@@ -1,12 +1,12 @@
 # serializer version: 1
 # name: test_achat_completion
-  'Hello! I am a helpful assistant here to assist you with any questions or tasks you may have. How can I help you today?'
+  'Hello! I am a helpful assistant here to assist with any questions or tasks you may have. How can I assist you today?'
 # ---
 # name: test_afunction_completion
   OpenAIObject({
     'arguments': '''
       {
-        "date": "2022-05-15",
+        "date": "2022-10-15",
         "destination": "London"
       }
     ''',
@@ -14,10 +14,10 @@
   })
 # ---
 # name: test_astructural_completion
-  Email(subject='Sample Email', body="Dear [Recipient's Name],\n\nI hope this email finds you well. I am writing to [purpose of the email]. [Provide necessary information or any additional details].\n\nIf you have any questions or need further assistance, please do not hesitate to contact me. Thank you for your attention and cooperation.\n\nBest regards,\n[Your Name]")
+  Email(subject='Hello!', body="Dear [Recipient's Name],\n\nI hope this email finds you well. I just wanted to reach out and say hello. It has been a while since we last caught up and I wanted to see how you have been doing.\n\nIs there a good time for us to connect and catch up? I would love to hear about all the exciting things happening in your life.\n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")
 # ---
 # name: test_chat_completion
-  'Hello! I am a language model AI created by OpenAI, designed to assist and communicate with users in natural language. How may I assist you today?'
+  'Hello! I am a helpful assistant here to assist you with any questions or tasks you may have. How may I help you today?'
 # ---
 # name: test_chat_completion_incomplete
   'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 1, Finish reason: length'
@@ -55,14 +55,14 @@
           }),
         }),
       ]),
-      'created': 1686560148,
-      'id': 'chatcmpl-7QXcyFNjAlIIPRuU5YEC6vUlqwu6R',
-      'model': 'gpt-3.5-turbo-0301',
+      'created': 1690734201,
+      'id': 'chatcmpl-7i3UPS1ZGAuO30Rqrcp4oI1Tuomtv',
+      'model': 'gpt-3.5-turbo-0613',
       'object': 'chat.completion',
       'usage': OpenAIObject({
         'completion_tokens': 1,
-        'prompt_tokens': 25,
-        'total_tokens': 26,
+        'prompt_tokens': 23,
+        'total_tokens': 24,
       }),
     }),
   })
@@ -71,7 +71,7 @@
   OpenAIObject({
     'arguments': '''
       {
-        "date": "2022-10-15",
+        "date": "2022-12-01",
         "destination": "London"
       }
     ''',
@@ -79,7 +79,7 @@
   })
 # ---
 # name: test_function_completion_without_enough_tokens
-  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:Sure, I can help you with that.'
+  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:Sure! I can help you with that.'
 # ---
 # name: test_function_completion_without_enough_tokens.1
   dict({
@@ -140,13 +140,13 @@
           'finish_reason': 'length',
           'index': 0,
           'message': OpenAIObject({
-            'content': 'Sure, I can help you with that.',
+            'content': 'Sure! I can help you with that.',
             'role': 'assistant',
           }),
         }),
       ]),
-      'created': 1687795603,
-      'id': 'chatcmpl-7Vj1f3ooUNnNia71ycQeNKu3ak80v',
+      'created': 1690734183,
+      'id': 'chatcmpl-7i3U7yQ6aeK7gnqCLIlVqkIk2EzvT',
       'model': 'gpt-3.5-turbo-0613',
       'object': 'chat.completion',
       'usage': OpenAIObject({
@@ -158,7 +158,14 @@
   })
 # ---
 # name: test_function_completion_without_neccess_function
-  "gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: None, Finish reason: stop Message:I'm sorry, but I am currently unable to book a restaurant for you. However, I can help you find some popular restaurants in London."
+  '''
+  gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: None, Finish reason: stop Message:Sure, I can help you with that. Can you please provide me with the following details:
+  
+  1. Date and time of the reservation
+  2. Number of people
+  3. Cuisine preference, if any
+  4. Any specific location in London
+  '''
 # ---
 # name: test_function_completion_without_neccess_function.1
   dict({
@@ -218,25 +225,32 @@
           'finish_reason': 'stop',
           'index': 0,
           'message': OpenAIObject({
-            'content': "I'm sorry, but I am currently unable to book a restaurant for you. However, I can help you find some popular restaurants in London.",
+            'content': '''
+              Sure, I can help you with that. Can you please provide me with the following details:
+              
+              1. Date and time of the reservation
+              2. Number of people
+              3. Cuisine preference, if any
+              4. Any specific location in London
+            ''',
             'role': 'assistant',
           }),
         }),
       ]),
-      'created': 1686818553,
-      'id': 'chatcmpl-7RcqnDDJFsuH6uxGHQnThegIztTIu',
+      'created': 1690734184,
+      'id': 'chatcmpl-7i3U8orqNSisKKo91B3RnbT4xbue4',
       'model': 'gpt-3.5-turbo-0613',
       'object': 'chat.completion',
       'usage': OpenAIObject({
-        'completion_tokens': 30,
+        'completion_tokens': 50,
         'prompt_tokens': 67,
-        'total_tokens': 97,
+        'total_tokens': 117,
       }),
     }),
   })
 # ---
 # name: test_structural_completion
-  Email(subject='Thank you for your inquiry', body='Dear [Name],\n\nThank you for your interest in our company. We received your inquiry and would like to provide you with some information regarding our products and services.\n\n[Insert relevant details here]\n\nIf you have any further questions, please feel free to contact us. We are always happy to assist you.\n\nThank you once again for considering our company. We look forward to the possibility of working with you.\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]')
+  Email(subject='Sample Email', body="Dear [Recipient's Name],\n\nI hope this email finds you well. I wanted to reach out to discuss [Subject of Discussion].\n\n[Additional details and information].\n\nPlease let me know if you have any questions or need further clarification. I look forward to hearing from you soon.\n\nBest regards,\n[Your Name]")
 # ---
 # name: test_structural_completion_without_enough_tokens
   'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:None'
@@ -301,8 +315,7 @@
             'function_call': OpenAIObject({
               'arguments': '''
                 {
-                  "subject": "Hello",
-                  "
+                  "subject": "Invitation to attend
               ''',
               'name': 'structural_response',
             }),
@@ -310,8 +323,8 @@
           }),
         }),
       ]),
-      'created': 1687795730,
-      'id': 'chatcmpl-7Vj3iDurmFtYnjSblxBX9zx40HlqW',
+      'created': 1690734196,
+      'id': 'chatcmpl-7i3UKvREvsnQqPtjETLD4eXfCl4M4',
       'model': 'gpt-3.5-turbo-0613',
       'object': 'chat.completion',
       'usage': OpenAIObject({

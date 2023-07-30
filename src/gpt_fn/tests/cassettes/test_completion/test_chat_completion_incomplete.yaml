@@ -3,8 +3,16 @@ interactions:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "Hello, who are you?"}], "model": "gpt-3.5-turbo",
       "temperature": 1.0, "top_p": 1.0, "frequency_penalty": 0.0, "presence_penalty":
-      0.0, "user": "", "stop": null}'
+      0.0, "user": "", "stop": null, "max_tokens": 1}'
     headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '283'
       Content-Type:
       - application/json
       User-Agent:
@@ -14,25 +22,21 @@ interactions:
         "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
         "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
         PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
-    method: post
+    method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
     body:
-      string: "{\n  \"id\": \"chatcmpl-7hiaiSjAlpcd71kbevAwwwgpraw9Z\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1690653868,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      string: "{\n  \"id\": \"chatcmpl-7i3UPS1ZGAuO30Rqrcp4oI1Tuomtv\",\n  \"object\":
+        \"chat.completion\",\n  \"created\": 1690734201,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
         \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
-        \"assistant\",\n        \"content\": \"Hello! I am a helpful assistant here
-        to assist you with any questions or tasks you may have. How can I help you
-        today?\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\":
-        {\n    \"prompt_tokens\": 23,\n    \"completion_tokens\": 27,\n    \"total_tokens\":
-        50\n  }\n}\n"
+        \"assistant\",\n        \"content\": \"Hello\"\n      },\n      \"finish_reason\":
+        \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 23,\n    \"completion_tokens\":
+        1,\n    \"total_tokens\": 24\n  }\n}\n"
     headers:
-      Access-Control-Allow-Origin:
-      - '*'
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7ee748d3bf884a09-TPE
+      - 7eeef2139b4a4aa8-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -42,17 +46,19 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 29 Jul 2023 18:04:28 GMT
+      - Sun, 30 Jul 2023 16:23:21 GMT
       Server:
       - cloudflare
       Transfer-Encoding:
       - chunked
+      access-control-allow-origin:
+      - '*'
       alt-svc:
       - h3=":443"; ma=86400
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '429'
+      - '169'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
@@ -64,15 +70,14 @@ interactions:
       x-ratelimit-remaining-requests:
       - '3499'
       x-ratelimit-remaining-tokens:
-      - '89970'
+      - '89985'
       x-ratelimit-reset-requests:
       - 17ms
       x-ratelimit-reset-tokens:
-      - 20ms
+      - 10ms
       x-request-id:
-      - ebd80ae8084a75e4e826c4f29ed50349
+      - 037f3b4947d1950cc4b89c9c77cffbb8
     status:
       code: 200
       message: OK
-    url: https://api.openai.com/v1/chat/completions
 version: 1
