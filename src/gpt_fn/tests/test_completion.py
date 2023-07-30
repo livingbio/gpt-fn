@@ -2,7 +2,7 @@ import pydantic
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..completion import chat_completion, function_completion, structural_completion
+from ..completion import achat_completion, afunction_completion, astructural_completion, chat_completion, function_completion, structural_completion
 from ..exceptions import CompletionIncompleteError
 
 
@@ -13,6 +13,19 @@ def book_a_flight(date: str, destination: str, origin: str = "London") -> str:
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
 def test_function_completion(snapshot: SnapshotAssertion) -> None:
     msg = function_completion(
+        [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "I want to book a flight to London."},
+        ],
+        functions=[book_a_flight],
+    )
+    assert snapshot == msg
+
+
+@pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
+@pytest.mark.asyncio
+async def test_afunction_completion(snapshot: SnapshotAssertion) -> None:
+    msg = await afunction_completion(
         [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": "I want to book a flight to London."},
@@ -72,6 +85,20 @@ def test_structural_completion(snapshot: SnapshotAssertion) -> None:
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
+@pytest.mark.asyncio
+async def test_astructural_completion(snapshot: SnapshotAssertion) -> None:
+    email = await astructural_completion(
+        Email,
+        [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Give me a sample email."},
+        ],
+    )
+
+    assert snapshot == email
+
+
+@pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
 def test_structural_completion_without_enough_tokens(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(CompletionIncompleteError) as excinfo:
         email = structural_completion(
@@ -89,6 +116,18 @@ def test_structural_completion_without_enough_tokens(snapshot: SnapshotAssertion
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
 def test_chat_completion(snapshot: SnapshotAssertion) -> None:
     msg = chat_completion(
+        [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Hello, who are you?"},
+        ],
+    )
+    assert snapshot == msg
+
+
+@pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
+@pytest.mark.asyncio
+async def test_achat_completion(snapshot: SnapshotAssertion) -> None:
+    msg = await achat_completion(
         [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": "Hello, who are you?"},

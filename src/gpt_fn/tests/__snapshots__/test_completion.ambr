@@ -1,4 +1,21 @@
 # serializer version: 1
+# name: test_achat_completion
+  'Hello! I am a helpful assistant here to assist you with any questions or tasks you may have. How can I help you today?'
+# ---
+# name: test_afunction_completion
+  OpenAIObject({
+    'arguments': '''
+      {
+        "date": "2022-05-15",
+        "destination": "London"
+      }
+    ''',
+    'name': 'book_a_flight',
+  })
+# ---
+# name: test_astructural_completion
+  Email(subject='Sample Email', body="Dear [Recipient's Name],\n\nI hope this email finds you well. I am writing to [purpose of the email]. [Provide necessary information or any additional details].\n\nIf you have any questions or need further assistance, please do not hesitate to contact me. Thank you for your attention and cooperation.\n\nBest regards,\n[Your Name]")
+# ---
 # name: test_chat_completion
   'Hello! I am a language model AI created by OpenAI, designed to assist and communicate with users in natural language. How may I assist you today?'
 # ---
