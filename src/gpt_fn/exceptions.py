@@ -14,5 +14,7 @@ class CompletionIncompleteError(GptFnError):
         self.request = request
 
 
-class InvalidRequestError(GptFnError):
-    pass
+class AiFnError(GptFnError):
+    def __init__(self, msg: str, fn_locals: dict[str, Any]) -> None:
+        super().__init__(msg)
+        self.fn_locals = fn_locals

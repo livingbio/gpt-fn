@@ -4,7 +4,7 @@ from typing import Any, Callable, ParamSpec, TypeVar
 import openai.error
 
 from .completion import chat_completion
-from .exceptions import InvalidRequestError
+from .exceptions import AiFnError
 from .prompt import ChatTemplate, MessageTemplate
 from .utils.signature import FunctionSignature
 
@@ -30,7 +30,8 @@ def ai_fn(
         try:
             resp = chat_completion(template.render(), temperature=0.0)
         except openai.error.InvalidRequestError as e:
-            raise InvalidRequestError(fn_call) from e
+            fn_locals = sig.locals(*args, **kwargs)
+            raise AiFnError(fn_call, fn_locals) from e
 
         return sig.parse(resp)
 
