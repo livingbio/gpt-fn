@@ -12,3 +12,7 @@ class CompletionIncompleteError(GptFnError):
         super().__init__(msg)
         self.response = response
         self.request = request
+
+
+class InvalidRequestError(GptFnError):
+    pass
