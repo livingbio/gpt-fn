@@ -57,6 +57,9 @@ class FunctionSignature:
     def call_line(self, *args: Any, **kwargs: Any) -> str:
         return format_call_line(self.fn, *args, **kwargs)
 
+    def locals(self, *args: Any, **kwargs: Any) -> dict[str, Any]:
+        return inspect.getcallargs(self.fn, *args, **kwargs)
+
     def parse(self, text: str) -> Any:
         return self.parser.parse(text).ret
 
