@@ -6,7 +6,7 @@ from ..ai_function import ai_fn
 from ..exceptions import AiFnError
 
 
-@ai_fn
+@ai_fn()
 def fabnocci(n: int) -> int:  # type: ignore[empty-body]
     """return fabnocci number"""
 
@@ -18,12 +18,12 @@ class Hero(BaseModel):
     age: int
 
 
-@ai_fn
+@ai_fn()
 def fake_hero(n: int) -> list[Hero]:  # type: ignore[empty-body]
     """generate fake hero."""
 
 
-@ai_fn
+@ai_fn()
 def generate_hashtags(text: str) -> list[str]:  # type: ignore[empty-body]
     """generate social media hashtags from text."""
 
