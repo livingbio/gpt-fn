@@ -35,7 +35,7 @@ def function_completion(
 
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
@@ -80,7 +80,7 @@ async def afunction_completion(
 
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
@@ -122,7 +122,7 @@ def structural_completion(
     function_call = {"name": "structural_response"}
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
@@ -171,7 +171,7 @@ async def astructural_completion(
     function_call = {"name": "structural_response"}
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
@@ -219,7 +219,7 @@ def chat_completion(
 ) -> str:
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
@@ -258,7 +258,7 @@ async def achat_completion(
 ) -> str:
     kwargs = dict(
         messages=messages,
-        model=model,
+        engine=model,
         temperature=temperature,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
