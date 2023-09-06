@@ -45,6 +45,10 @@ def function_completion(
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
@@ -90,6 +94,10 @@ async def afunction_completion(
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
@@ -137,6 +145,10 @@ def structural_completion(
         ],
         function_call=function_call,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
@@ -186,6 +198,10 @@ async def astructural_completion(
         ],
         function_call=function_call,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
@@ -227,6 +243,10 @@ def chat_completion(
         user=user,
         stop=stop or None,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
@@ -266,6 +286,10 @@ async def achat_completion(
         user=user,
         stop=stop or None,
     )
+
+    if openai.api_type != "open_ai":
+        kwargs.update({"deployment_id": model})
+
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
