@@ -17,6 +17,7 @@ class Message(TypedDict):
 class FunctionMessage(Message):
     name: str
 
+
 class APISettings(pydantic.BaseModel):
     api_key: str
     api_base: str
