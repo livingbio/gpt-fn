@@ -1,9 +1,21 @@
+from typing import Any
+
 import pydantic
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ..completion import achat_completion, afunction_completion, astructural_completion, chat_completion, function_completion, structural_completion
 from ..exceptions import CompletionIncompleteError
+
+
+def exclude_api_settings(result: dict[str, Any]) -> dict[str, Any]:
+    request: dict[str, Any] = result["request"]
+    request.pop("api_base", None)
+    request.pop("api_key", None)
+    request.pop("api_type", None)
+    request.pop("api_version", None)
+
+    return result
 
 
 def book_a_flight(date: str, destination: str, origin: str = "London") -> str:
@@ -47,7 +59,7 @@ def test_function_completion_without_enough_tokens(snapshot: SnapshotAssertion) 
             functions=[book_a_flight],
         )
     assert snapshot == excinfo.exconly()
-    assert snapshot == vars(excinfo.value)
+    assert snapshot == exclude_api_settings(vars(excinfo.value))
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
@@ -63,7 +75,7 @@ def test_function_completion_without_neccess_function(
             functions=[book_a_flight],
         )
     assert snapshot == excinfo.exconly()
-    assert snapshot == vars(excinfo.value)
+    assert snapshot == exclude_api_settings(vars(excinfo.value))
 
 
 class Email(pydantic.BaseModel):
@@ -110,7 +122,7 @@ def test_structural_completion_without_enough_tokens(snapshot: SnapshotAssertion
             max_tokens=10,
         )
     assert snapshot == excinfo.exconly()
-    assert snapshot == vars(excinfo.value)
+    assert snapshot == exclude_api_settings(vars(excinfo.value))
 
 
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
@@ -148,4 +160,4 @@ def test_chat_completion_incomplete(snapshot: SnapshotAssertion) -> None:
         )
 
     assert snapshot == excinfo.exconly()
-    assert snapshot == vars(excinfo.value)
+    assert snapshot == exclude_api_settings(vars(excinfo.value))

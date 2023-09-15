@@ -18,6 +18,13 @@ class FunctionMessage(Message):
     name: str
 
 
+class APISettings(pydantic.BaseModel):
+    api_key: str = pydantic.Field(default_factory=lambda: openai.api_key)
+    api_base: str = pydantic.Field(default_factory=lambda: openai.api_base)
+    api_type: str = pydantic.Field(default_factory=lambda: openai.api_type)
+    api_version: str | None = pydantic.Field(default_factory=lambda: openai.api_version)
+
+
 def function_completion(
     messages: list[Message],
     max_tokens: int | None = None,
@@ -30,6 +37,7 @@ def function_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
+    api_settings: APISettings = APISettings(),
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -44,10 +52,11 @@ def function_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -79,6 +88,7 @@ async def afunction_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
+    api_settings: APISettings = APISettings(),
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -93,10 +103,11 @@ async def afunction_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -126,6 +137,7 @@ def structural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -144,10 +156,11 @@ def structural_completion(
             }
         ],
         function_call=function_call,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -179,6 +192,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -197,10 +211,11 @@ async def astructural_completion(
             }
         ],
         function_call=function_call,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -232,6 +247,7 @@ def chat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
+    api_settings: APISettings = APISettings(),
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -242,10 +258,11 @@ def chat_completion(
         presence_penalty=presence_penalty,
         user=user,
         stop=stop or None,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -275,6 +292,7 @@ async def achat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
+    api_settings: APISettings = APISettings(),
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -285,10 +303,11 @@ async def achat_completion(
         presence_penalty=presence_penalty,
         user=user,
         stop=stop or None,
+        **api_settings.dict(),
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings.api_type != "open_ai":
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
