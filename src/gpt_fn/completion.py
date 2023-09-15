@@ -19,10 +19,10 @@ class FunctionMessage(Message):
 
 
 class APISettings(pydantic.BaseModel):
-    api_key: str
-    api_base: str
-    api_type: str
-    api_version: str
+    api_key: str = openai.api_key
+    api_base: str = openai.api_base
+    api_type: str = openai.api_type
+    api_version: str = openai.api_version
 
 
 def function_completion(
@@ -37,7 +37,7 @@ def function_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -54,7 +54,7 @@ def function_completion(
         function_call=function_call,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
@@ -88,7 +88,7 @@ async def afunction_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -105,7 +105,7 @@ async def afunction_completion(
         function_call=function_call,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
@@ -137,7 +137,7 @@ def structural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -158,7 +158,7 @@ def structural_completion(
         function_call=function_call,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
@@ -192,7 +192,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -213,7 +213,7 @@ async def astructural_completion(
         function_call=function_call,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
@@ -247,7 +247,7 @@ def chat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -260,7 +260,7 @@ def chat_completion(
         stop=stop or None,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
@@ -292,7 +292,7 @@ async def achat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
-    api_settings: APISettings | None = None,
+    api_settings: APISettings = APISettings(),
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -305,7 +305,7 @@ async def achat_completion(
         stop=stop or None,
     )
 
-    if api_settings is not None:
+    if api_settings.api_type != "open_ai":
         kwargs.update(api_settings.dict())
         kwargs["deployment_id"] = model
 
