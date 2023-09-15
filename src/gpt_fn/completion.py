@@ -17,6 +17,12 @@ class Message(TypedDict):
 class FunctionMessage(Message):
     name: str
 
+class APISettings(pydantic.BaseModel):
+    api_key: str
+    api_base: str
+    api_type: str
+    api_version: str
+
 
 def function_completion(
     messages: list[Message],
@@ -30,6 +36,7 @@ def function_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
+    api_settings: APISettings | None = None,
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -46,8 +53,9 @@ def function_completion(
         function_call=function_call,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -79,6 +87,7 @@ async def afunction_completion(
     user: str = "",
     functions: list[Callable[..., Any]] = [],
     function_call: str | dict[str, Any] = "auto",
+    api_settings: APISettings | None = None,
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
@@ -95,8 +104,9 @@ async def afunction_completion(
         function_call=function_call,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -126,6 +136,7 @@ def structural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    api_settings: APISettings | None = None,
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -146,8 +157,9 @@ def structural_completion(
         function_call=function_call,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -179,6 +191,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    api_settings: APISettings | None = None,
 ) -> T:
     function_call = {"name": "structural_response"}
     kwargs = dict(
@@ -199,8 +212,9 @@ async def astructural_completion(
         function_call=function_call,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -232,6 +246,7 @@ def chat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
+    api_settings: APISettings | None = None,
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -244,8 +259,9 @@ def chat_completion(
         stop=stop or None,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -275,6 +291,7 @@ async def achat_completion(
     presence_penalty: float = 0.0,
     stop: list[str] = [],
     user: str = "",
+    api_settings: APISettings | None = None,
 ) -> str:
     kwargs = dict(
         messages=messages,
@@ -287,8 +304,9 @@ async def achat_completion(
         stop=stop or None,
     )
 
-    if openai.api_type != "open_ai":
-        kwargs.update({"deployment_id": model})
+    if api_settings is not None:
+        kwargs.update(api_settings.dict())
+        kwargs["deployment_id"] = model
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
