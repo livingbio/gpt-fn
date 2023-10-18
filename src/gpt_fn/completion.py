@@ -137,7 +137,7 @@ def structural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
-    auto_correct: bool = False,
+    auto_correct: bool = True,
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
@@ -197,7 +197,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
-    auto_correct: bool = False,
+    auto_correct: bool = True,
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
