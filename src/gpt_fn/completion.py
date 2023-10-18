@@ -176,7 +176,6 @@ def structural_completion(
         args = message.function_call.arguments
         if auto_correct:
             args = json_decode.correct_json(args)
-            return pydantic.parse_obj_as(structure, args)
 
         return pydantic.parse_raw_as(structure, args)
 
@@ -236,7 +235,6 @@ async def astructural_completion(
         args = message.function_call.arguments
         if auto_correct:
             args = json_decode.correct_json(args)
-            return pydantic.parse_obj_as(structure, args)
 
         return pydantic.parse_raw_as(structure, args)
 
