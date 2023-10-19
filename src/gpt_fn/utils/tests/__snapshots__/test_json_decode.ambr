@@ -55,6 +55,17 @@
 # ---
 # name: test_fixed_json_safe_case[case13.json]
   dict({
+    'empty_array': list([
+    ]),
+    'empty_object': dict({
+    }),
+    'escape © OpenAI •': False,
+    'escape"property': None,
+    'int_in_array': list([
+      1,
+      2,
+      3,
+    ]),
     'sci_in_array': list([
       1.2,
       -1.2,

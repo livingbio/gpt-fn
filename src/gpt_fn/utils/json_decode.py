@@ -152,7 +152,7 @@ def state_escape_char(input: str, stack: list[str]) -> str | None:
         if stack[-1] == "v":
             return input[0:5] + state_value_string(input[5:], stack[:-1])
         if stack[-1] == "p":
-            return input[0] + state_property_string(input[5:], stack[:-1])
+            return input[0:5] + state_property_string(input[5:], stack[:-1])
 
         return None
 
