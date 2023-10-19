@@ -30,7 +30,7 @@ def test_fixed_json_safe_case(snapshot: SnapshotAssertion, test_filename: Path) 
     assert snapshot == result
 
 
-@pytest.mark.parametrize("test_filename", (Path(__file__).parent / "test_json_decode").glob("unsafe/*.json"), ids=lambda x: x.name)
+@pytest.mark.parametrize("test_filename", (Path(__file__).parent / "test_json_decode").glob("unsafe/*.jsonx"), ids=lambda x: x.name)
 def test_fixed_json_unsafe_case(snapshot: SnapshotAssertion, test_filename: Path) -> None:
     content = test_filename.read_text()
     result = load_fixed_json(content)
