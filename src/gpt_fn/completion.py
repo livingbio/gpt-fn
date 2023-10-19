@@ -195,7 +195,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
-    auto_correct: bool = True,
+    auto_repair: bool = True,
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
@@ -232,7 +232,7 @@ async def astructural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        parsed_json = json_decode.loads(args, auto_correct)
+        parsed_json = json_decode.loads(args, auto_repair)
 
         return pydantic.parse_obj_as(structure, parsed_json)
 
