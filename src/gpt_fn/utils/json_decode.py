@@ -101,7 +101,7 @@ def state_value_string(input: str, stack: list[str]) -> str:
         return input[0] + state_post_value(input[1:], stack)
 
     if input[0] == "\\":
-        return input[0] + state_value_string(input[1:], stack + ["v"])
+        return input[0] + state_escape_char(input[1:], stack + ["v"])
     
     return input[0] + state_value_string(input[1:], stack)
     

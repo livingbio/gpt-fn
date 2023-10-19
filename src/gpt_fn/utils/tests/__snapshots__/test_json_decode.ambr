@@ -15,6 +15,19 @@
     }),
   })
 # ---
+# name: test_fixed_json_safe_case[case10.json]
+  dict({
+    'message': '''
+      This is an escaped string with special characters: "quotes", \backslashes\, and 
+      newlines.
+    ''',
+  })
+# ---
+# name: test_fixed_json_safe_case[case11.json]
+  dict({
+    'unicode_example': 'This is a Unicode string: © OpenAI •',
+  })
+# ---
 # name: test_fixed_json_safe_case[case2.json]
   dict({
     'fruits': list([
