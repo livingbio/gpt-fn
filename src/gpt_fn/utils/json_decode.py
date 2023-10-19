@@ -1,5 +1,7 @@
 
 from functools import wraps
+from typing import Any
+import json
 
 def state(fn):
     @wraps(fn)
@@ -211,3 +213,14 @@ def state_exponent_digits(input: str, stack: list[str]) -> str:
 
 def correct_json(json_str: str) -> str:
     return state_start(json_str)
+
+
+def loads(json_str: str, autofix: bool = False) -> dict[str, Any]:
+    try:
+        return json.loads(json_str)
+    except json.decoder.JSONDecodeError:
+        if not autofix:
+            raise
+
+        corrected_json = correct_json(json_str)
+        return json.loads(corrected_json)

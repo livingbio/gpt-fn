@@ -174,10 +174,9 @@ def structural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        if auto_correct:
-            args = json_decode.correct_json(args)
+        parsed_json = json_decode.loads(args, auto_correct)
 
-        return pydantic.parse_raw_as(structure, args)
+        return pydantic.parse_obj_as(structure, parsed_json)
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
@@ -233,10 +232,9 @@ async def astructural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        if auto_correct:
-            args = json_decode.correct_json(args)
+        parsed_json = json_decode.loads(args, auto_correct)
 
-        return pydantic.parse_raw_as(structure, args)
+        return pydantic.parse_obj_as(structure, parsed_json)
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
