@@ -5,7 +5,7 @@ from typing import Any
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..json_decode import correct_json
+from ..json_decode import correct_json, loads
 
 
 def load_fixed_json(json_str: str) -> dict[str, Any]:
@@ -35,3 +35,9 @@ def test_fixed_json_unsafe_case(snapshot: SnapshotAssertion, test_filename: Path
     content = test_filename.read_text()
     result = load_fixed_json(content)
     assert snapshot == result
+
+
+def test_fixed_json_fail() -> None:
+    with pytest.raises(json.decoder.JSONDecodeError) as e:
+        # test that it will raise JSONDecodeError if it can't fix the JSON
+        loads("{", autofix=True)

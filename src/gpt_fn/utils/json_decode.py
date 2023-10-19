@@ -259,5 +259,9 @@ def loads(json_str: str, autofix: bool = False) -> dict[str, Any]:
         if not autofix:
             raise
 
+    try:
         corrected_json = correct_json(json_str)
-        return json.loads(corrected_json)
+    except Exception as e:
+        raise json.decoder.JSONDecodeError(f"Failed to correct JSON: {e}", json_str, 0)
+
+    return json.loads(corrected_json)
