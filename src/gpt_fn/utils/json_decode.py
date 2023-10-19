@@ -84,7 +84,7 @@ def state_value(input: str, stack: list[str]) -> str | None:
         assert input[:4] == "null"
         return input[:4] + state_post_value(input[4:], stack)
     if input[0].isdigit() or input[0] == "-":
-        return input[0] + state_int(input, stack)
+        return input[0] + state_int(input[1:], stack)
     if input[0] == '"':
         return input[0] + state_value_string(input[1:], stack)
     if input[0] == "{":
@@ -215,13 +215,18 @@ def state_double(input: str, stack: list[str]) -> str | None:
         return input[0] + state_post_int_parent(input[1:], stack)
     if input[0].isspace():
         return input[0] + state_post_value(input[1:], stack)
-    if input[0] == {"e", "E"}:
+    if input[0] in {"e", "E"}:
         return input[0] + state_exponent_sign(input[1:], stack)
     return None
 
 
 @state
 def state_exponent_sign(input: str, stack: list[str]) -> str | None:
+    # NOTE:
+    # the https://github.com/marklar423/jsonreadercpp?tab=readme-ov-file didn't accept "e" or "E" without sign
+    if input[0].isdigit():
+        return input[0] + state_exponent_digits(input[1:], stack)
+
     if input[0] in {"+", "-"}:
         return input[0] + state_exponent_digits(input[1:], stack)
     return None

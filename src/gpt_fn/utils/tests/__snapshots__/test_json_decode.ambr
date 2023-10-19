@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: test_fixed_json_safe_case[case0.json]
   dict({
-    'age': 330,
+    'age': 30,
     'email': 'johndoe@example.com',
     'name': 'John Doe',
   })
@@ -10,7 +10,7 @@
   dict({
     'location': 'New York',
     'person': dict({
-      'age': 225,
+      'age': 25,
       'name': 'Alice',
     }),
   })
@@ -53,6 +53,11 @@
     'subject': 'XYZ ELECTRONICS LTD.: Celebrating 50 Years of Excellence in the Electrical and Electronics Industry',
   })
 # ---
+# name: test_fixed_json_safe_case[case13.json]
+  dict({
+    'scientific_notation_example': 2500.0,
+  })
+# ---
 # name: test_fixed_json_safe_case[case2.json]
   dict({
     'fruits': list([
@@ -71,11 +76,11 @@
   dict({
     'employees': list([
       dict({
-        'id': 1101,
+        'id': 101,
         'name': 'Employee 1',
       }),
       dict({
-        'id': 1102,
+        'id': 102,
         'name': 'Employee 2',
       }),
     ]),
@@ -96,8 +101,8 @@
 # ---
 # name: test_fixed_json_safe_case[case6.json]
   dict({
-    'float': 33.14,
-    'integer': 442,
+    'float': 3.14,
+    'integer': 42,
   })
 # ---
 # name: test_fixed_json_safe_case[case7.json]
