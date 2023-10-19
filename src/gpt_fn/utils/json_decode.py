@@ -4,8 +4,10 @@ from functools import wraps
 def state(fn):
     @wraps(fn)
     def wrapper(input: str, stack: list[str] = []) -> str:
-        r = fn(input, stack)
-        if r is None:
+        try:
+            r = fn(input, stack)
+            assert r is not None
+        except AssertionError:
             raise ValueError("Invalid JSON {input} in {fn.__name__}")
         return r
     return wrapper
@@ -96,23 +98,24 @@ def state_post_value(input: str, stack: list[str]) -> str:
 
 @state
 def state_value_string(input: str, stack: list[str]) -> str:
-    if input[0] == '"':
-        # TODO: 
-        return input[0] + state_post_value(input[1:], stack)
-
-    if input[0] == "\\":
-        return input[0] + state_escape_char(input[1:], stack + ["v"])
-    
-    return input[0] + state_value_string(input[1:], stack)
-    
+    for i in range(len(input)):
+        if input[i] == '"':
+            try:
+                return input[:i+1] + state_post_value(input[i+1:], stack)
+            except ValueError:
+                # NOTE: assume there is missing escape char
+                return input[:i] + state_value_string("\\" + input[i:], stack)
+            
+        if input[i] == "\\":
+            return input[:i+1] + state_escape_char(input[i+1:], stack + ["v"])
+        
+@state 
 def state_property_string(input: str, stack: list[str]) -> str:
-    if input[0] == '"':
-        return input[0] + state_post_property(input[1:], stack)
-
-    if input[0] == "\\":
-        return input[0] + state_property_string(input[1:], stack + ["p"])
-    
-    return input[0] + state_property_string(input[1:], stack)
+    for i in range(len(input)):
+        if input[i] == '"':
+            return input[:i+1] + state_post_property(input[i+1:], stack)
+        if input[i] == "\\":
+            return input[:i+1] + state_escape_char(input[i+1:], stack + ["p"])
 
 @state
 def state_escape_char(input: str, stack: list[str]) -> str:
