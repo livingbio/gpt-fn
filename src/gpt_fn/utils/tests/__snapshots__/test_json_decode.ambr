@@ -180,7 +180,7 @@
     }),
   })
 # ---
-# name: test_fixed_json_unsafe_case[case.json]
+# name: test_fixed_json_unsafe_case[case.jsonx]
   dict({
     'body': '''
       Dear valued client,
