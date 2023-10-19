@@ -1,0 +1,10 @@
+{
+    "escape_characters_example": {
+        "double_quotes": "This is a string with escaped double quotes: \"Hello, World!\"",
+        "backslash": "This is a string with an escaped backslash: C:\\Program Files\\",
+        "forward_slash": "This is a string with an escaped forward slash: http:\\/\\/example.com",
+        "newline": "This is a string with a newline character: Line 1\nLine 2",
+        "tab": "This is a string with a tab character: Before\tAfter",
+        "unicode": "This is a string with an escaped Unicode character: \\u00A9 (Copyright symbol)"
+    }
+}

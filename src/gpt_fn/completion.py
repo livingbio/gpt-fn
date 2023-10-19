@@ -4,7 +4,7 @@ import openai
 import pydantic
 
 from .exceptions import CompletionIncompleteError
-from .utils import signature
+from .utils import json_decode, signature
 
 T = TypeVar("T", bound=pydantic.BaseModel)
 
@@ -137,6 +137,7 @@ def structural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    auto_repair: bool = True,
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
@@ -173,7 +174,9 @@ def structural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        return pydantic.parse_raw_as(structure, args)
+        parsed_json = json_decode.loads(args, auto_repair)
+
+        return pydantic.parse_obj_as(structure, parsed_json)
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
@@ -192,6 +195,7 @@ async def astructural_completion(
     frequency_penalty: float = 0.0,
     presence_penalty: float = 0.0,
     user: str = "",
+    auto_correct: bool = True,
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
@@ -228,7 +232,9 @@ async def astructural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        return pydantic.parse_raw_as(structure, args)
+        parsed_json = json_decode.loads(args, auto_correct)
+
+        return pydantic.parse_obj_as(structure, parsed_json)
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
