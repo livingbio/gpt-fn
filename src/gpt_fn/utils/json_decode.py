@@ -258,19 +258,19 @@ def state_exponent_digits(input: str, stack: list[str]) -> str | None:
     return None
 
 
-def correct_json(json_str: str) -> str:
+def repair_json(json_str: str) -> str:
     return state_start(json_str)
 
 
-def loads(json_str: str, autofix: bool = False) -> dict[str, Any]:
+def loads(json_str: str, auto_repair: bool = False) -> dict[str, Any]:
     try:
         return json.loads(json_str)
     except json.decoder.JSONDecodeError:
-        if not autofix:
+        if not auto_repair:
             raise
 
     try:
-        corrected_json = correct_json(json_str)
+        corrected_json = repair_json(json_str)
     except Exception as e:
         raise json.decoder.JSONDecodeError(f"Failed to correct JSON: {e}", json_str, 0)
 
