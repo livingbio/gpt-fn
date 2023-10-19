@@ -61,17 +61,37 @@
     }),
     'escape © OpenAI •': False,
     'escape"property': None,
-    'int_in_array': list([
+    'int_array': list([
       1,
       2,
       3,
+      4,
     ]),
+    'int_in_array': list([
+      1,
+      2,
+      3000.0,
+    ]),
+    'int_in_obj': dict({
+      'a': 3,
+    }),
     'sci_in_array': list([
       1.2,
       -1.2,
       0.00025,
+      dict({
+        'a': 0.00025,
+        'b': 0.00025,
+      }),
     ]),
     'scientific_notation_example': 2500.0,
+    'x': list([
+      2.5,
+    ]),
+    'y': dict({
+      'a': 2.5,
+      'b': 2.5,
+    }),
   })
 # ---
 # name: test_fixed_json_safe_case[case2.json]
