@@ -1,10 +1,11 @@
 from typing import Any, Callable, Type, TypedDict, TypeVar
 
+import fuzzy_json
 import openai
 import pydantic
 
 from .exceptions import CompletionIncompleteError
-from .utils import json_decode, signature
+from .utils import signature
 
 T = TypeVar("T", bound=pydantic.BaseModel)
 
@@ -174,7 +175,7 @@ def structural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        parsed_json = json_decode.loads(args, auto_repair)
+        parsed_json = fuzzy_json.loads(args, auto_repair)
 
         return pydantic.parse_obj_as(structure, parsed_json)
 
@@ -232,7 +233,7 @@ async def astructural_completion(
 
     if "function_call" in message and finish_reason == "stop":
         args = message.function_call.arguments
-        parsed_json = json_decode.loads(args, auto_repair)
+        parsed_json = fuzzy_json.loads(args, auto_repair)
 
         return pydantic.parse_obj_as(structure, parsed_json)
 
