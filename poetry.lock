@@ -537,13 +537,13 @@ files = [
 
 [[package]]
 name = "fuzy-jon"
-version = "0.0.3"
+version = "0.0.4"
 description = ""
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "fuzy_jon-0.0.3-py3-none-any.whl", hash = "sha256:68516885cb9062937dfd08175581b7aeb38d31d5489d6d51e24e2b62ac646448"},
-    {file = "fuzy_jon-0.0.3.tar.gz", hash = "sha256:19998d1c67affded61304e8c9a6c195fab7c22dd7c5a2e77fa8fb32f3d40a6f4"},
+    {file = "fuzy_jon-0.0.4-py3-none-any.whl", hash = "sha256:bb2e04ef8e45916d181b6fde0a75cd220c4244ba05d50282923283232b3dc0f7"},
+    {file = "fuzy_jon-0.0.4.tar.gz", hash = "sha256:e5bedd72040086fc0258428c84951b86174ea2636425abbd36c2392a978ed61d"},
 ]
 
 [[package]]
