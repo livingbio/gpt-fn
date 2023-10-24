@@ -853,17 +853,17 @@ python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
 
 [[package]]
 name = "mkdocstrings-python"
-version = "1.1.2"
+version = "1.7.3"
 description = "A Python handler for mkdocstrings."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "mkdocstrings_python-1.1.2-py3-none-any.whl", hash = "sha256:c2b652a850fec8e85034a9cdb3b45f8ad1a558686edc20ed1f40b4e17e62070f"},
-    {file = "mkdocstrings_python-1.1.2.tar.gz", hash = "sha256:f28bdcacb9bcdb44b6942a5642c1ea8b36870614d33e29e3c923e204a8d8ed61"},
+    {file = "mkdocstrings_python-1.7.3-py3-none-any.whl", hash = "sha256:2439d6ad3e34f0bb4c643b845fb3c06ae9233499a1736f9fa273424b75cc5894"},
+    {file = "mkdocstrings_python-1.7.3.tar.gz", hash = "sha256:c20128fa96c24dbc6437b10dfedaf33b0415d4503e51ce9ce5e84b271278268e"},
 ]
 
 [package.dependencies]
-griffe = ">=0.24"
+griffe = ">=0.35"
 mkdocstrings = ">=0.20"
 
 [[package]]
