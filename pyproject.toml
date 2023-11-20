@@ -26,7 +26,7 @@ pytest-recording = ">=0.12.2,<0.14.0"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.2"
 mkdocs-material = "^9.1.15"
-mkdocstrings = { extras = ["python"], version = ">=0.22,<0.24" }
+mkdocstrings = { extras = ["python"], version = ">=0.22,<0.25" }
 mypy = "^1.4.1"
 
 [tool.poetry-dynamic-versioning]
