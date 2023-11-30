@@ -21,6 +21,12 @@ class Email(BaseModel):
     body: str = Field(description="the body of email")
 
 
+def test_pydantic_parser_parse(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == PydanticParser[Email](pydantic_model=Email).parse(
+        """json\n{\n  "subject": "Revolutionizing the E-Bike Industry with Innovative Aluminum Frames",\n  "body": "Dear valued client,\\n\\nWe are excited to share with you the latest news from JIN-JI International Co., Ltd. We have revolutionized the E-Bike industry with our innovative aluminum frames for SPACIOUS Industrial Co., Ltd. in Taiwan. Our commitment to innovation and customer satisfaction has positioned us as a key player in the market.\\n\\nCEO Xiao Ming, Chen, emphasizes, \\"We provide the best quality products,\\" reflecting our dedication to excellence.\\n\\nTo learn more about our revolutionary aluminum frames and how they offer increased rigidity, stability, and safety for riders, we invite you to visit our website at https://jinji.en.taiwantrade.com/. We believe that our innovative designs will support complex structures for electric bikes, ensuring a confident and secure riding experience.\\n\\nThank you for your continued support, and we look forward to bringing you more groundbreaking developments in the future.\\n\\nBest regards,\\n[Your Name]\\nJIN-JI International Co., Ltd."\n}\n"""
+    )
+
+
 @pytest.mark.vcr(match_on=["method", "scheme", "host", "port", "path", "query", "body"])
 @pytest.mark.parametrize("test_filename, model", [("email.txt", Email)])
 def test_pydantic_parser_with_prompt(snapshot: SnapshotAssertion, test_filename: str, model: type[BaseModel], datadir: Path) -> None:
