@@ -3,15 +3,7 @@
   'Hello! I am a helpful assistant here to assist with any questions or tasks you may have. How can I assist you today?'
 # ---
 # name: test_afunction_completion
-  OpenAIObject({
-    'arguments': '''
-      {
-        "date": "2022-10-15",
-        "destination": "London"
-      }
-    ''',
-    'name': 'book_a_flight',
-  })
+  FunctionCall(arguments='{\n  "date": "2022-08-15",\n  "destination": "London"\n}', name='book_a_flight')
 # ---
 # name: test_astructural_completion
   Email(subject='Hello!', body="Dear [Recipient's Name],\n\nI hope this email finds you well. I just wanted to reach out and say hello. It has been a while since we last caught up and I wanted to see how you have been doing.\n\nIs there a good time for us to connect and catch up? I would love to hear about all the exciting things happening in your life.\n\nLooking forward to hearing from you!\n\nBest regards,\n[Your Name]")
@@ -68,15 +60,7 @@
   })
 # ---
 # name: test_function_completion
-  OpenAIObject({
-    'arguments': '''
-      {
-        "date": "2022-12-01",
-        "destination": "London"
-      }
-    ''',
-    'name': 'book_a_flight',
-  })
+  FunctionCall(arguments='{\n  "date": "2021-10-15",\n  "destination": "London"\n}', name='book_a_flight')
 # ---
 # name: test_function_completion_without_enough_tokens
   'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:Sure! I can help you with that.'

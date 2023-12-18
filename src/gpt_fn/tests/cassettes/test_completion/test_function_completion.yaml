@@ -2,49 +2,59 @@ interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "I want to book a flight to London."}], "model":
-      "gpt-3.5-turbo-0613", "temperature": 1.0, "top_p": 1.0, "frequency_penalty":
-      0.0, "presence_penalty": 0.0, "user": "", "stop": null, "functions": [{"name":
-      "book_a_flight", "description": "", "parameters": {"type": "object", "required":
-      ["date", "destination"], "properties": {"date": {"title": "Date", "type": "string"},
-      "destination": {"title": "Destination", "type": "string"}, "origin": {"title":
-      "Origin", "default": "London", "type": "string"}}, "definitions": {}}}], "function_call":
-      "auto"}'
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "temperature": 1.0, "top_p": 1.0,
+      "user": ""}'
     headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '652'
-      Content-Type:
+      accept:
       - application/json
-      User-Agent:
-      - OpenAI/v1 PythonBindings/0.27.8
-      X-OpenAI-Client-User-Agent:
-      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
-        "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
-        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
-        PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '652'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.3.9
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.9
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
-    body:
-      string: "{\n  \"id\": \"chatcmpl-7i3U48gvwOzHTfMA2LUFmU7BytwmF\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1690734180,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
-        \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
-        \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n
-        \         \"name\": \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\":
-        \\\"2022-12-01\\\",\\n  \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n
-        \     },\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
-        {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
-        95\n  }\n}\n"
+    content: "{\n  \"id\": \"chatcmpl-8X2pOH9JZ5IBZNtH5N74pLkBUvwCm\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702886386,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\": \\\"2021-10-15\\\",\\n
+      \ \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
+      {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
+      95\n  },\n  \"system_fingerprint\": null\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7eeef18e6b464a6f-TPE
+      - 8375de4b09664a6e-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -54,9 +64,15 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 30 Jul 2023 16:23:01 GMT
+      - Mon, 18 Dec 2023 07:59:47 GMT
       Server:
       - cloudflare
+      Set-Cookie:
+      - __cf_bm=3lSxT03kzCt3j_xYifLh0KPL54Q6SHSV1ZO5zXafV1o-1702886387-1-AaY5p+/BWGyHrkasYrMgAM/zC/9BWrYxFoPxJfETjEPUYC9XDb6unR7FV7zmuhKhYpBHbKY1JFi8sszewgMA4Gw=;
+        path=/; expires=Mon, 18-Dec-23 08:29:47 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=uhiot6cVMXpZfx4.jHZY6IE8NMJdrtl_q8R0QBNvr5E-1702886387915-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
       access-control-allow-origin:
@@ -66,26 +82,31 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '1180'
+      - '1024'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
       - max-age=15724800; includeSubDomains
       x-ratelimit-limit-requests:
-      - '3500'
+      - '10000'
       x-ratelimit-limit-tokens:
-      - '90000'
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
       x-ratelimit-remaining-requests:
-      - '3499'
+      - '9999'
       x-ratelimit-remaining-tokens:
-      - '89965'
+      - '1999965'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999965'
       x-ratelimit-reset-requests:
-      - 17ms
+      - 6ms
       x-ratelimit-reset-tokens:
-      - 22ms
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
       x-request-id:
-      - e5dd2d7e7fb5d7fd3c45fe591178ab71
-    status:
-      code: 200
-      message: OK
+      - 15345a9144cd6c6820c6d46e00ca98d3
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

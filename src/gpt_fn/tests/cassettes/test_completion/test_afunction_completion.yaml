@@ -81,4 +81,334 @@ interactions:
       code: 200
       message: OK
     url: https://api.openai.com/v1/chat/completions
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a flight to London."}], "model":
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "temperature": 1.0, "top_p": 1.0,
+      "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '652'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.3.9
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.9
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8X3Rsmcy0L2gagpLgTxSEXCf3B5nu\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702888772,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\": \\\"2022-08-15\\\",\\n
+      \ \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
+      {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
+      95\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8376188cd94d4a1b-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 18 Dec 2023 08:39:34 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=iPTutriSl5GS45eJkm4U4m2ed29aN8r7nfzNne3sqGQ-1702888774-1-AWKgTDQO1BU6nzpRepVdtSKD5YjJf8+iFWOeoCu2KSgDGhyn3sFfBYHCqI/PNNGtLMeqRkkarWGtJ4xsRaXBvp0=;
+        path=/; expires=Mon, 18-Dec-23 09:09:34 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=zlrepFeDp56HCK4GjixNH1X5I2IdsgsD8mSAoTKwneU-1702888774226-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '1105'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999965'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999965'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
+      x-request-id:
+      - 17dc404ace9dbeefba35940532bfeced
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a flight to London."}], "model":
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "temperature": 1.0, "top_p": 1.0,
+      "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '652'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.3.9
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.9
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8X3Utn99nPRoGoJpfi2jedsDZZoCs\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702888959,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\": \\\"2022-07-15\\\",\\n
+      \ \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
+      {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
+      95\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 83761d186ff84a7e-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 18 Dec 2023 08:42:40 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=OxTkn35Z8EEqkRsOoF.6NC.e4Z2rmIUGFOXhpjo4cyw-1702888960-1-Afz176VG8lZj/62Gu4ywkq3279RMzcwdlG/m400HnMfUgfyRwJAdiMcG5/qhCtWAGlqX1LLfw+/XCiBfMaPiCCs=;
+        path=/; expires=Mon, 18-Dec-23 09:12:40 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=g6oV6X7LLCFm_.0sxr13uOZtZ6xmDfJV_fE7gV3IrPI-1702888960408-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '1117'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999965'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999965'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
+      x-request-id:
+      - f2baa8c34e422b1aa7d0926c647dfe21
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a flight to London."}], "model":
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "temperature": 1.0, "top_p": 1.0,
+      "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '652'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - AsyncOpenAI/Python 1.3.9
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.3.9
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8X3VRLvY2YJeZ1NAj1WCkVKvMw7mE\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702888993,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\": \\\"2021-08-15\\\",\\n
+      \ \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
+      {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
+      95\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 83761ded0de16a86-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 18 Dec 2023 08:43:14 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=psEs3cRT7.IWBZoWC7WXa7q3McY1Uv5Li_IeJKl5Ztk-1702888994-1-AS6aj7JlnUqp9oajsxNnaxRAUmkJY+DwN523B//i0mNtYZ6qCveQa3SCxoH3//k/eBTAxyIEyYBgSXMZA/YcoiI=;
+        path=/; expires=Mon, 18-Dec-23 09:13:14 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=aumQA_fW_8I41U1oR1fn806BQwOL6dR36DSPBgVfGYg-1702888994391-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '1099'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999965'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999965'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
+      x-request-id:
+      - 26a54147c78e4e609da36758ed959627
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

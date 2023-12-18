@@ -2,7 +2,10 @@ from typing import Any, Callable, Type, TypedDict, TypeVar
 
 import fuzzy_json
 import openai
+from openai import AzureOpenAI, OpenAI, AsyncOpenAI, AsyncAzureOpenAI
 import pydantic
+import os
+import logging
 
 from .exceptions import CompletionIncompleteError
 from .utils import signature
@@ -21,9 +24,44 @@ class FunctionMessage(Message):
 
 class APISettings(pydantic.BaseModel):
     api_key: str = pydantic.Field(default_factory=lambda: openai.api_key)
-    api_base: str = pydantic.Field(default_factory=lambda: openai.api_base)
+    azure_endpoint: str = pydantic.Field(default_factory=lambda: openai.azure_endpoint)
     api_type: str = pydantic.Field(default_factory=lambda: openai.api_type)
     api_version: str | None = pydantic.Field(default_factory=lambda: openai.api_version)
+
+
+def get_client(model: str ,api_settings: APISettings = APISettings(), Async: bool = False) -> OpenAI | AzureOpenAI:
+    if api_settings.api_key is None:
+        if os.environ.get("OPENAI_API_KEY"):
+            api_settings.api_key =  os.environ.get("OPENAI_API_KEY")
+            api_settings.api_type = "open_ai"
+        elif os.environ.get("AZURE_API_KEY"):
+            api_settings.api_key =  os.environ.get("AZURE_API_KEY")
+            api_settings.api_type = "azure"
+        else:
+            raise ValueError("api_key must be set")
+    
+    if Async:
+        if api_settings.api_type == "open_ai":
+            return AsyncOpenAI(api_key=api_settings.api_key)
+        elif api_settings.api_type == "azure":
+            return AsyncAzureOpenAI(
+                azure_endpoint=api_settings.azure_endpoint,
+                api_key=api_settings.api_key,
+                api_version=api_settings.api_version,
+                azure_deployment=model,
+            )
+    else:
+        if api_settings.api_type == "open_ai":
+            return OpenAI(api_key=api_settings.api_key)
+        elif api_settings.api_type == "azure":
+            return AzureOpenAI(
+                azure_endpoint=api_settings.azure_endpoint,
+                api_key=api_settings.api_key,
+                api_version=api_settings.api_version,
+                azure_deployment=model,
+            )
+    
+    raise ValueError(f"Unknown api_type {api_settings.api_type}")
 
 
 def function_completion(
@@ -53,22 +91,21 @@ def function_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client = get_client(model, api_settings, Async=False)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = openai.ChatCompletion.create(**kwargs)
+    response = client.chat.completions.create(**kwargs)
+    
     output = response.choices[0]
-    message = output["message"]
+    message = output.message
     finish_reason = output.finish_reason
-
-    if "function_call" in message and finish_reason in ["stop", "function_call"]:
-        return message["function_call"]
+    
+    if message.function_call is not None and finish_reason in ["stop", "function_call"]:
+        return message.function_call
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
@@ -104,22 +141,20 @@ async def afunction_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client = get_client(model, api_settings, Async=True)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = await openai.ChatCompletion.acreate(**kwargs)
+    response = await client.chat.completions.create(**kwargs)
     output = response.choices[0]
-    message = output["message"]
+    message = output.message
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason in ["stop", "function_call"]:
-        return message["function_call"]
+    if message.function_call is not None and finish_reason in ["stop", "function_call"]:
+        return message.function_call
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",

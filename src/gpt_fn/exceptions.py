@@ -1,6 +1,7 @@
 from typing import Any
 
-from openai.openai_object import OpenAIObject
+# from openai.openai_object import OpenAIObject
+from openai.types.chat import ChatCompletion
 
 
 class GptFnError(Exception):
@@ -8,7 +9,7 @@ class GptFnError(Exception):
 
 
 class CompletionIncompleteError(GptFnError):
-    def __init__(self, msg: str, request: dict[str, Any], response: OpenAIObject) -> None:
+    def __init__(self, msg: str, request: dict[str, Any], response: ChatCompletion) -> None:
         super().__init__(msg)
         self.response = response
         self.request = request
