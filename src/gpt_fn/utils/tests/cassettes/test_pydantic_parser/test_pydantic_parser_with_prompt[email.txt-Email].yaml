@@ -139,4 +139,159 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": ""}, {"role": "user", "content":
+      "Given the press release article of our company: \"RIVERTON Industries - Revolutionizing
+      the Aluminum Casting Industry for E-Bikes\n\nRIVERTON Industries is a leading
+      manufacturer and exporter of aluminum casting products for E-Bikes. Established
+      in 2022, the company has quickly gained a reputation for its innovative approach
+      to aluminum frame manufacturing. We offer one-stop solutions for customized
+      bike frames, which include designing, manufacturing, and assembly services.\n\n###
+      About RIVERTON Industries\nRIVERTON Industries is an innovative international
+      company specializing in aluminum casting products for E-Bikes. The company is
+      committed to providing innovative aluminum frames built for bicycles and modular
+      features for multiple modeling combinations. We offer ready-to-use products
+      and vehicle assembly services that meet customer satisfaction and provide specialized
+      services tailored to their requirements.\n\nRIVERTON Industries is revolutionizing
+      the aluminum casting industry for E-bikes. Our main product, the Aluminum frame
+      for E-bike, is available in three models - 001, 002, and 003 but more could
+      be customized. The one-piece-formed bike frame provides increased rigidity,
+      improving the stability and safety of the ride. The solid frame made of aluminum
+      pipeline built-in supports complex designs for electric bikes.\n\nOur one-stop
+      solution for customized bike frames has made us a popular choice among customers.
+      We offer a range of products, including the Electric bike frame, Aluminum motor
+      frames for E-bikes, Motor frames for E-bikes, and Customized Motor frames for
+      E-bikes.\n\nRIVERTON Industries exports its products to Europe and the USA.
+      Our commitment to quality has earned us a reputation for producing high-quality
+      aluminum frames that meet international standards.\n\nIn conclusion, RIVERTON
+      Industries is a company that is revolutionizing the aluminum casting industry
+      for E-bikes. Our innovative approach to manufacturing aluminum frames and one-stop
+      solutions for customized bike frames has made us a popular choice among customers.
+      If you''re looking for high-quality aluminum frames for your E-bikes, visit
+      our website at https://riverton.example.com/.\"\n"}], "model": "gpt-3.5-turbo-0613",
+      "frequency_penalty": 0.0, "function_call": {"name": "structural_response"},
+      "functions": [{"name": "structural_response", "description": "Response to user
+      in a structural way.", "parameters": {"title": "Email", "type": "object", "properties":
+      {"subject": {"title": "Subject", "description": "the subject of email", "type":
+      "string"}, "body": {"title": "Body", "description": "the body of email", "type":
+      "string"}}, "required": ["subject", "body"]}}], "presence_penalty": 0.0, "temperature":
+      1.0, "top_p": 1.0, "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2838'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8XOfSvfuYsXABlFPtyFm7qGKsJeUj\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702970338,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"structural_response\",\n          \"arguments\": \"{\\n  \\\"subject\\\":
+      \\\"Press Release: RIVERTON Industries - Revolutionizing the Aluminum Casting
+      Industry for E-Bikes\\\",\\n  \\\"body\\\": \\\"Dear [Recipient],\\\\n\\\\nWe
+      are pleased to announce that RIVERTON Industries is revolutionizing the aluminum
+      casting industry for E-Bikes. Our innovative approach to manufacturing aluminum
+      frames and one-stop solutions for customized bike frames has made us a popular
+      choice among customers.\\\\n\\\\nAbout RIVERTON Industries:\\\\nRIVERTON Industries
+      is an innovative international company specializing in aluminum casting products
+      for E-Bikes. We offer one-stop solutions for customized bike frames, which include
+      designing, manufacturing, and assembly services. Our commitment to quality has
+      earned us a reputation for producing high-quality aluminum frames that meet
+      international standards.\\\\n\\\\nKey Products:\\\\n- Aluminum frame for E-bike:
+      Available in three models - 001, 002, and 003, but more can be customized. The
+      one-piece-formed bike frame provides increased rigidity, improving the stability
+      and safety of the ride.\\\\n- Electric bike frame\\\\n- Aluminum motor frames
+      for E-bikes\\\\n- Motor frames for E-bikes\\\\n- Customized Motor frames for
+      E-bikes\\\\n\\\\nExport Market:\\\\nRIVERTON Industries exports its products
+      to Europe and the USA.\\\\n\\\\nFor more information or to inquire about our
+      products, please visit our website at [Website URL].\\\\n\\\\nThank you for
+      your attention.\\\\n\\\\nSincerely,\\\\n[Your Name]\\\\n[Your Title]\\\\nRIVERTON
+      Industries\\\"\\n}\"\n        }\n      },\n      \"logprobs\": null,\n      \"finish_reason\":
+      \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 480,\n    \"completion_tokens\":
+      315,\n    \"total_tokens\": 795\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 837ddfe4c88b6b60-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:19:08 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=Ld2aA4PbY_yuaFqy.1tORmDG8WiR.SKko7mjfu8AZok-1702970348-1-AbYk58P/dFu7fUsUNHwx+rvVOAgmXLr4y7wO3chQ+tc//esy1haQJDarLWJ9CD3/Dvz8zju4QyotcN4lqliNgHc=;
+        path=/; expires=Tue, 19-Dec-23 07:49:08 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=fjTPj0SAs5Y102Ls9mZePDJYpFfa3ORqCrd04EAn01c-1702970348574-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '10038'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999435'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999435'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 16ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 16ms
+      x-request-id:
+      - 448f8870a9b5f740fd4f1b3c5a10a2c8
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

@@ -88,4 +88,114 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a restaurant in London."}], "model":
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "stream": false, "temperature":
+      1.0, "top_p": 1.0, "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '673'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8XOfAwJX6Ge19i1aKPlxmkfQJou3Y\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702970320,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": \"Sure, I can help you with that. Can you
+      please provide me with the date and time you would like to book the restaurant
+      for, as well as any specific preferences or requirements you may have?\"\n      },\n
+      \     \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 41,\n
+      \   \"total_tokens\": 108\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 837ddf767ab24a58-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:18:42 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=xEUOoLRhpgdcbDu1YtkQdwisWC3oLnK1mF2Ds8_iujc-1702970322-1-AVc3YDZlquXs5rfLBiQtPLBxce/j9TLzDQ6w4ioEEe0HlpxT+Qt/zl0IT7TJxAiVHrTl/Er05pCcVlzEA5mhmHs=;
+        path=/; expires=Tue, 19-Dec-23 07:48:42 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=hUpZadYiWDq0si4Dk0.OmQjV54yGkk_sKFTq6zvgl98-1702970322277-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '1399'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999964'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999964'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
+      x-request-id:
+      - f724b5890e840406be43fdd048be30b7
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

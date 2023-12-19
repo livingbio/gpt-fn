@@ -109,4 +109,114 @@ interactions:
       - 15345a9144cd6c6820c6d46e00ca98d3
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "I want to book a flight to London."}], "model":
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "stream": false, "temperature":
+      1.0, "top_p": 1.0, "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '669'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8XOf6mv1YEr8NmMxAU8zjH6EYgCcr\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702970316,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"book_a_flight\",\n          \"arguments\": \"{\\n  \\\"date\\\": \\\"2021-08-20\\\",\\n
+      \ \\\"destination\\\": \\\"London\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"function_call\"\n    }\n  ],\n  \"usage\":
+      {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 28,\n    \"total_tokens\":
+      95\n  },\n  \"system_fingerprint\": null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 837ddf5adcb84aa2-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:18:37 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=qqcNSaYHLQP2heBpDnIO25qCYnavw7kGFTgRsnlzQrQ-1702970317-1-AeL1WMUQTS/bbWTt4B+tB/dIPaK7ADDBl0JaCg41Sf1bsrMNvZsMY5cF30uhNXs/stymSS+AeLoNa+gjq49+o5Y=;
+        path=/; expires=Tue, 19-Dec-23 07:48:37 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=NXnNLCfCAZt6_wtWZQZyr.X6B_sQ9lz5HEFgOsXQKD0-1702970317419-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '971'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999965'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999965'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
+      x-request-id:
+      - 93f4cd5b5850abfd9e8afd8742a2152c
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
