@@ -1,6 +1,5 @@
 from typing import Any
 
-# from openai.openai_object import OpenAIObject
 from openai.types.chat import ChatCompletion
 
 
