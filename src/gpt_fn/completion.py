@@ -208,7 +208,7 @@ def structural_completion(
     message = output.message
     finish_reason = output.finish_reason
 
-    if output.finish_reason is not None and finish_reason == "stop":
+    if message.function_call is not None and finish_reason == "stop":
         args = message.function_call.arguments
         parsed_json = fuzzy_json.loads(args, auto_repair)
 
@@ -264,7 +264,7 @@ async def astructural_completion(
     message = output.message
     finish_reason = output.finish_reason
 
-    if output.finish_reason is not None and finish_reason == "stop":
+    if message.function_call is not None and finish_reason == "stop":
         args = message.function_call.arguments
         parsed_json = fuzzy_json.loads(args, auto_repair)
 
@@ -300,12 +300,12 @@ def chat_completion(
         stop=stop or None,
     )
 
-    client = get_client(model, api_settings, Async=False)
+    client: Any = get_client(model, api_settings, Async=False)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = client.chat.completions.create(**kwargs)  # type: ignore[call-overload]
+    response = client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     output_message = output.message.content.strip()
