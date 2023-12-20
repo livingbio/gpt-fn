@@ -9,7 +9,7 @@ include = ["fn/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-openai = "1.5.0"
+openai = ">=1.0.0"
 pydantic = ">=1,<2"
 jinja2 = "*"
 docstring-parser = "*"
