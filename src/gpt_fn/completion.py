@@ -28,38 +28,45 @@ class APISettings(pydantic.BaseModel):
     api_version: str | None = pydantic.Field(default_factory=lambda: openai.api_version)
 
 
-def get_client(model: str, api_settings: APISettings = APISettings(), Async: bool = False) -> OpenAI | AsyncOpenAI:
-    if api_settings.api_key is None:
-        if os.environ.get("OPENAI_API_KEY"):
-            api_settings.api_key = os.environ.get("OPENAI_API_KEY")
-            api_settings.api_type = "open_ai"
-        elif os.environ.get("AZURE_API_KEY"):
-            api_settings.api_key = os.environ.get("AZURE_API_KEY")
-            api_settings.api_type = "azure"
-        else:
-            raise ValueError("api_key must be set")
-
-    if Async:
-        if api_settings.api_type == "open_ai":
-            return AsyncOpenAI(api_key=api_settings.api_key)
-        elif api_settings.api_type == "azure":
-            return AsyncAzureOpenAI(
-                azure_endpoint=api_settings.api_base,
-                api_key=api_settings.api_key,
-                api_version=api_settings.api_version,
-                azure_deployment=model,
-            )
+def get_api_type() -> str:
+    if os.environ.get("OPENAI_API_KEY"):
+        return "open_ai"
+    elif os.environ.get("AZURE_API_KEY"):
+        return "azure"
     else:
-        if api_settings.api_type == "open_ai":
-            return OpenAI(api_key=api_settings.api_key)
-        elif api_settings.api_type == "azure":
-            return AzureOpenAI(
-                azure_endpoint=api_settings.api_base,
-                api_key=api_settings.api_key,
-                api_version=api_settings.api_version,
-                azure_deployment=model,
-            )
+        raise ValueError("No api key found in environment variables")
 
+
+def get_sync_client(model: str, api_settings: APISettings = APISettings()) -> OpenAI:
+    if api_settings.api_type is None:
+        api_settings.api_type = get_api_type()
+
+    if api_settings.api_type == "open_ai":
+        return OpenAI(api_key=api_settings.api_key)
+    elif api_settings.api_type == "azure":
+        return AzureOpenAI(
+            azure_endpoint=api_settings.api_base,
+            api_key=api_settings.api_key,
+            api_version=api_settings.api_version,
+            azure_deployment=model,
+        )
+
+    raise ValueError(f"Unknown api_type {api_settings.api_type}")
+
+
+def get_async_client(model: str, api_settings: APISettings = APISettings()) -> AsyncOpenAI:
+    if api_settings.api_type is None:
+        api_settings.api_type = get_api_type()
+
+    if api_settings.api_type == "open_ai":
+        return AsyncOpenAI(api_key=api_settings.api_key)
+    elif api_settings.api_type == "azure":
+        return AsyncAzureOpenAI(
+            azure_endpoint=api_settings.api_base,
+            api_key=api_settings.api_key,
+            api_version=api_settings.api_version,
+            azure_deployment=model,
+        )
     raise ValueError(f"Unknown api_type {api_settings.api_type}")
 
 
@@ -92,12 +99,7 @@ def function_completion(
         function_call=function_call,
     )
 
-    result = get_client(model, api_settings, Async=False)
-
-    if isinstance(result, OpenAI):
-        client: OpenAI = result
-    else:
-        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -147,12 +149,7 @@ async def afunction_completion(
         function_call=function_call,
     )
 
-    result = get_client(model, api_settings, Async=True)
-
-    if isinstance(result, AsyncOpenAI):
-        client: AsyncOpenAI = result
-    else:
-        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -204,12 +201,7 @@ def structural_completion(
         function_call=function_call,
     )
 
-    result = get_client(model, api_settings, Async=False)
-
-    if isinstance(result, OpenAI):
-        client: OpenAI = result
-    else:
-        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if api_settings.api_type != "open_ai":
         kwargs["deployment_id"] = model
@@ -268,12 +260,7 @@ async def astructural_completion(
         function_call=function_call,
     )
 
-    result = get_client(model, api_settings, Async=True)
-
-    if isinstance(result, AsyncOpenAI):
-        client: AsyncOpenAI = result
-    else:
-        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -320,12 +307,7 @@ def chat_completion(
         stop=stop or None,
     )
 
-    result = get_client(model, api_settings, Async=False)
-
-    if isinstance(result, OpenAI):
-        client = result
-    else:
-        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -368,12 +350,7 @@ async def achat_completion(
         stop=stop or None,
     )
 
-    result = get_client(model, api_settings, Async=True)
-
-    if isinstance(result, AsyncOpenAI):
-        client = result
-    else:
-        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
