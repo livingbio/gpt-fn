@@ -92,4 +92,125 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "Give me a sample email."}], "model": "gpt-3.5-turbo-0613",
+      "frequency_penalty": 0.0, "function_call": {"name": "structural_response"},
+      "functions": [{"name": "structural_response", "description": "Response to user
+      in a structural way.", "parameters": {"title": "Email", "type": "object", "properties":
+      {"subject": {"title": "Subject", "description": "the subject of email", "type":
+      "string"}, "body": {"title": "Body", "description": "the body of email", "type":
+      "string"}}, "required": ["subject", "body"]}}], "presence_penalty": 0.0, "temperature":
+      1.0, "top_p": 1.0, "user": ""}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '687'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
+    method: POST
+    uri: https://api.openai.com/v1/chat/completions
+  response:
+    content: "{\n  \"id\": \"chatcmpl-8XOfCLkuPhxaNtqOkWP1qO9Gpn3b2\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1702970322,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": null,\n        \"function_call\": {\n          \"name\":
+      \"structural_response\",\n          \"arguments\": \"{\\n  \\\"subject\\\":
+      \\\"Regarding project deadline extension\\\",\\n  \\\"body\\\": \\\"Dear [Recipient],\\\\n\\\\nI
+      hope this email finds you well. I am writing to request a deadline extension
+      for the [Project Name]. The current deadline is [Original Deadline], but due
+      to unforeseen circumstances, we are experiencing delays in completing the project.\\\\n\\\\n[Explain
+      the reasons for the delay and any challenges faced.]\\\\n\\\\nWe understand
+      that this extension may cause inconvenience and we sincerely apologize for any
+      disruption caused. However, we assure you that we are working diligently to
+      overcome these challenges and deliver a high-quality project.\\\\n\\\\n[Propose
+      new deadline and any strategies to mitigate the delay.]\\\\n\\\\nThank you for
+      your understanding and support. We greatly appreciate your cooperation in this
+      matter.\\\\n\\\\nBest regards,\\\\n[Your Name]\\\\n[Your Position/Title]\\\\n[Your
+      Company/Organization]\\\\n\\\"\\n}\"\n        }\n      },\n      \"logprobs\":
+      null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\":
+      82,\n    \"completion_tokens\": 187,\n    \"total_tokens\": 269\n  },\n  \"system_fingerprint\":
+      null\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 837ddf82fd0f4a7e-TPE
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 07:18:48 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=1boEBlSGQVSDZ0OVTqscYZzNdBv0F4cWZQWoPrrl9T0-1702970328-1-ARaGip9QeqUWxvleo+bmFvK5FlC7IvdmW2HZM8NGtd7tv0xmx8NT3Ncks7jKFjOte8cx7KQeqM4Jli/sLaCrLU4=;
+        path=/; expires=Tue, 19-Dec-23 07:48:48 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Jpbf5OEbdkdjf.8fWIDooPK4bh3BqCsqfRez8okDobU-1702970328525-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-0613
+      openai-processing-ms:
+      - '5652'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '1999969'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999969'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-ratelimit-reset-tokens_usage_based:
+      - 0s
+      x-request-id:
+      - 124b9af226a36b6f84550cd68a300536
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

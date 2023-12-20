@@ -1,8 +1,10 @@
+import os
 from typing import Any, Callable, Type, TypedDict, TypeVar
 
 import fuzzy_json
 import openai
 import pydantic
+from openai import AsyncAzureOpenAI, AsyncOpenAI, AzureOpenAI, OpenAI
 
 from .exceptions import CompletionIncompleteError
 from .utils import signature
@@ -21,9 +23,51 @@ class FunctionMessage(Message):
 
 class APISettings(pydantic.BaseModel):
     api_key: str = pydantic.Field(default_factory=lambda: openai.api_key)
-    api_base: str = pydantic.Field(default_factory=lambda: openai.api_base)
+    api_base: str = pydantic.Field(default_factory=lambda: openai.azure_endpoint)
     api_type: str = pydantic.Field(default_factory=lambda: openai.api_type)
     api_version: str | None = pydantic.Field(default_factory=lambda: openai.api_version)
+
+
+def get_api_type() -> str:
+    if os.environ.get("OPENAI_API_KEY"):
+        return "open_ai"
+    elif os.environ.get("AZURE_API_KEY"):
+        return "azure"
+    else:
+        raise ValueError("No api key found in environment variables")
+
+
+def get_sync_client(model: str, api_settings: APISettings = APISettings()) -> OpenAI:
+    if api_settings.api_type is None:
+        api_settings.api_type = get_api_type()
+
+    if api_settings.api_type == "open_ai":
+        return OpenAI(api_key=api_settings.api_key)
+    elif api_settings.api_type == "azure":
+        return AzureOpenAI(
+            azure_endpoint=api_settings.api_base,
+            api_key=api_settings.api_key,
+            api_version=api_settings.api_version,
+            azure_deployment=model,
+        )
+
+    raise ValueError(f"Unknown api_type {api_settings.api_type}")
+
+
+def get_async_client(model: str, api_settings: APISettings = APISettings()) -> AsyncOpenAI:
+    if api_settings.api_type is None:
+        api_settings.api_type = get_api_type()
+
+    if api_settings.api_type == "open_ai":
+        return AsyncOpenAI(api_key=api_settings.api_key)
+    elif api_settings.api_type == "azure":
+        return AsyncAzureOpenAI(
+            azure_endpoint=api_settings.api_base,
+            api_key=api_settings.api_key,
+            api_version=api_settings.api_version,
+            azure_deployment=model,
+        )
+    raise ValueError(f"Unknown api_type {api_settings.api_type}")
 
 
 def function_completion(
@@ -42,7 +86,7 @@ def function_completion(
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -53,22 +97,21 @@ def function_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = openai.ChatCompletion.create(**kwargs)
+    response = client.chat.completions.create(**kwargs)
+
     output = response.choices[0]
-    message = output["message"]
+    message = output.message
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason in ["stop", "function_call"]:
-        return message["function_call"]
+    if message.function_call is not None and finish_reason in ["stop", "function_call"]:
+        return message.function_call
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
@@ -93,7 +136,7 @@ async def afunction_completion(
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -104,22 +147,20 @@ async def afunction_completion(
         stop=stop or None,
         functions=[signature.FunctionSignature(f).schema() for f in functions],
         function_call=function_call,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = await openai.ChatCompletion.acreate(**kwargs)
+    response = await client.chat.completions.create(**kwargs)
     output = response.choices[0]
-    message = output["message"]
+    message = output.message
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason in ["stop", "function_call"]:
-        return message["function_call"]
+    if message.function_call is not None and finish_reason in ["stop", "function_call"]:
+        return message.function_call
 
     raise CompletionIncompleteError(
         f"Incomplete response. Max tokens: {max_tokens}, Finish reason: {finish_reason} Message:{message.content}",
@@ -142,7 +183,7 @@ def structural_completion(
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -158,8 +199,9 @@ def structural_completion(
             }
         ],
         function_call=function_call,
-        **api_settings.dict(),
     )
+
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if api_settings.api_type != "open_ai":
         kwargs["deployment_id"] = model
@@ -167,13 +209,13 @@ def structural_completion(
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = openai.ChatCompletion.create(**kwargs)
+    response = client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     message = output.message
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason == "stop":
+    if message.function_call is not None and finish_reason == "stop":
         args = message.function_call.arguments
         parsed_json = fuzzy_json.loads(args, auto_repair)
 
@@ -200,7 +242,7 @@ async def astructural_completion(
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -216,22 +258,20 @@ async def astructural_completion(
             }
         ],
         function_call=function_call,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = await openai.ChatCompletion.acreate(**kwargs)
+    response = await client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     message = output.message
     finish_reason = output.finish_reason
 
-    if "function_call" in message and finish_reason == "stop":
+    if message.function_call is not None and finish_reason == "stop":
         args = message.function_call.arguments
         parsed_json = fuzzy_json.loads(args, auto_repair)
 
@@ -256,7 +296,7 @@ def chat_completion(
     user: str = "",
     api_settings: APISettings = APISettings(),
 ) -> str:
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -265,16 +305,14 @@ def chat_completion(
         presence_penalty=presence_penalty,
         user=user,
         stop=stop or None,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client: OpenAI = get_sync_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = openai.ChatCompletion.create(**kwargs)
+    response = client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     output_message = output.message.content.strip()
@@ -301,7 +339,7 @@ async def achat_completion(
     user: str = "",
     api_settings: APISettings = APISettings(),
 ) -> str:
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -310,16 +348,14 @@ async def achat_completion(
         presence_penalty=presence_penalty,
         user=user,
         stop=stop or None,
-        **api_settings.dict(),
     )
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
+    client: AsyncOpenAI = get_async_client(model, api_settings)
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = await openai.ChatCompletion.acreate(**kwargs)
+    response = await client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     output_message = output.message.content.strip()

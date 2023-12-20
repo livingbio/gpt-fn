@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Any, Callable, ParamSpec, TypeVar
 
-import openai.error
+import openai
 
 from .completion import chat_completion
 from .exceptions import AiFnError
@@ -30,7 +30,7 @@ def ai_fn(model: str = "gpt-3.5-turbo") -> Callable[[Callable[P, T]], Callable[P
 
             try:
                 resp = chat_completion(template.render(), temperature=0.0, model=model)
-            except openai.error.InvalidRequestError as e:
+            except openai.APIError as e:
                 fn_locals = sig.locals(*args, **kwargs)
                 raise AiFnError(fn_call, fn_locals) from e
 

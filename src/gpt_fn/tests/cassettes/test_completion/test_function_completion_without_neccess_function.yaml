@@ -2,49 +2,58 @@ interactions:
 - request:
     body: '{"messages": [{"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "I want to book a restaurant in London."}], "model":
-      "gpt-3.5-turbo-0613", "temperature": 1.0, "top_p": 1.0, "frequency_penalty":
-      0.0, "presence_penalty": 0.0, "user": "", "stop": null, "functions": [{"name":
-      "book_a_flight", "description": "", "parameters": {"type": "object", "required":
-      ["date", "destination"], "properties": {"date": {"title": "Date", "type": "string"},
-      "destination": {"title": "Destination", "type": "string"}, "origin": {"title":
-      "Origin", "default": "London", "type": "string"}}, "definitions": {}}}], "function_call":
-      "auto"}'
+      "gpt-3.5-turbo-0613", "frequency_penalty": 0.0, "function_call": "auto", "functions":
+      [{"name": "book_a_flight", "description": "", "parameters": {"type": "object",
+      "required": ["date", "destination"], "properties": {"date": {"title": "Date",
+      "type": "string"}, "destination": {"title": "Destination", "type": "string"},
+      "origin": {"title": "Origin", "default": "London", "type": "string"}}, "definitions":
+      {}}}], "presence_penalty": 0.0, "stop": null, "temperature": 1.0, "top_p": 1.0,
+      "user": ""}'
     headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '656'
-      Content-Type:
+      accept:
       - application/json
-      User-Agent:
-      - OpenAI/v1 PythonBindings/0.27.8
-      X-OpenAI-Client-User-Agent:
-      - '{"bindings_version": "0.27.8", "httplib": "requests", "lang": "python", "lang_version":
-        "3.11.4", "platform": "macOS-13.4.1-arm64-arm-64bit", "publisher": "openai",
-        "uname": "Darwin 22.5.0 Darwin Kernel Version 22.5.0: Thu Jun  8 22:22:19
-        PDT 2023; root:xnu-8796.121.3~7/RELEASE_ARM64_T8103 arm64 arm"}'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '656'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.10.13
     method: POST
     uri: https://api.openai.com/v1/chat/completions
   response:
-    body:
-      string: "{\n  \"id\": \"chatcmpl-7i3U8orqNSisKKo91B3RnbT4xbue4\",\n  \"object\":
-        \"chat.completion\",\n  \"created\": 1690734184,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
-        \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
-        \"assistant\",\n        \"content\": \"Sure, I can help you with that. Can
-        you please provide me with the following details:\\n\\n1. Date and time of
-        the reservation\\n2. Number of people\\n3. Cuisine preference, if any\\n4.
-        Any specific location in London\"\n      },\n      \"finish_reason\": \"stop\"\n
-        \   }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\":
-        50,\n    \"total_tokens\": 117\n  }\n}\n"
+    content: "{\n  \"id\": \"chatcmpl-8Xfon9uU1deOBwaKolkBf7HCcRtUB\",\n  \"object\":
+      \"chat.completion\",\n  \"created\": 1703036265,\n  \"model\": \"gpt-3.5-turbo-0613\",\n
+      \ \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\":
+      \"assistant\",\n        \"content\": \"Sure, I can help you with that. Could
+      you please provide me with the date and time for the booking?\"\n      },\n
+      \     \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 67,\n    \"completion_tokens\": 24,\n
+      \   \"total_tokens\": 91\n  },\n  \"system_fingerprint\": null\n}\n"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 7eeef1aa0bc24a28-TPE
+      - 83842972ea046b68-TPE
       Cache-Control:
       - no-cache, must-revalidate
       Connection:
@@ -54,9 +63,15 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 30 Jul 2023 16:23:06 GMT
+      - Wed, 20 Dec 2023 01:37:46 GMT
       Server:
       - cloudflare
+      Set-Cookie:
+      - __cf_bm=VSoYO06G7ESNk0Q_cBL7IUMAATlAASCN1l7zIHNV_Dg-1703036266-1-AdrKBREK8y/+F8cXOXDfb0CohWaVEWujxpuY2AXdNSAkHkL2zd8xhFWrPJpG2MUfRdlsQNFL6PRuhsew4xpyRQs=;
+        path=/; expires=Wed, 20-Dec-23 02:07:46 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=3DRXTn4srkqSOV1M1lEj_7ZPbKBR1T68GAOTJZL6OWk-1703036266549-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Transfer-Encoding:
       - chunked
       access-control-allow-origin:
@@ -66,26 +81,31 @@ interactions:
       openai-model:
       - gpt-3.5-turbo-0613
       openai-processing-ms:
-      - '1924'
+      - '642'
       openai-version:
       - '2020-10-01'
       strict-transport-security:
       - max-age=15724800; includeSubDomains
       x-ratelimit-limit-requests:
-      - '3500'
+      - '10000'
       x-ratelimit-limit-tokens:
-      - '90000'
+      - '2000000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '2000000'
       x-ratelimit-remaining-requests:
-      - '3499'
+      - '9999'
       x-ratelimit-remaining-tokens:
-      - '89965'
+      - '1999964'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '1999964'
       x-ratelimit-reset-requests:
-      - 17ms
+      - 6ms
       x-ratelimit-reset-tokens:
-      - 23ms
+      - 1ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 1ms
       x-request-id:
-      - 58f8d2f6714883089d724090b7549385
-    status:
-      code: 200
-      message: OK
+      - 56cfe8779b30c143f89ca5092a57756e
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
