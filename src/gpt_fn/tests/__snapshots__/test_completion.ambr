@@ -40,7 +40,7 @@
   })
 # ---
 # name: test_function_completion
-  FunctionCall(arguments='{\n  "date": "2021-08-20",\n  "destination": "London"\n}', name='book_a_flight')
+  FunctionCall(arguments='{\n  "date": "2021-10-15",\n  "destination": "London"\n}', name='book_a_flight')
 # ---
 # name: test_function_completion_without_enough_tokens
   'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: 10, Finish reason: length Message:Sure, I can help you with that.'
@@ -98,11 +98,11 @@
       'top_p': 1.0,
       'user': '',
     }),
-    'response': ChatCompletion(id='chatcmpl-8XOf9JuRwjUBZdY4oHGMQqdWeA7nY', choices=[Choice(finish_reason='length', index=0, logprobs=None, message=ChatCompletionMessage(content='Sure, I can help you with that.', role='assistant', function_call=None, tool_calls=None))], created=1702970319, model='gpt-3.5-turbo-0613', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=10, prompt_tokens=67, total_tokens=77)),
+    'response': ChatCompletion(id='chatcmpl-8XfomRHXE6SaDIUZyAJLJK1mUPIXb', choices=[Choice(finish_reason='length', index=0, logprobs=None, message=ChatCompletionMessage(content='Sure, I can help you with that.', role='assistant', function_call=None, tool_calls=None))], created=1703036264, model='gpt-3.5-turbo-0613', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=10, prompt_tokens=67, total_tokens=77)),
   })
 # ---
 # name: test_function_completion_without_neccess_function
-  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: None, Finish reason: stop Message:Sure, I can help you with that. Can you please provide me with the date and time you would like to book the restaurant for, as well as any specific preferences or requirements you may have?'
+  'gpt_fn.exceptions.CompletionIncompleteError: Incomplete response. Max tokens: None, Finish reason: stop Message:Sure, I can help you with that. Could you please provide me with the date and time for the booking?'
 # ---
 # name: test_function_completion_without_neccess_function.1
   dict({
@@ -156,7 +156,7 @@
       'top_p': 1.0,
       'user': '',
     }),
-    'response': ChatCompletion(id='chatcmpl-8XOfAwJX6Ge19i1aKPlxmkfQJou3Y', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='Sure, I can help you with that. Can you please provide me with the date and time you would like to book the restaurant for, as well as any specific preferences or requirements you may have?', role='assistant', function_call=None, tool_calls=None))], created=1702970320, model='gpt-3.5-turbo-0613', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=41, prompt_tokens=67, total_tokens=108)),
+    'response': ChatCompletion(id='chatcmpl-8Xfon9uU1deOBwaKolkBf7HCcRtUB', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='Sure, I can help you with that. Could you please provide me with the date and time for the booking?', role='assistant', function_call=None, tool_calls=None))], created=1703036265, model='gpt-3.5-turbo-0613', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=24, prompt_tokens=67, total_tokens=91)),
   })
 # ---
 # name: test_structural_completion

@@ -28,7 +28,7 @@ class APISettings(pydantic.BaseModel):
     api_version: str | None = pydantic.Field(default_factory=lambda: openai.api_version)
 
 
-def get_client(model: str, api_settings: APISettings = APISettings(), Async: bool = False) -> OpenAI | AzureOpenAI | AsyncOpenAI | AsyncAzureOpenAI:
+def get_client(model: str, api_settings: APISettings = APISettings(), Async: bool = False) -> OpenAI | AsyncOpenAI:
     if api_settings.api_key is None:
         if os.environ.get("OPENAI_API_KEY"):
             api_settings.api_key = os.environ.get("OPENAI_API_KEY")
@@ -79,7 +79,7 @@ def function_completion(
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -92,12 +92,17 @@ def function_completion(
         function_call=function_call,
     )
 
-    client: Any = get_client(model, api_settings, Async=False)
+    result = get_client(model, api_settings, Async=False)
+
+    if isinstance(result, OpenAI):
+        client: OpenAI = result
+    else:
+        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
-    response = client.chat.completions.create(**kwargs, stream=False)
+    response = client.chat.completions.create(**kwargs)
 
     output = response.choices[0]
     message = output.message
@@ -129,7 +134,7 @@ async def afunction_completion(
 ) -> dict[str, Any] | None:
     assert functions, "functions must be a non-empty list of functions"
 
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -142,7 +147,12 @@ async def afunction_completion(
         function_call=function_call,
     )
 
-    client: Any = get_client(model, api_settings, Async=True)
+    result = get_client(model, api_settings, Async=True)
+
+    if isinstance(result, AsyncOpenAI):
+        client: AsyncOpenAI = result
+    else:
+        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -176,7 +186,7 @@ def structural_completion(
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -194,7 +204,12 @@ def structural_completion(
         function_call=function_call,
     )
 
-    client: Any = get_client(model, api_settings, Async=False)
+    result = get_client(model, api_settings, Async=False)
+
+    if isinstance(result, OpenAI):
+        client: OpenAI = result
+    else:
+        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
 
     if api_settings.api_type != "open_ai":
         kwargs["deployment_id"] = model
@@ -235,7 +250,7 @@ async def astructural_completion(
     api_settings: APISettings = APISettings(),
 ) -> T:
     function_call = {"name": "structural_response"}
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -253,7 +268,12 @@ async def astructural_completion(
         function_call=function_call,
     )
 
-    client: Any = get_client(model, api_settings, Async=True)
+    result = get_client(model, api_settings, Async=True)
+
+    if isinstance(result, AsyncOpenAI):
+        client: AsyncOpenAI = result
+    else:
+        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -289,7 +309,7 @@ def chat_completion(
     user: str = "",
     api_settings: APISettings = APISettings(),
 ) -> str:
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -300,7 +320,12 @@ def chat_completion(
         stop=stop or None,
     )
 
-    client: Any = get_client(model, api_settings, Async=False)
+    result = get_client(model, api_settings, Async=False)
+
+    if isinstance(result, OpenAI):
+        client = result
+    else:
+        raise ValueError("Expected an instance of OpenAI, but received AsyncOpenAI")
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
@@ -332,7 +357,7 @@ async def achat_completion(
     user: str = "",
     api_settings: APISettings = APISettings(),
 ) -> str:
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         messages=messages,
         model=model,
         temperature=temperature,
@@ -343,7 +368,12 @@ async def achat_completion(
         stop=stop or None,
     )
 
-    client: Any = get_client(model, api_settings, Async=True)
+    result = get_client(model, api_settings, Async=True)
+
+    if isinstance(result, AsyncOpenAI):
+        client = result
+    else:
+        raise ValueError("Expected an instance of AsyncOpenAI, but received OpenAI")
 
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
