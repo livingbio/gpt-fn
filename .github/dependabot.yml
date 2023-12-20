@@ -12,10 +12,3 @@ updates:
       interval: "weekly"
     allow:
       - dependency-type: "all"
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
-
-    schedule:
-      interval: "weekly"
-    allow:
-      - dependency-type: "all"
