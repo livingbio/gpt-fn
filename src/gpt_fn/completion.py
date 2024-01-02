@@ -203,9 +203,6 @@ def structural_completion(
 
     client: OpenAI = get_sync_client(model, api_settings)
 
-    if api_settings.api_type != "open_ai":
-        kwargs["deployment_id"] = model
-
     if max_tokens is not None:
         kwargs.update(max_tokens=max_tokens)
 
